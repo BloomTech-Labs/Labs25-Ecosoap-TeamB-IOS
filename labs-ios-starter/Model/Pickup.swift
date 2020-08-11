@@ -14,12 +14,20 @@ enum Status {
     case COMPLETE
     case CANCELLED
 }
-class Pickup: Codable {
+enum CollectionType {
+    case COURIER_CONSOLIDATED
+    case COURIER_DIRECT
+    case GENERATED_LABEL
+    case LOCAL
+    case OTHER
+}
+struct Pickup: Codable {
     let id: String
     let confirmNum: String
     let readyDate: Date!
     let pickupDate: Date
     let status: Status!
+    let collectionType: CollectionType?
     let notes: String
     
     enum CodingKeys: String, CodingKey {
@@ -29,5 +37,11 @@ class Pickup: Codable {
         case pickupDate
         case notes
         case status
+        case collectionType
     }
+}
+
+struct SchedulePickupPayload: Codable {
+    let pickup: Pickup
+    let label: URL?
 }
