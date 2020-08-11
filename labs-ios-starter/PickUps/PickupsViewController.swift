@@ -9,7 +9,7 @@
 import UIKit
 import OktaAuth
 
-class ProfileListViewController: UIViewController {
+class PickupsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -36,7 +36,7 @@ class ProfileListViewController: UIViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowProfileDetail" {
+        if segue.identifier == "ShowPickupsDetail" {
             
             guard let profileDetailVC = segue.destination as? ProfileDetailViewController,
                 let indexPath = tableView.indexPathForSelectedRow else {
@@ -49,7 +49,7 @@ class ProfileListViewController: UIViewController {
     }
 }
 
-extension ProfileListViewController: UITableViewDelegate, UITableViewDataSource {
+extension PickupsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return profileController.profiles.count
