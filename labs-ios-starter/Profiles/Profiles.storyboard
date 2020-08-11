@@ -7,6 +7,71 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--View Controller-->
+        <scene sceneID="1Cy-aT-Ld6">
+            <objects>
+                <viewController id="Gq1-Av-gap" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QMd-j8-5ZD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date and Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJN-DH-WuZ">
+                                <rect key="frame" x="125" y="160" width="164" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="MYo-8g-ZXP">
+                                <rect key="frame" x="0.0" y="210" width="414" height="162"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="162" id="mzh-z8-Ibt"/>
+                                </constraints>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ybX-ep-Jdy">
+                                <rect key="frame" x="120" y="577" width="174" height="86"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Schedule">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quantity of Soap:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m3s-1W-AWq">
+                                <rect key="frame" x="140.5" y="412" width="133" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FNc-0j-dlU">
+                                <rect key="frame" x="100" y="443" width="214" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="gJN-DH-WuZ" firstAttribute="top" secondItem="zEP-Ll-Run" secondAttribute="top" constant="20" id="9ja-E8-PGQ"/>
+                            <constraint firstItem="FNc-0j-dlU" firstAttribute="top" secondItem="m3s-1W-AWq" secondAttribute="bottom" constant="10" id="GW2-qW-AGd"/>
+                            <constraint firstItem="MYo-8g-ZXP" firstAttribute="top" secondItem="gJN-DH-WuZ" secondAttribute="bottom" constant="20" id="IH6-PI-iKp"/>
+                            <constraint firstItem="FNc-0j-dlU" firstAttribute="leading" secondItem="zEP-Ll-Run" secondAttribute="leading" constant="100" id="SYS-s2-GmG"/>
+                            <constraint firstItem="zEP-Ll-Run" firstAttribute="bottom" secondItem="ybX-ep-Jdy" secondAttribute="bottom" constant="150" id="T2H-Tm-xdb"/>
+                            <constraint firstItem="ybX-ep-Jdy" firstAttribute="leading" secondItem="zEP-Ll-Run" secondAttribute="leading" constant="120" id="Ux9-Ea-PnK"/>
+                            <constraint firstItem="m3s-1W-AWq" firstAttribute="top" secondItem="MYo-8g-ZXP" secondAttribute="bottom" constant="40" id="V2j-3P-UlM"/>
+                            <constraint firstItem="zEP-Ll-Run" firstAttribute="trailing" secondItem="ybX-ep-Jdy" secondAttribute="trailing" constant="120" id="VZS-Lj-Go9"/>
+                            <constraint firstItem="zEP-Ll-Run" firstAttribute="trailing" secondItem="FNc-0j-dlU" secondAttribute="trailing" constant="100" id="WYO-ht-bgU"/>
+                            <constraint firstItem="MYo-8g-ZXP" firstAttribute="leading" secondItem="zEP-Ll-Run" secondAttribute="leading" id="eYm-z6-8LV"/>
+                            <constraint firstItem="gJN-DH-WuZ" firstAttribute="centerX" secondItem="QMd-j8-5ZD" secondAttribute="centerX" id="kP6-Rz-Jge"/>
+                            <constraint firstItem="MYo-8g-ZXP" firstAttribute="trailing" secondItem="zEP-Ll-Run" secondAttribute="trailing" id="lk3-WC-YAx"/>
+                            <constraint firstItem="ybX-ep-Jdy" firstAttribute="top" secondItem="FNc-0j-dlU" secondAttribute="bottom" constant="100" id="vJX-6v-eMQ"/>
+                            <constraint firstItem="m3s-1W-AWq" firstAttribute="centerX" secondItem="QMd-j8-5ZD" secondAttribute="centerX" id="yJs-9w-Odf"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zEP-Ll-Run"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="DqC-Ed-nKG"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TGO-B6-CLP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1938" y="-616"/>
+        </scene>
         <!--Prickups-->
         <scene sceneID="6oy-fV-Emk">
             <objects>
@@ -58,7 +123,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ctD-id-37G"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Prickups" largeTitleDisplayMode="always" id="W7h-qs-wzd"/>
+                    <navigationItem key="navigationItem" title="Prickups" largeTitleDisplayMode="always" id="W7h-qs-wzd">
+                        <barButtonItem key="rightBarButtonItem" title="Schedule" id="Obl-la-E2s">
+                            <connections>
+                                <segue destination="Gq1-Av-gap" kind="show" id="AIC-pl-elG"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="ppC-Hy-tSJ" id="54E-Bu-N2d"/>
                     </connections>
