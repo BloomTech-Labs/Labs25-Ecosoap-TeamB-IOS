@@ -26,7 +26,7 @@
 		AE15364324E32742009598A9 /* ImpactStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE15364224E32742009598A9 /* ImpactStats.swift */; };
 		AE15364524E371A8009598A9 /* ImpactStatsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE15364424E371A8009598A9 /* ImpactStatsController.swift */; };
 		AE21B30924E43292003095F0 /* OktaAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AE21B30824E43292003095F0 /* OktaAuth */; };
-		AE21B30B24E43A77003095F0 /* Impact.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B30A24E43A77003095F0 /* Impact.swift */; };
+		AE21B30D24E43AF2003095F0 /* ImpactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B30C24E43AF2003095F0 /* ImpactViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,7 +51,7 @@
 		AE15364024E31FFB009598A9 /* Pickup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pickup.swift; sourceTree = "<group>"; };
 		AE15364224E32742009598A9 /* ImpactStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpactStats.swift; sourceTree = "<group>"; };
 		AE15364424E371A8009598A9 /* ImpactStatsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpactStatsController.swift; sourceTree = "<group>"; };
-		AE21B30A24E43A77003095F0 /* Impact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Impact.swift; sourceTree = "<group>"; };
+		AE21B30C24E43AF2003095F0 /* ImpactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpactViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +95,7 @@
 		466C4272249A8748007D033E /* labs-ios-starter */ = {
 			isa = PBXGroup;
 			children = (
+				AE21B30E24E43AFB003095F0 /* Impact */,
 				AE15363F24E2F5F6009598A9 /* PickUps */,
 				46BEB4EB24C98EB400FE0CD1 /* Model */,
 				46BEB4EC24C98EBB00FE0CD1 /* Model Controller */,
@@ -105,7 +106,6 @@
 				466C427C249A8749007D033E /* Assets.xcassets */,
 				466C4281249A8749007D033E /* Info.plist */,
 				466C4287249A889F007D033E /* File Organization.md */,
-				AE21B30A24E43A77003095F0 /* Impact.swift */,
 			);
 			path = "labs-ios-starter";
 			sourceTree = "<group>";
@@ -164,6 +164,14 @@
 				46BEB4F024C98F0D00FE0CD1 /* Pickups.storyboard */,
 			);
 			path = PickUps;
+			sourceTree = "<group>";
+		};
+		AE21B30E24E43AFB003095F0 /* Impact */ = {
+			isa = PBXGroup;
+			children = (
+				AE21B30C24E43AF2003095F0 /* ImpactViewController.swift */,
+			);
+			path = Impact;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,12 +259,12 @@
 				AE15364124E31FFB009598A9 /* Pickup.swift in Sources */,
 				46BEB4E124C9828800FE0CD1 /* Profile.swift in Sources */,
 				46BEB4E924C98DAF00FE0CD1 /* PickupsViewController.swift in Sources */,
+				AE21B30D24E43AF2003095F0 /* ImpactViewController.swift in Sources */,
 				AE15364524E371A8009598A9 /* ImpactStatsController.swift in Sources */,
 				463AD24524CF2CDB00447BB8 /* AddProfileViewController.swift in Sources */,
 				466C4274249A8748007D033E /* AppDelegate.swift in Sources */,
 				46C2BC9224D432F90077E49D /* ProfileTabBarViewController.swift in Sources */,
 				463AD24324CF275900447BB8 /* ProfileDetailViewController.swift in Sources */,
-				AE21B30B24E43A77003095F0 /* Impact.swift in Sources */,
 				46BEB4E524C98CDC00FE0CD1 /* LoginViewController.swift in Sources */,
 				466C4276249A8748007D033E /* SceneDelegate.swift in Sources */,
 			);
