@@ -21,7 +21,7 @@ enum CollectionType {
     case LOCAL
     case OTHER
 }
-struct Pickup: Codable {
+struct Pickup {
     let id: String
     let confirmNum: String
     let readyDate: Date!
@@ -29,6 +29,18 @@ struct Pickup: Codable {
     let status: Status!
     let collectionType: CollectionType?
     let notes: String
+    
+    init(id: String, confirmNum: String, readyDate: Date!, pickupDate: Date, status: Status! = .SUBMITTED,collectionType: CollectionType? = nil,notes:String) {
+        self.id = id
+        self.confirmNum = confirmNum
+        self.readyDate = readyDate
+        self.pickupDate = pickupDate
+        self.status = status
+        self.collectionType = collectionType
+        self.notes = notes
+    }
+    
+
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -41,7 +53,7 @@ struct Pickup: Codable {
     }
 }
 
-struct SchedulePickupPayload: Codable {
+struct SchedulePickupPayload {
     let pickup: Pickup
     let label: URL?
 }

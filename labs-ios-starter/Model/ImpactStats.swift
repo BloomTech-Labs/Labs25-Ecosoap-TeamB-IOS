@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ImpactStats {
+struct ImpactStats: Codable {
     let soapRecycled: Int
     let linensRecycled: Int
     let bottlesRecycled: Int
@@ -17,6 +17,6 @@ struct ImpactStats {
     let womenEmployed: Int
 }
 
-struct ImpactStatsByPropertyIdPayload {
+struct ImpactStatsByPropertyIdPayload: Codable {
     let impactStats: ImpactStats
 }
