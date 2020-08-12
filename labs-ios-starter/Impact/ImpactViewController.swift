@@ -9,22 +9,37 @@
 import UIKit
 
 class ImpactViewController: UIViewController {
-
+    
+    let impactController = ImpactStatsController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        updateView()
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // MARK: - UI Properties
+    
+    @IBOutlet var soapLabel: UILabel!
+    @IBOutlet var LinesnsLabel: UILabel!
+    @IBOutlet var bottlesLabel: UILabel!
+    @IBOutlet var paperLabel: UILabel!
+    @IBOutlet var peopleLabel: UILabel!
+    @IBOutlet var womenLabel: UILabel!
+    
+    func updateView() {
+        impactController.fetchImpact() { impact in
+            let result = try! impact.get()
+            print("\(result)")
+            DispatchQueue.main.async {
+                self.soapLabel.text = "\(result.soapRecycled)"
+                self.LinesnsLabel.text = "\(result.linensRecycled)"
+                self.bottlesLabel.text = "\(result.bottlesRecycled)"
+                self.paperLabel.text = "\(result.paperRecycled)"
+                self.peopleLabel.text = "\(result.peopleServed)"
+                self.womenLabel.text = "\(result.womenEmployed)"
+            }
+        }
     }
-    */
 
 }
