@@ -32,12 +32,12 @@ class ImpactViewController: UIViewController {
             let result = try! impact.get()
             print("\(result)")
             DispatchQueue.main.async {
-                self.soapLabel.text = "\(result.soapRecycled)"
-                self.LinesnsLabel.text = "\(result.linensRecycled)"
-                self.bottlesLabel.text = "\(result.bottlesRecycled)"
-                self.paperLabel.text = "\(result.paperRecycled)"
-                self.peopleLabel.text = "\(result.peopleServed)"
-                self.womenLabel.text = "\(result.womenEmployed)"
+                self.soapLabel.text = "\(String(describing: result.soapRecycled))"
+                self.LinesnsLabel.text = "\(String(describing: result.linensRecycled))"
+                self.bottlesLabel.text = "\(String(describing: result.bottlesRecycled))"
+                self.paperLabel.text = "\(String(describing: result.paperRecycled))"
+                self.peopleLabel.text = "\(String(describing: result.peopleServed))"
+                self.womenLabel.text = "\(String(describing: result.womenEmployed))"
             }
         }
     }

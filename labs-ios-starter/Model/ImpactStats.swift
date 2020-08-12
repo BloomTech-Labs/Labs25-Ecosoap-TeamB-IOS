@@ -9,12 +9,12 @@
 import Foundation
 
 struct ImpactStats: Codable {
-    let soapRecycled: Int
-    let linensRecycled: Int
-    let bottlesRecycled: Int
-    let paperRecycled: Int
-    let peopleServed: Int
-    let womenEmployed: Int
+    let soapRecycled: Int?
+    let linensRecycled: Int?
+    let bottlesRecycled: Int?
+    let paperRecycled: Int?
+    let peopleServed: Int?
+    let womenEmployed: Int?
 }
 
 struct ImpactStatsByPropertyIdPayload: Codable {
