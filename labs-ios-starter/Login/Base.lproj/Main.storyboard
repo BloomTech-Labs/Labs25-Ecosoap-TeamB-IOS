@@ -58,13 +58,13 @@
             </objects>
             <point key="canvasLocation" x="1545" y="84"/>
         </scene>
-        <!--Profiles-->
+        <!--Pickups-->
         <scene sceneID="3Na-TO-5aB">
             <objects>
-                <viewControllerPlaceholder storyboardName="Profiles" id="aOC-qF-9qB" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7XU-Dw-F8B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Pickups" id="aOC-qF-9qB" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="LNe-Yc-RsA"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7XU-Dw-F8B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2231" y="84"/>
         </scene>

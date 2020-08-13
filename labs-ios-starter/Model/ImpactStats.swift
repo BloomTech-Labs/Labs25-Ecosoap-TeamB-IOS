@@ -8,15 +8,15 @@
 
 import Foundation
 
-struct ImpactStats {
-    let soapRecycled: Int
-    let linensRecycled: Int
-    let bottlesRecycled: Int
-    let paperRecycled: Int
-    let peopleServed: Int
-    let womenEmployed: Int
+struct ImpactStats: Codable {
+    let soapRecycled: Int?
+    let linensRecycled: Int?
+    let bottlesRecycled: Int?
+    let paperRecycled: Int?
+    let peopleServed: Int?
+    let womenEmployed: Int?
 }
 
-struct ImpactStatsByPropertyIdPayload {
+struct ImpactStatsByPropertyIdPayload: Codable {
     let impactStats: ImpactStats
 }
