@@ -52,17 +52,13 @@ class PickupsViewController: UIViewController {
 extension PickupsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return profileController.profiles.count
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileCell", for: indexPath)
         
-        let profile = profileController.profiles[indexPath.row]
-        cell.textLabel?.text = profile.name
-        cell.detailTextLabel?.text = profile.email
         
-        return cell
+        return UITableViewCell()
     }
     
 }
