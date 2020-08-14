@@ -48,7 +48,7 @@ class PickupController {
                                                          "services":pickup.property.services!,
                                                          "collectionType":pickup.property.collectionType!],
                                             "notes": pickup.notes]
-        var request = URLRequest(url: url.appendingPathExtension("json"))
+        var request = URLRequest(url: url)
         request.httpMethod = "POST"
         let mutation = Scheduling.schedule
         let body: [String : Any] = ["mutation" : mutation, "variables" : variables]
