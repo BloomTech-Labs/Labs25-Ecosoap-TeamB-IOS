@@ -12,8 +12,7 @@ import OktaAuth
 class PickupsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    
-    var profileController = ProfileController.shared
+    let pickupController = PickupController()
     
     // MARK: - View Lifecycle
     
@@ -21,30 +20,17 @@ class PickupsViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        
-        refresh()
+        let pickup = Pickup(pickupDate: "2020-07-07", notes: "1")
+        pickupController.schedule(pickup: pickup)
     }
     
-    // MARK: - Private Methods
-    
-    private func refresh() {
-        profileController.getAllProfiles {
-            self.tableView.reloadData()
-        }
-    }
+
     
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowPickupsDetail" {
             
-            guard let profileDetailVC = segue.destination as? ProfileDetailViewController,
-                let indexPath = tableView.indexPathForSelectedRow else {
-                    return
-            }
-            
-            profileDetailVC.isUsersProfile = false
-            profileDetailVC.profile = profileController.profiles[indexPath.row]
         }
     }
 }
