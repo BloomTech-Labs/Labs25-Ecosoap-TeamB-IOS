@@ -73,7 +73,7 @@ struct Pickup: Codable {
     let cartons: [PickupCarton]!
     let property: Property!
     
-    init(id: String! = "4", confirmNum: String! = "12345678", readyDate: Date! = Calendar.current.startOfDay(for: Date()), pickupDate: Date! = Calendar.current.startOfDay(for: Date()), status: String! = Status.can.rawValue, collectionType: String! = CollectionType.c_c.rawValue, notes: String!, cartons: [PickupCarton]! = [PickupCarton()], property: Property! = Property()) {
+    init(id: String! = "4", confirmNum: String! = "12345678", readyDate: Date! = Calendar.current.startOfDay(for: Date()), pickupDate: Date, status: String! = Status.can.rawValue, collectionType: String! = CollectionType.c_c.rawValue, notes: String!, cartons: [PickupCarton]! = [PickupCarton()], property: Property! = Property()) {
         
         self.id = id
         self.confirmNum = confirmNum
