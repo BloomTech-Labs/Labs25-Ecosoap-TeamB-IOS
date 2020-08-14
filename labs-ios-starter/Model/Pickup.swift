@@ -52,7 +52,7 @@ struct Property: Codable {
     let services: [String]!
     let collectionType: String!
     
-    init(id: String! = "4", name: String! = "Lydia", propertyType: String! = PropertyType.b_b.rawValue, rooms: Int! = 1, services: [String]! = [HospitalityService.bot.rawValue], collectionType: String! = CollectionType.c_c.rawValue) {
+    init(id: String! = "4", name: String! = "01", propertyType: String! = PropertyType.b_b.rawValue, rooms: Int! = 1, services: [String]! = [HospitalityService.bot.rawValue], collectionType: String! = CollectionType.c_c.rawValue) {
         self.id = id
         self.name = name
         self.propertyType = propertyType
@@ -65,15 +65,15 @@ struct Property: Codable {
 struct Pickup: Codable {
     let id: String!
     let confirmNum: String!
-    let readyDate: Date!
-    let pickupDate: Date
+    let readyDate: String!
+    let pickupDate: String
     let status: String!
     let collectionType: String!
     let notes: String
     let cartons: [PickupCarton]!
     let property: Property!
     
-    init(id: String! = "4", confirmNum: String! = "12345678", readyDate: Date! = Calendar.current.startOfDay(for: Date()), pickupDate: Date, status: String! = Status.can.rawValue, collectionType: String! = CollectionType.c_c.rawValue, notes: String!, cartons: [PickupCarton]! = [PickupCarton()], property: Property! = Property()) {
+    init(id: String! = "4", confirmNum: String! = "12345678", readyDate: String! = "2020-07-07", pickupDate: String, status: String! = Status.can.rawValue, collectionType: String! = CollectionType.c_c.rawValue, notes: String, cartons: [PickupCarton]! = [PickupCarton()], property: Property! = Property()) {
         
         self.id = id
         self.confirmNum = confirmNum
