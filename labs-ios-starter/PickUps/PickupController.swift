@@ -20,7 +20,9 @@ enum Scheduling {
                 readyDate
                 pickupDate
                 property
-                cartons
+                cartons {
+                    id
+                }
                 notes
             }
         }

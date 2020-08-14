@@ -20,6 +20,8 @@ class PickupsViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        let x = Pickup(pickupDate: "2020-07-07", notes: "1")
+        pickupController.schedule(pickup: x)
     }
     
 
