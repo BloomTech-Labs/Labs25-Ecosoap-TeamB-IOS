@@ -22,7 +22,7 @@ enum Properties {
 
 class UserController {
     let url = URL(string: "http://35.208.9.187:9095/ios-api-2")!
-    func fetchAllProperties(id: String, completion: @escaping (Result<[Property],Error>) -> ()) {
+    func fetchUserData(id: String, completion: @escaping (Result<User,Error>) -> ()) {
         
         var request = URLRequest(url:url)
         request.httpMethod = "POST"
@@ -49,8 +49,8 @@ class UserController {
             }
             
             do {
-                let properties = try JSONDecoder().decode([Property].self, from: data)
-                completion(.success((properties)))
+                let user = try JSONDecoder().decode(User.self, from: data)
+                completion(.success((user)))
             } catch {
                 NSLog("\(error)")
             }
