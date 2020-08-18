@@ -13,6 +13,12 @@ enum Properties {
     query UserbyID($input: UserByIdInput) {
         userById(input: $input) {
             user {
+                id
+                firstName
+                lastName
+                email
+                phone
+                address
                 properties
             }
         }
