@@ -14,5 +14,4 @@ struct User: Codable {
     let firstName: String
     let lasrName: String
     let properties: [Property]
-    
 }
