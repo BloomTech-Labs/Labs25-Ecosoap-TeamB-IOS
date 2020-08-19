@@ -38,9 +38,13 @@ enum HospitalityService: String {
 }
 struct PickupCarton: Codable {
     let id: String!
+    let product: String
+    let weight: Int
     
-    init(id: String = "4") {
+    init(id: String = "4", product: String = HospitalityService.bot.rawValue, weight: Int = 3) {
         self.id = id
+        self.weight = weight
+        self.product = product
     }
 }
 
