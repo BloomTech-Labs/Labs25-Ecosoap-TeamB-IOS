@@ -36,20 +36,11 @@ class PickupController {
 
     func schedule(pickup: Pickup, completion: @escaping (Error?) -> Void = { _ in }) {
         
-        let variables: [String : Any] = ["id" : pickup.id!,
-                                            "confirmationCode": pickup.confirmNum!,
-                                            "collectionType": pickup.collectionType!,
+        let variables: [String : Any] = ["collectionType": pickup.collectionType!,
                                             "status": pickup.status!,
                                             "readyDate": pickup.readyDate!,
-                                            "pickupDate": pickup.pickupDate,
                                             "cartons": [["id": pickup.cartons[0].id]],
-                                            "property": ["id": pickup.property.id!,
-                                                         "name": pickup.property.name!,
-                                                         "propertyType":pickup.property.propertyType!,
-                                                         "rooms": pickup.property.rooms!,
-                                                         "services":pickup.property.services!,
-                                                         "collectionType":pickup.property.collectionType!],
-                                            "notes": pickup.notes]
+                                            "propertyId": "4"]
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         let mutation = Scheduling.schedule
