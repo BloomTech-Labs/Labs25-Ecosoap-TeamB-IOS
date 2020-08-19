@@ -10,7 +10,7 @@ import Foundation
 
 enum Scheduling {
     static let schedule = """
-    mutation SchedulePickup($input:SchedulePickupInput){
+    mutation SchedulePickup($input:SchedulePickupInput) {
         schedulePickup(input: $input) {
             pickup {
                 id

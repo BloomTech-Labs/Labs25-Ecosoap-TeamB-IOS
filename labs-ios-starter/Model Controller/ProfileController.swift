@@ -30,13 +30,13 @@ class ProfileController {
     }
     
     @objc func refreshProfiles() {
-        getAllProfiles()
+       getAllProfiles()
     }
     
     func getAllProfiles(completion: @escaping () -> Void = {}) {
-        
+
         var oktaCredentials: OktaCredentials
-        
+
         do {
             oktaCredentials = try oktaAuth.credentialsIfAvailable()
         } catch {
@@ -47,39 +47,39 @@ class ProfileController {
             }
             return
         }
-        
+
         let requestURL = baseURL.appendingPathComponent("profiles")
         var request = URLRequest(url: requestURL)
-        
+
         request.addValue("Bearer \(oktaCredentials.idToken)", forHTTPHeaderField: "Authorization")
-        
+
         let dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            
+
             defer {
                 DispatchQueue.main.async {
                     completion()
                 }
             }
-            
+
             if let error = error {
                 NSLog("Error getting all profiles: \(error)")
             }
-            
+
             if let response = response as? HTTPURLResponse,
                 response.statusCode != 200 {
                 NSLog("Returned status code is not the expected 200. Instead it is \(response.statusCode)")
             }
-            
+
             guard let data = data else {
                 NSLog("No data returned from getting all profiles")
                 return
             }
-            
+
             let decoder = JSONDecoder()
-            
+
             do {
                 let profiles = try decoder.decode([Profile].self, from: data)
-                
+
                 DispatchQueue.main.async {
                     self.profiles = profiles
                 }
@@ -87,7 +87,7 @@ class ProfileController {
                 NSLog("Unable to decode [Profile] from data: \(error)")
             }
         }
-        
+
         dataTask.resume()
     }
     

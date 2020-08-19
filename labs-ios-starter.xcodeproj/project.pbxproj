@@ -28,6 +28,8 @@
 		AE21B30924E43292003095F0 /* OktaAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AE21B30824E43292003095F0 /* OktaAuth */; };
 		AE21B30D24E43AF2003095F0 /* ImpactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B30C24E43AF2003095F0 /* ImpactViewController.swift */; };
 		AE21B31024E5DC04003095F0 /* PickupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B30F24E5DC04003095F0 /* PickupController.swift */; };
+		AE21B31424EC8B18003095F0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B31324EC8B18003095F0 /* User.swift */; };
+		AE21B31624EC8E65003095F0 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B31524EC8E65003095F0 /* UserController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,8 @@
 		AE15364424E371A8009598A9 /* ImpactStatsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpactStatsController.swift; sourceTree = "<group>"; };
 		AE21B30C24E43AF2003095F0 /* ImpactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpactViewController.swift; sourceTree = "<group>"; };
 		AE21B30F24E5DC04003095F0 /* PickupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PickupController.swift; path = "labs-ios-starter/PickUps/PickupController.swift"; sourceTree = SOURCE_ROOT; };
+		AE21B31324EC8B18003095F0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = "labs-ios-starter/Login/User.swift"; sourceTree = SOURCE_ROOT; };
+		AE21B31524EC8E65003095F0 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserController.swift; path = "labs-ios-starter/Model/UserController.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +128,7 @@
 		46BEB4EB24C98EB400FE0CD1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AE21B31324EC8B18003095F0 /* User.swift */,
 				AE15364224E32742009598A9 /* ImpactStats.swift */,
 				46BEB4E024C9828800FE0CD1 /* Profile.swift */,
 				AE15364024E31FFB009598A9 /* Pickup.swift */,
@@ -134,6 +139,7 @@
 		46BEB4EC24C98EBB00FE0CD1 /* Model Controller */ = {
 			isa = PBXGroup;
 			children = (
+				AE21B31524EC8E65003095F0 /* UserController.swift */,
 				AE21B30F24E5DC04003095F0 /* PickupController.swift */,
 				46BEB4ED24C98ECC00FE0CD1 /* ProfileController.swift */,
 				AE15364424E371A8009598A9 /* ImpactStatsController.swift */,
@@ -255,6 +261,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE21B31624EC8E65003095F0 /* UserController.swift in Sources */,
 				46BEB4EE24C98ECC00FE0CD1 /* ProfileController.swift in Sources */,
 				AE21B31024E5DC04003095F0 /* PickupController.swift in Sources */,
 				AE15364324E32742009598A9 /* ImpactStats.swift in Sources */,
@@ -262,6 +269,7 @@
 				46BEB4E724C98D8900FE0CD1 /* Notifications.swift in Sources */,
 				AE15364124E31FFB009598A9 /* Pickup.swift in Sources */,
 				46BEB4E124C9828800FE0CD1 /* Profile.swift in Sources */,
+				AE21B31424EC8B18003095F0 /* User.swift in Sources */,
 				46BEB4E924C98DAF00FE0CD1 /* PickupsViewController.swift in Sources */,
 				AE21B30D24E43AF2003095F0 /* ImpactViewController.swift in Sources */,
 				AE15364524E371A8009598A9 /* ImpactStatsController.swift in Sources */,
