@@ -39,6 +39,23 @@ enum Properties {
     """
 }
 
+enum TheProperty {
+    static let theProperty = """
+    query PropertyById($input: PropertyByIdInput) {
+        propertyById(input: $input) {
+            property {
+                id
+                name
+                propertyType
+                rooms
+                services
+                collectionType
+            }
+        }
+    }
+    """
+}
+
 class UserController {
     let url = URL(string: "http://35.208.9.187:9095/ios-api-2")!
     func fetchUserData(id: String, completion: @escaping (Result<User,Error>) -> ()) {
