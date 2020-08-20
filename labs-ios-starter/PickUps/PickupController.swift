@@ -56,8 +56,7 @@ class PickupController {
         let mutation = Scheduling.schedule
         let body: [String : Any] = ["mutation" : mutation, "variables" : variables]
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        do {
-            
+        do {            
             request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
         } catch {
             NSLog("Error encoding in put method: \(error)")
@@ -77,5 +76,31 @@ class PickupController {
         }.resume()
     }
     
-    
+    func cancelPickup(pickup: Pickup, completion: @escaping (Error?) -> Void = { _ in }) {
+        let variables: [String : Any] = ["pickupId": pickup.id!,
+                                            "confirmationCode": pickup.confirmNum!]
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        let mutation = Canceling.cancel
+        let body: [String : Any] = ["mutation" : mutation, "variables" : variables]
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
+        } catch {
+            NSLog("Error encoding in put method: \(error)")
+            completion(error)
+            return
+        }
+        URLSession.shared.dataTask(with: request) { (_, response, error) in
+            if let error = error {
+                NSLog("\(error)")
+                completion(error)
+                return
+            }
+            if let response = response {
+                print("\(response)")
+            }
+            completion(nil)
+        }.resume()
+    }
 }
