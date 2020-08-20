@@ -29,7 +29,17 @@ enum Scheduling {
     }
     """
 }
-
+enum Canceling {
+    static let cancel = """
+    mutation CancelPickup($input: CancelPickupInput) {
+        cancelPickup(input: $input) {
+            pickup {
+                confirmationCode
+            }
+        }
+    }
+    """
+}
 class PickupController {
     // MARK: - Properties
     let url = URL(string: "http://35.208.9.187:9095/ios-api-2")!
@@ -66,4 +76,6 @@ class PickupController {
             completion(nil)
         }.resume()
     }
+    
+    
 }
