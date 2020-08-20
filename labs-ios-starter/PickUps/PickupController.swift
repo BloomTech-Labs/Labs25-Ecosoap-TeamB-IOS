@@ -29,7 +29,17 @@ enum Scheduling {
     }
     """
 }
-
+enum Canceling {
+    static let cancel = """
+    mutation CancelPickup($input: CancelPickupInput) {
+        cancelPickup(input: $input) {
+            pickup {
+                confirmationCode
+            }
+        }
+    }
+    """
+}
 class PickupController {
     // MARK: - Properties
     let url = URL(string: "http://35.208.9.187:9095/ios-api-2")!
@@ -46,8 +56,35 @@ class PickupController {
         let mutation = Scheduling.schedule
         let body: [String : Any] = ["mutation" : mutation, "variables" : variables]
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        do {            
+            request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
+        } catch {
+            NSLog("Error encoding in put method: \(error)")
+            completion(error)
+            return
+        }
+        URLSession.shared.dataTask(with: request) { (_, response, error) in
+            if let error = error {
+                NSLog("\(error)")
+                completion(error)
+                return
+            }
+            if let response = response {
+                print("\(response)")
+            }
+            completion(nil)
+        }.resume()
+    }
+    
+    func cancelPickup(pickup: Pickup, completion: @escaping (Error?) -> Void = { _ in }) {
+        let variables: [String : Any] = ["pickupId": pickup.id!,
+                                            "confirmationCode": pickup.confirmNum!]
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        let mutation = Canceling.cancel
+        let body: [String : Any] = ["mutation" : mutation, "variables" : variables]
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         do {
-            
             request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
         } catch {
             NSLog("Error encoding in put method: \(error)")
