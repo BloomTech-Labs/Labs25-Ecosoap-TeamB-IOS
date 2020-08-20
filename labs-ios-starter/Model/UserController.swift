@@ -8,8 +8,8 @@
 
 import Foundation
 
-enum Properties {
-    static let properties = """
+enum UserByID {
+    static let user = """
     query UserbyID($input: UserByIdInput) {
         userById(input: $input) {
             user {
@@ -32,7 +32,7 @@ class UserController {
         
         var request = URLRequest(url:url)
         request.httpMethod = "POST"
-        let query = Properties.properties
+        let query = UserByID.user
         let body: [String: String] = ["query": query, "variables": id]
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         do {
