@@ -229,7 +229,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ppC-Hy-tSJ">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="188" width="414" height="708"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ProfileCell" textLabel="P4v-24-kwg" detailTextLabel="uJA-0h-JKB" style="IBUITableViewCellStyleSubtitle" id="xXQ-bO-pu2">
@@ -261,11 +261,26 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter a specific hotel name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YH5-1X-da8">
+                                <rect key="frame" x="20" y="98" width="212" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <searchBar contentMode="redraw" showsSearchResultsButton="YES" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="22o-SZ-wXK">
+                                <rect key="frame" x="0.0" y="129" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="YH5-1X-da8" firstAttribute="top" secondItem="ctD-id-37G" secondAttribute="top" constant="10" id="2FE-TU-GXZ"/>
+                            <constraint firstItem="22o-SZ-wXK" firstAttribute="top" secondItem="YH5-1X-da8" secondAttribute="bottom" constant="10" id="8Lo-It-rO9"/>
+                            <constraint firstItem="22o-SZ-wXK" firstAttribute="leading" secondItem="ctD-id-37G" secondAttribute="leading" id="Cyy-ze-CO7"/>
                             <constraint firstItem="ppC-Hy-tSJ" firstAttribute="trailing" secondItem="ctD-id-37G" secondAttribute="trailing" id="RLp-0B-RcT"/>
-                            <constraint firstItem="ppC-Hy-tSJ" firstAttribute="top" secondItem="ctD-id-37G" secondAttribute="top" id="Ucv-5Z-Pv8"/>
+                            <constraint firstItem="22o-SZ-wXK" firstAttribute="trailing" secondItem="ctD-id-37G" secondAttribute="trailing" id="UZ3-hA-eRY"/>
+                            <constraint firstItem="ppC-Hy-tSJ" firstAttribute="top" secondItem="ctD-id-37G" secondAttribute="top" constant="100" id="Ucv-5Z-Pv8"/>
+                            <constraint firstItem="YH5-1X-da8" firstAttribute="leading" secondItem="ctD-id-37G" secondAttribute="leading" constant="20" id="WX0-0w-x0R"/>
                             <constraint firstAttribute="bottom" secondItem="ppC-Hy-tSJ" secondAttribute="bottom" id="o6e-UR-KHU"/>
                             <constraint firstItem="ppC-Hy-tSJ" firstAttribute="leading" secondItem="ctD-id-37G" secondAttribute="leading" id="sft-Qd-4pt"/>
                         </constraints>
