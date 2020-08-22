@@ -70,7 +70,7 @@ class PickupController {
                 return
             }
             if let response = response {
-                print("\(response)")
+                NSLog("\(response)")
             }
             completion(nil)
         }.resume()

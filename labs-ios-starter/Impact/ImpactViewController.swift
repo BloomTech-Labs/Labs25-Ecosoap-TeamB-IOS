@@ -30,7 +30,7 @@ class ImpactViewController: UIViewController {
     func updateView() {
         impactController.fetchImpact() { impact in
             let result = try! impact.get()
-            print("\(result)")
+            NSLog("\(result)")
             DispatchQueue.main.async {
                 self.soapLabel.text = "\(String(describing: result.soapRecycled))"
                 self.LinesnsLabel.text = "\(String(describing: result.linensRecycled))"
