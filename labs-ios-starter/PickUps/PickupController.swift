@@ -49,7 +49,7 @@ class PickupController {
         let variables: [String : Any] = ["collectionType": pickup.collectionType!,
                                             "status": pickup.status!,
                                             "readyDate": pickup.readyDate!,
-                                            "cartons": [["product": pickup.cartons[0].product, "weight": pickup.cartons[0].percentFull]],
+                                            "cartons": [["product": pickup.cartons[0].product, "percentFull": pickup.cartons[0].percentFull]],
                                             "propertyId": "4"]
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
