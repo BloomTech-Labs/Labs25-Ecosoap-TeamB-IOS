@@ -10,8 +10,8 @@ import Foundation
 
 enum ImpactStatsQueries {
     static let impactQuery = """
-    query {
-        impactStats {
+    query ImpactStats($input: ImpactStatsByPropertyIdInput) {
+        impactStats(input: $input) {
             soapRecycled
             linensRecycled
             bottlesRecycled
@@ -29,12 +29,12 @@ class ImpactStatsController {
     let url = URL(string: "http://35.208.9.187:9095/ios-api-2")!
     
     
-    func fetchImpact(completion: @escaping (Result<ImpactStats,Error>) -> ()) {
+    func fetchImpact(id: String, completion: @escaping (Result<ImpactStats,Error>) -> ()) {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         
         let query = ImpactStatsQueries.impactQuery
-        let body = ["query": query]
+        let body: [String: Any] = ["query": query, "variables":["propertyId": id]]
         
         request.httpBody = try! JSONSerialization.data(withJSONObject: body, options: [])
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
