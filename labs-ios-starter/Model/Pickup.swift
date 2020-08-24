@@ -39,11 +39,11 @@ enum HospitalityService: String {
 struct PickupCarton: Codable {
     let id: String!
     let product: String
-    let weight: Int
+    let percentFull: Int
     
-    init(id: String = "4", product: String = HospitalityService.bot.rawValue, weight: Int = 3) {
+    init(id: String = "4", product: String = HospitalityService.bot.rawValue, percentFull: Int = 3) {
         self.id = id
-        self.weight = weight
+        self.percentFull = percentFull
         self.product = product
     }
 }
