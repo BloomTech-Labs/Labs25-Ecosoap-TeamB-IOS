@@ -28,7 +28,7 @@ class ImpactViewController: UIViewController {
     @IBOutlet var womenLabel: UILabel!
     
     func updateView() {
-        impactController.fetchImpact() { impact in
+        impactController.fetchImpact(id: "4") { impact in
             let result = try! impact.get()
             NSLog("\(result)")
             DispatchQueue.main.async {
