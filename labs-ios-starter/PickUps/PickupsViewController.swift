@@ -34,7 +34,7 @@ class PickupsViewController: UIViewController {
         if segue.identifier == "ShowPickupsDetail" {
             guard let detailVC = segue.destination as? PickupDetailViewController, let indexPath = tableView.indexPathForSelectedRow else {return}
             detailVC.pickupController = pickupController
-            detailVC.pickup = property?.pickups[indexPath.row]
+            detailVC.pickup = property?.pickups?[indexPath.row]
         }
     }
 }
@@ -45,16 +45,18 @@ extension PickupsViewController: UITableViewDelegate, UITableViewDataSource {
         
         guard let property = property else {return 1}
         
-        return property.pickups.count
+        return property.pickups?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "PickupCell", for: indexPath)
         if let property = property {
-            let pickup = property.pickups[indexPath.row]
-            cell.textLabel?.text = pickup.confirmNum
-            cell.detailTextLabel?.text = pickup.status
+            if let pickup = property.pickups?[indexPath.row] {
+                cell.textLabel?.text = pickup.confirmNum
+                cell.detailTextLabel?.text = pickup.status
+            }
+
         }
         
         return cell
@@ -68,6 +70,7 @@ extension PickupsViewController: UISearchBarDelegate {
         guard let searchText = searchBar.text else {return}
         userController.fetchPropertyByID(id: "PropertyId1", completion: { result in
             guard let property = try? result.get() else {return}
+            print(property)
             DispatchQueue.main.async {
                 self.property = property
             }

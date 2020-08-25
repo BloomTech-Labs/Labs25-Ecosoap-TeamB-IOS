@@ -48,16 +48,6 @@ struct PickupCarton: Codable {
     }
 }
 
-struct Property: Codable {
-    let id: String!
-    let name: String!
-    let propertyType: String!
-    let rooms: Int!
-    let services: [String]!
-    let collectionType: String!
-    let pickups: [Pickup]
-    
-}
 
 struct Pickup: Codable {
     let id: String!
@@ -82,6 +72,17 @@ struct Pickup: Codable {
         case cartons
         case property
     }
+        
+}
+struct Property: Codable {
+    let id: String!
+    let name: String!
+    let propertyType: String!
+    let rooms: Int!
+    let services: [String]!
+    let collectionType: String!
+    let pickups: [Pickup]?
+
 }
 
 struct SchedulePickupPayload {
