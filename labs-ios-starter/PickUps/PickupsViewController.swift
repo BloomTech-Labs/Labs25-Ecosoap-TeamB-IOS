@@ -14,7 +14,6 @@ class PickupsViewController: UIViewController {
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     let userController = UserController()
-    var user: User?
     var property: Property?
     
     
@@ -42,6 +41,7 @@ extension PickupsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
+        guard let property = property else {return 1}
         
         return 1
     }
