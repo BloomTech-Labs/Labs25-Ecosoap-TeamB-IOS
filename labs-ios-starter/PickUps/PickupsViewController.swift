@@ -66,7 +66,7 @@ extension PickupsViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text else {return}
-        userController.fetchPropertyByID(id: searchText, completion: { result in
+        userController.fetchPropertyByID(id: "PropertyId1", completion: { result in
             guard let property = try? result.get() else {return}
             DispatchQueue.main.async {
                 self.property = property
