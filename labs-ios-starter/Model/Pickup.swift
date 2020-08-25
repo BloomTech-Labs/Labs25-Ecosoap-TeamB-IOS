@@ -55,9 +55,9 @@ struct Property: Codable {
     let rooms: Int!
     let services: [String]!
     let collectionType: String!
-    let pickups: [Pickup]?
+    let pickups: [Pickup]
     
-    init(id: String! = "4", name: String! = "01", propertyType: String! = PropertyType.b_b.rawValue, rooms: Int! = 1, services: [String]! = [HospitalityService.bot.rawValue], collectionType: String! = CollectionType.c_c.rawValue, pickups: [Pickup]? = []) {
+    init(id: String! = "4", name: String! = "01", propertyType: String! = PropertyType.b_b.rawValue, rooms: Int! = 1, services: [String]! = [HospitalityService.bot.rawValue], collectionType: String! = CollectionType.c_c.rawValue, pickups: [Pickup] = []) {
         self.id = id
         self.name = name
         self.propertyType = propertyType

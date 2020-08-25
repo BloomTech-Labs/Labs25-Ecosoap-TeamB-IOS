@@ -43,13 +43,19 @@ extension PickupsViewController: UITableViewDelegate, UITableViewDataSource {
         
         guard let property = property else {return 1}
         
-        return property.pickups?.count ?? 1
+        return property.pickups.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PickupCell", for: indexPath)
+        if let property = property {
+            let pickup = property.pickups[indexPath.row]
+            cell.textLabel?.text = pickup.confirmNum
+            cell.detailTextLabel?.text = pickup.status
+        }
         
-        return UITableViewCell()
+        return cell
     }
     
 }
