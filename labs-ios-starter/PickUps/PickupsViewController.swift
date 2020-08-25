@@ -11,8 +11,12 @@ import OktaAuth
 
 class PickupsViewController: UIViewController {
     
+    @IBOutlet var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
-    let pickupController = PickupController()
+    let userController = UserController()
+    var user: User?
+    var property: Property?
+    
     
     // MARK: - View Lifecycle
     
@@ -20,6 +24,7 @@ class PickupsViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        searchBar.delegate = self
     }
     
 
@@ -36,6 +41,8 @@ class PickupsViewController: UIViewController {
 extension PickupsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        
         return 1
     }
     
@@ -43,6 +50,20 @@ extension PickupsViewController: UITableViewDelegate, UITableViewDataSource {
         
         
         return UITableViewCell()
+    }
+    
+}
+
+extension PickupsViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchText = searchBar.text else {return}
+        userController.fetchPropertyByID(id: searchText, completion: { result in
+            guard let property = try? result.get() else {return}
+            DispatchQueue.main.async {
+                self.property = property
+            }
+        })
     }
     
 }
