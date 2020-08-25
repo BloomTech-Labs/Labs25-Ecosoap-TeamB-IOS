@@ -75,14 +75,14 @@ struct Pickup: Codable {
         
 }
 struct Property: Codable {
-    let id: String!
-    let name: String!
-    let propertyType: String!
-    let rooms: Int!
-    let services: [String]!
-    let collectionType: String!
+    let id: String?
+    let name: String?
+    let propertyType: String?
+    let rooms: Int?
+    let services: [String]?
+    let collectionType: String?
     let pickups: [Pickup]?
-
+    
 }
 
 struct SchedulePickupPayload {
