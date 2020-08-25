@@ -302,10 +302,10 @@
             </objects>
             <point key="canvasLocation" x="1971.0144927536232" y="193.52678571428569"/>
         </scene>
-        <!--View Controller-->
+        <!--Pickup Detail View Controller-->
         <scene sceneID="wWj-x4-RWz">
             <objects>
-                <viewController id="Bcd-qt-s4H" sceneMemberID="viewController">
+                <viewController id="Bcd-qt-s4H" customClass="PickupDetailViewController" customModule="Eco_Soap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nd5-c5-JJ9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

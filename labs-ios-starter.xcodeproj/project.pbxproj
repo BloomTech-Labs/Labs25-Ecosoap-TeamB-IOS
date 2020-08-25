@@ -30,6 +30,7 @@
 		AE21B31024E5DC04003095F0 /* PickupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B30F24E5DC04003095F0 /* PickupController.swift */; };
 		AE21B31424EC8B18003095F0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B31324EC8B18003095F0 /* User.swift */; };
 		AE21B31624EC8E65003095F0 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B31524EC8E65003095F0 /* UserController.swift */; };
+		AE21B31824F4BC3D003095F0 /* PickupDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B31724F4BC3D003095F0 /* PickupDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		AE21B30F24E5DC04003095F0 /* PickupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PickupController.swift; path = "labs-ios-starter/PickUps/PickupController.swift"; sourceTree = SOURCE_ROOT; };
 		AE21B31324EC8B18003095F0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = "labs-ios-starter/Login/User.swift"; sourceTree = SOURCE_ROOT; };
 		AE21B31524EC8E65003095F0 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserController.swift; path = "labs-ios-starter/Model/UserController.swift"; sourceTree = SOURCE_ROOT; };
+		AE21B31724F4BC3D003095F0 /* PickupDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickupDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 			children = (
 				46BEB4E824C98DAF00FE0CD1 /* PickupsViewController.swift */,
 				46BEB4F024C98F0D00FE0CD1 /* Pickups.storyboard */,
+				AE21B31724F4BC3D003095F0 /* PickupDetailViewController.swift */,
 			);
 			path = PickUps;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 			files = (
 				AE21B31624EC8E65003095F0 /* UserController.swift in Sources */,
 				46BEB4EE24C98ECC00FE0CD1 /* ProfileController.swift in Sources */,
+				AE21B31824F4BC3D003095F0 /* PickupDetailViewController.swift in Sources */,
 				AE21B31024E5DC04003095F0 /* PickupController.swift in Sources */,
 				AE15364324E32742009598A9 /* ImpactStats.swift in Sources */,
 				46BF10BE24D388FF001C6753 /* UIViewController+SimpleAlert.swift in Sources */,
