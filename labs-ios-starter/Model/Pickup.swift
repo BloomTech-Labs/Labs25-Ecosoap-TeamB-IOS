@@ -63,7 +63,7 @@ struct Pickup: Codable {
     let id: String!
     let confirmNum: String!
     let readyDate: String!
-    let pickupDate: String
+    let pickupDate: String?
     let status: String!
     let collectionType: String!
     let notes: String

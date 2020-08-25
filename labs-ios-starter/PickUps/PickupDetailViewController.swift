@@ -9,22 +9,32 @@
 import UIKit
 
 class PickupDetailViewController: UIViewController {
-
+    @IBOutlet var readyDate: UILabel!
+    @IBOutlet var pickupDate: UILabel!
+    @IBOutlet var products: UILabel!
+    @IBOutlet var confrimNum: UILabel!
+    @IBOutlet var status: UILabel!
+    
+    var pickup: Pickup? {
+        didSet {
+            
+        }
+    }
+    @IBAction func cancelPickup(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func updateViews() {
+        if let pickup = pickup {
+            readyDate.text = pickup.readyDate
+            pickupDate.text = pickup.pickupDate ?? "Not avaliable yet"
+            products.text = "Service: \([pickup.cartons])"
+        }
     }
-    */
+
 
 }

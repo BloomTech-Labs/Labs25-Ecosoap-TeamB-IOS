@@ -322,7 +322,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quantity:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="irS-66-JhD">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Products:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="irS-66-JhD">
                                 <rect key="frame" x="40" y="248" width="84" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
@@ -381,6 +381,9 @@
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="cancelPickup:" destination="Bcd-qt-s4H" eventType="touchUpInside" id="1iV-Ey-VE6"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -418,6 +421,13 @@
                         <viewLayoutGuide key="safeArea" id="thw-Hf-FAq"/>
                     </view>
                     <navigationItem key="navigationItem" id="DeS-uz-jGP"/>
+                    <connections>
+                        <outlet property="confrimNum" destination="b27-F8-4m9" id="rJw-9U-cUo"/>
+                        <outlet property="pickupDate" destination="MTB-UP-so2" id="WcM-Id-bMF"/>
+                        <outlet property="products" destination="Ksq-I8-vou" id="z4Z-aE-DNE"/>
+                        <outlet property="readyDate" destination="Ier-EO-YcR" id="4L3-4x-zGY"/>
+                        <outlet property="status" destination="NsV-2K-Dmz" id="Ujm-RX-jsI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="poE-WQ-M23" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
