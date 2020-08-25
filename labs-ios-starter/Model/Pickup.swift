@@ -57,15 +57,6 @@ struct Property: Codable {
     let collectionType: String!
     let pickups: [Pickup]
     
-    init(id: String! = "4", name: String! = "01", propertyType: String! = PropertyType.b_b.rawValue, rooms: Int! = 1, services: [String]! = [HospitalityService.bot.rawValue], collectionType: String! = CollectionType.c_c.rawValue, pickups: [Pickup] = []) {
-        self.id = id
-        self.name = name
-        self.propertyType = propertyType
-        self.rooms = rooms
-        self.services = services
-        self.collectionType = collectionType
-        self.pickups = pickups
-    }
 }
 
 struct Pickup: Codable {
@@ -79,18 +70,6 @@ struct Pickup: Codable {
     let cartons: [PickupCarton]!
     let property: Property!
     
-    init(id: String! = "4", confirmNum: String! = "12345678", readyDate: String! = "2020-07-07", pickupDate: String, status: String! = Status.can.rawValue, collectionType: String! = CollectionType.c_c.rawValue, notes: String, cartons: [PickupCarton]! = [PickupCarton()], property: Property! = Property()) {
-        
-        self.id = id
-        self.confirmNum = confirmNum
-        self.readyDate = readyDate
-        self.pickupDate = pickupDate
-        self.status = status
-        self.collectionType = collectionType
-        self.notes = notes
-        self.cartons = cartons
-        self.property = property
-    }
     
     enum CodingKeys: String, CodingKey {
         case id
