@@ -15,7 +15,7 @@ class PickupsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     let userController = UserController()
     var property: Property?
-    
+    let pickupController = PickupController()
     
     // MARK: - View Lifecycle
     
@@ -33,7 +33,8 @@ class PickupsViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowPickupsDetail" {
             guard let detailVC = segue.destination as? PickupDetailViewController, let indexPath = tableView.indexPathForSelectedRow else {return}
-            
+            detailVC.pickupController = pickupController
+            detailVC.pickup = property?.pickups[indexPath.row]
         }
     }
 }
