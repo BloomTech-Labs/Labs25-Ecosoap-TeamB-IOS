@@ -43,7 +43,7 @@ extension PickupsViewController: UITableViewDelegate, UITableViewDataSource {
         
         guard let property = property else {return 1}
         
-        return 1
+        return property.pickups?.count ?? 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
