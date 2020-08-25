@@ -11,8 +11,11 @@ import OktaAuth
 
 class PickupsViewController: UIViewController {
     
+    @IBOutlet var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
-    let pickupController = PickupController()
+    let userController = UserController()
+    var property: Property?
+    
     
     // MARK: - View Lifecycle
     
@@ -20,6 +23,7 @@ class PickupsViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        searchBar.delegate = self
     }
     
 
@@ -28,6 +32,7 @@ class PickupsViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowPickupsDetail" {
+            guard let detailVC = segue.destination as? PickupDetailViewController, let indexPath = tableView.indexPathForSelectedRow else {return}
             
         }
     }
@@ -36,13 +41,36 @@ class PickupsViewController: UIViewController {
 extension PickupsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        
+        guard let property = property else {return 1}
+        
+        return property.pickups.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PickupCell", for: indexPath)
+        if let property = property {
+            let pickup = property.pickups[indexPath.row]
+            cell.textLabel?.text = pickup.confirmNum
+            cell.detailTextLabel?.text = pickup.status
+        }
         
-        return UITableViewCell()
+        return cell
+    }
+    
+}
+
+extension PickupsViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchText = searchBar.text else {return}
+        userController.fetchPropertyByID(id: searchText, completion: { result in
+            guard let property = try? result.get() else {return}
+            DispatchQueue.main.async {
+                self.property = property
+            }
+        })
     }
     
 }

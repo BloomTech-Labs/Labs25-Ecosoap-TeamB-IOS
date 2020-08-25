@@ -28,7 +28,7 @@
         <!--Impack Tracking-->
         <scene sceneID="It1-vL-Msx">
             <objects>
-                <viewController title="Impack Tracking" id="Fc5-ym-Eq7" customClass="ImpactViewController" customModule="labs_ios_starter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Impack Tracking" id="Fc5-ym-Eq7" customClass="ImpactViewController" customModule="Eco_Soap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="H8v-zF-cv7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -223,7 +223,7 @@
         <!--Prickups-->
         <scene sceneID="6oy-fV-Emk">
             <objects>
-                <viewController id="shw-uE-C45" customClass="PickupsViewController" customModule="labs_ios_starter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="shw-uE-C45" customClass="PickupsViewController" customModule="Eco_Soap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jiE-sI-dU4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -232,7 +232,7 @@
                                 <rect key="frame" x="0.0" y="188" width="414" height="708"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ProfileCell" textLabel="P4v-24-kwg" detailTextLabel="uJA-0h-JKB" style="IBUITableViewCellStyleSubtitle" id="xXQ-bO-pu2">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PickupCell" textLabel="P4v-24-kwg" detailTextLabel="uJA-0h-JKB" style="IBUITableViewCellStyleSubtitle" id="xXQ-bO-pu2">
                                         <rect key="frame" x="0.0" y="28" width="414" height="55.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xXQ-bO-pu2" id="JXv-eQ-9PJ">
@@ -261,13 +261,13 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter a specific hotel name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YH5-1X-da8">
-                                <rect key="frame" x="20" y="98" width="212" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter a specific hotel ID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YH5-1X-da8">
+                                <rect key="frame" x="20" y="98" width="186" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <searchBar contentMode="redraw" showsSearchResultsButton="YES" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="22o-SZ-wXK">
+                            <searchBar contentMode="redraw" showsSearchResultsButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="22o-SZ-wXK">
                                 <rect key="frame" x="0.0" y="129" width="414" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
@@ -294,6 +294,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="searchBar" destination="22o-SZ-wXK" id="nOm-Zt-bXB"/>
                         <outlet property="tableView" destination="ppC-Hy-tSJ" id="54E-Bu-N2d"/>
                     </connections>
                 </viewController>
@@ -301,10 +302,10 @@
             </objects>
             <point key="canvasLocation" x="1971.0144927536232" y="193.52678571428569"/>
         </scene>
-        <!--View Controller-->
+        <!--Pickup Detail View Controller-->
         <scene sceneID="wWj-x4-RWz">
             <objects>
-                <viewController id="Bcd-qt-s4H" sceneMemberID="viewController">
+                <viewController id="Bcd-qt-s4H" customClass="PickupDetailViewController" customModule="Eco_Soap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nd5-c5-JJ9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -442,7 +443,7 @@
         <!--Profile Detail View Controller-->
         <scene sceneID="BCJ-ov-d7q">
             <objects>
-                <viewController id="iv4-Wu-uvp" customClass="ProfileDetailViewController" customModule="labs_ios_starter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="iv4-Wu-uvp" customClass="ProfileDetailViewController" customModule="Eco_Soap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="N1u-LA-j4m">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -574,7 +575,7 @@
         <!--Profile Tab Bar View Controller-->
         <scene sceneID="IUW-ly-e69">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="qoB-kH-nth" customClass="ProfileTabBarViewController" customModule="labs_ios_starter" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="qoB-kH-nth" customClass="ProfileTabBarViewController" customModule="Eco_Soap" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="ohT-lJ-L8d"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4CC-np-kAJ">
