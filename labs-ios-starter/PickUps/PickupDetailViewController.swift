@@ -23,6 +23,9 @@ class PickupDetailViewController: UIViewController {
     var pickupController: PickupController?
     
     @IBAction func cancelPickup(_ sender: Any) {
+        if let pickupController = pickupController, let pickup = pickup {
+            pickupController.cancelPickup(pickup: pickup)
+        }
         navigationController?.popViewController(animated: true)
     }
     override func viewDidLoad() {
