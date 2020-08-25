@@ -133,7 +133,7 @@ class UserController {
         var request = URLRequest(url:url)
         request.httpMethod = "POST"
         let query = TheProperty.theProperty
-        let body: [String : Any] = ["query": query, "variables": ["propertyId": id]]
+        let body: [String : Any] = ["query": query, "variables": ["input":["propertyId": "\(id)"]]]
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
@@ -143,23 +143,36 @@ class UserController {
             return
         }
         
-        URLSession.shared.dataTask(with: request) {(data, _, error) in
+        URLSession.shared.dataTask(with: request) {(data, response, error) in
+            if let response = response {
+                print(response)
+            }
             if let error = error {
                 NSLog("\(error)")
                 completion(.failure(error))
                 return
             }
-            guard let data = data else {
-                NSLog("Data is nil")
-                return
+            if let data = data {
+                do {
+                    let rawData = try JSONDecoder().decode([String:[String:[String:Property]]].self, from: data)
+                    let propertyByID = rawData["data"]
+                    if let propertyID = propertyByID {
+                        let property = propertyID["propertyById"]
+                        if let propertyNonOp = property {
+                            let result = propertyNonOp["property"]
+                            if let finalResult = result {
+                                completion(.success(finalResult))
+                            }
+                        }
+                    }
+                    
+                    //completion(.success((property)))
+                } catch {
+                    NSLog("\(error)")
+                }
             }
             
-            do {
-                let property = try JSONDecoder().decode(Property.self, from: data)
-                completion(.success((property)))
-            } catch {
-                NSLog("\(error)")
-            }
+            
             
         }.resume()
     }
