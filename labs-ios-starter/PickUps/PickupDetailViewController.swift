@@ -17,23 +17,25 @@ class PickupDetailViewController: UIViewController {
     
     var pickup: Pickup? {
         didSet {
-            
+            updateViews()
         }
     }
+    var pickupController: PickupController?
+    
     @IBAction func cancelPickup(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        updateViews()
     }
     func updateViews() {
-        if let pickup = pickup {
-            readyDate.text = pickup.readyDate
-            pickupDate.text = pickup.pickupDate ?? "Not avaliable yet"
-            products.text = "Service: \([pickup.cartons])"
-        }
+        guard let pickup = pickup, isViewLoaded else {return}
+        readyDate.text = pickup.readyDate
+        pickupDate.text = pickup.pickupDate ?? "Not avaliable yet"
+        products.text = "Service: \([pickup.cartons])"
+        confrimNum.text = pickup.confirmNum
+        status.text = pickup.status
     }
 
 
