@@ -158,7 +158,7 @@
         <!--Scheduling-->
         <scene sceneID="1Cy-aT-Ld6">
             <objects>
-                <viewController title="Scheduling" id="Gq1-Av-gap" sceneMemberID="viewController">
+                <viewController title="Scheduling" id="Gq1-Av-gap" customClass="SchedulePickupViewController" customModule="Eco_Soap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QMd-j8-5ZD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -350,7 +350,7 @@
                     <navigationItem key="navigationItem" title="Prickups" largeTitleDisplayMode="always" id="W7h-qs-wzd">
                         <barButtonItem key="rightBarButtonItem" title="Schedule" id="Obl-la-E2s">
                             <connections>
-                                <segue destination="Gq1-Av-gap" kind="show" id="AIC-pl-elG"/>
+                                <segue destination="Gq1-Av-gap" kind="show" identifier="ScheduleSegue" id="AIC-pl-elG"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
