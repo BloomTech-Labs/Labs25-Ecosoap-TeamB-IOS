@@ -48,7 +48,7 @@ class PickupController {
 
     func schedule(collectionType: String, status: String, readyDate: String, cartons: Any,id: String, completion: @escaping (Error?) -> Void = { _ in }) {
         
-        let variables: [String : Any] = ["collectionType": collectionType,"status": status,"readyDate": readyDate,"cartons": cartons,"propertyId": "PropertyId1"]
+        let variables: [String : Any] = ["collectionType": collectionType,"status": status,"readyDate": readyDate,"cartons": cartons,"propertyId": id]
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
