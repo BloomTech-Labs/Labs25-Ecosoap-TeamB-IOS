@@ -158,7 +158,7 @@
         <!--Scheduling-->
         <scene sceneID="1Cy-aT-Ld6">
             <objects>
-                <viewController title="Scheduling" id="Gq1-Av-gap" sceneMemberID="viewController">
+                <viewController title="Scheduling" id="Gq1-Av-gap" customClass="SchedulePickupViewController" customModule="Eco_Soap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QMd-j8-5ZD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -182,6 +182,9 @@
                                 <state key="normal" title="Schedule">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="schedulePressed:" destination="Gq1-Av-gap" eventType="touchUpInside" id="28o-4Z-oat"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="s4s-Eg-80m">
                                 <rect key="frame" x="40" y="412" width="58.5" height="182.5"/>
@@ -276,6 +279,14 @@
                         <viewLayoutGuide key="safeArea" id="zEP-Ll-Run"/>
                     </view>
                     <navigationItem key="navigationItem" id="DqC-Ed-nKG"/>
+                    <connections>
+                        <outlet property="bottleTextField" destination="SwA-tL-b5O" id="fji-Kl-6s3"/>
+                        <outlet property="datePicker" destination="MYo-8g-ZXP" id="Ubh-VJ-mks"/>
+                        <outlet property="linenTextField" destination="hfV-6U-v3U" id="5Gp-3D-WH5"/>
+                        <outlet property="otherTextField" destination="Chi-iU-DmF" id="BEd-W6-lDs"/>
+                        <outlet property="paperTextField" destination="8Eo-KA-ZXH" id="uWf-Uz-kp6"/>
+                        <outlet property="soapTextField" destination="7rs-GN-aCr" id="Edt-ft-Siz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TGO-B6-CLP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -350,7 +361,7 @@
                     <navigationItem key="navigationItem" title="Prickups" largeTitleDisplayMode="always" id="W7h-qs-wzd">
                         <barButtonItem key="rightBarButtonItem" title="Schedule" id="Obl-la-E2s">
                             <connections>
-                                <segue destination="Gq1-Av-gap" kind="show" id="AIC-pl-elG"/>
+                                <segue destination="Gq1-Av-gap" kind="show" identifier="ScheduleSegue" id="AIC-pl-elG"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

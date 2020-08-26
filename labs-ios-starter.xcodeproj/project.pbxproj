@@ -31,6 +31,7 @@
 		AE21B31424EC8B18003095F0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B31324EC8B18003095F0 /* User.swift */; };
 		AE21B31624EC8E65003095F0 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B31524EC8E65003095F0 /* UserController.swift */; };
 		AE21B31824F4BC3D003095F0 /* PickupDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B31724F4BC3D003095F0 /* PickupDetailViewController.swift */; };
+		AE21B31A24F60A0C003095F0 /* SchedulePickupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B31924F60A0C003095F0 /* SchedulePickupViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		AE21B31324EC8B18003095F0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = "labs-ios-starter/Login/User.swift"; sourceTree = SOURCE_ROOT; };
 		AE21B31524EC8E65003095F0 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserController.swift; path = "labs-ios-starter/Model/UserController.swift"; sourceTree = SOURCE_ROOT; };
 		AE21B31724F4BC3D003095F0 /* PickupDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickupDetailViewController.swift; sourceTree = "<group>"; };
+		AE21B31924F60A0C003095F0 /* SchedulePickupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePickupViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +175,7 @@
 			children = (
 				46BEB4E824C98DAF00FE0CD1 /* PickupsViewController.swift */,
 				46BEB4F024C98F0D00FE0CD1 /* Pickups.storyboard */,
+				AE21B31924F60A0C003095F0 /* SchedulePickupViewController.swift */,
 				AE21B31724F4BC3D003095F0 /* PickupDetailViewController.swift */,
 			);
 			path = PickUps;
@@ -281,6 +284,7 @@
 				466C4274249A8748007D033E /* AppDelegate.swift in Sources */,
 				46C2BC9224D432F90077E49D /* ProfileTabBarViewController.swift in Sources */,
 				463AD24324CF275900447BB8 /* ProfileDetailViewController.swift in Sources */,
+				AE21B31A24F60A0C003095F0 /* SchedulePickupViewController.swift in Sources */,
 				46BEB4E524C98CDC00FE0CD1 /* LoginViewController.swift in Sources */,
 				466C4276249A8748007D033E /* SceneDelegate.swift in Sources */,
 			);
