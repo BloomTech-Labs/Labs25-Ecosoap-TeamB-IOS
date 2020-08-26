@@ -25,7 +25,20 @@ class PickupsViewController: UIViewController {
         tableView.dataSource = self
         searchBar.delegate = self
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let property = property {
+            if property.id != nil {
+                userController.fetchPropertyByID(id: property.id!, completion: { result in
+                    guard let propertyFetched = try? result.get() else {return}
+                    DispatchQueue.main.async {
+                        self.property = propertyFetched
+                        self.tableView.reloadData()
+                    }
+                })
+            }
+        }
+    }
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -70,7 +83,7 @@ extension PickupsViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchText = searchBar.text else {return}
-        userController.fetchPropertyByID(id: "PropertyId1", completion: { result in
+        userController.fetchPropertyByID(id: searchText, completion: { result in
             guard let property = try? result.get() else {return}
             DispatchQueue.main.async {
                 self.property = property

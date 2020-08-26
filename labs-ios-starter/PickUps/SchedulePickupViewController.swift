@@ -43,7 +43,7 @@ class SchedulePickupViewController: UIViewController {
         let dateStr = dateFormatter.string(from: date)
         
         if let bottle = bottleTextField.text, !bottle.isEmpty {
-            cartons.append(["product":"BOTTLE","percentFull": Int(bottle)!])
+            cartons.append(["product":"BOTTLES","percentFull": Int(bottle)!])
         }
         if let soap = soapTextField.text, !soap.isEmpty {
             cartons.append(["product":"SOAP","percentFull": Int(soap)!])
