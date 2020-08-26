@@ -50,15 +50,15 @@ struct PickupCarton: Codable {
 
 
 struct Pickup: Codable {
-    let id: String!
-    let confirmNum: String!
-    let readyDate: String!
+    let id: String?
+    let confirmNum: String?
+    let readyDate: String?
     let pickupDate: String?
-    let status: String!
-    let collectionType: String!
-    let notes: String
-    let cartons: [PickupCarton]!
-    let property: Property!
+    let status: String?
+    let collectionType: String?
+    let notes: String?
+    let cartons: [PickupCarton]?
+    let property: Property?
     
     
     enum CodingKeys: String, CodingKey {
