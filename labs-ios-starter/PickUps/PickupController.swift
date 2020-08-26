@@ -19,7 +19,6 @@ enum Scheduling {
                 status
                 readyDate
                 pickupDate
-                property
                 cartons {
                     id
                     product
@@ -47,55 +46,35 @@ class PickupController {
     // MARK: - Properties
     let url = URL(string: "http://35.208.9.187:9095/ios-api-2")!
 
-    func schedule(pickup: Pickup, completion: @escaping (Result<Pickup,Error>) -> Void = { _ in }) {
-        guard let collection = pickup.collectionType, let status = pickup.status, let ready = pickup.readyDate,let carton = pickup.cartons, let id = pickup.property!.id else {return}
-        let variables: [String : Any] = ["collectionType": collection,
-                                            "status": status,
-                                            "readyDate": ready,
-                                            "cartons": carton,
-                                            "propertyId": id]
+    func schedule(collectionType: String, status: String, readyDate: String, cartons: Any,id: String, completion: @escaping (Error?) -> Void = { _ in }) {
+        
+        let variables: [String : Any] = ["collectionType": collectionType,"status": status,"readyDate": readyDate,"cartons": cartons,"propertyId": "PropertyId1"]
+        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         let mutation = Scheduling.schedule
-        let body: [String : Any] = ["mutation" : mutation, "variables" : ["input": "\(variables)"]]
+        let body: [String : Any] = ["query" : mutation, "variables" : ["input": variables]]
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        do {            
+        do {
             request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
         } catch {
             NSLog("Error encoding in put method: \(error)")
-            completion(.failure(error))
+            completion(error)
             return
         }
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let response = response {
-                print(response)
+        
+        URLSession.shared.dataTask(with: request) { (data, _, error) in
+            if let data = data {
+                print(data)
             }
+            
             if let error = error {
                 NSLog("\(error)")
-                completion(.failure(error))
+                completion(error)
                 return
             }
             
-            guard let data = data else {
-                NSLog("Data is nil")
-                return
-            }
-            
-            do {
-                let rawData = try JSONDecoder().decode([String:[String: [String: Pickup]]].self, from: data)
-                let data = rawData["data"]
-                if let datas = data {
-                    let pickup = datas["schedulePickup"]
-                    if let pickupNonOp = pickup {
-                        let result = pickupNonOp["pickup"]
-                        if let finalResult = result {
-                            completion(.success(finalResult))
-                        }
-                    }
-                }
-            } catch {
-                NSLog("Unable to decode pickup from data: \(error)")
-            }
+            completion(nil)
         }.resume()
     }
     

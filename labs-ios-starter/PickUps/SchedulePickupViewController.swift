@@ -37,30 +37,34 @@ class SchedulePickupViewController: UIViewController {
     @IBAction func schedulePressed(_ sender: Any) {
         
         guard let pickupController = pickupController, let property = property else {return}
-        var cartons: [Any] = []
+        var cartons: [String:Any] = [:]
         
         let date = datePicker.date
         let dateStr = dateFormatter.string(from: date)
         
         if let bottle = bottleTextField.text, !bottle.isEmpty {
-            cartons.append(["product":"BOTTLES","percentFull":"\(bottle)"])
+            cartons["product"] = "BOTTLES"
+            cartons["percentFull"] = Int(bottle)
         }
         if let soap = soapTextField.text, !soap.isEmpty {
-            cartons.append(["product":"SOAP","percentFull":"\(soap)"])
+            cartons["product"] = "SOAP"
+            cartons["percentFull"] = Int(soap)
         }
         if let paper = paperTextField.text, !paper.isEmpty {
-            cartons.append(["product":"PAPER","percentFull":"\(paper)"])
+            cartons["product"] = "PAPER"
+            cartons["percentFull"] = Int(paper)
         }
         if let other = otherTextField.text, !other.isEmpty {
-            cartons.append(["product":"OTHER","percentFull":"\(other)"])
+            cartons["product"] = "OTHER"
+            cartons["percentFull"] = Int(other)
         }
         if let linen = linenTextField.text, !linen.isEmpty {
-            cartons.append(["product":"LINENS","percentFull":"\(linen)"])
+            cartons["product"] = "LINENS"
+            cartons["percentFull"] = Int(linen)
         }
         
-        let pickup = Pickup(id: nil, confirmNum: nil, readyDate: dateStr, pickupDate: nil, status: "SUBMITTED", collectionType: "LOCAL", notes: nil, cartons: cartons as? [PickupCarton], property: property)
-        //print(cartons)
-        pickupController.schedule(pickup: pickup)
+        print(cartons)
+        pickupController.schedule(collectionType: "LOCAL", status: "SUBMITTED", readyDate: dateStr, cartons: ["product": "BOTTLES", "percentFull": 20], id: "PropertyId1")
         navigationController?.popViewController(animated: true)
     }
 
