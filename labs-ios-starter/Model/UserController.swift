@@ -175,10 +175,7 @@ class UserController {
             return
         }
         
-        URLSession.shared.dataTask(with: request) {(data, response, error) in
-            if let response = response {
-                print(response)
-            }
+        URLSession.shared.dataTask(with: request) {(data, _, error) in
             if let error = error {
                 NSLog("\(error)")
                 completion(.failure(error))
@@ -197,15 +194,11 @@ class UserController {
                             }
                         }
                     }
-                    
-                    //completion(.success((property)))
+
                 } catch {
                     NSLog("\(error)")
                 }
             }
-            
-            
-            
         }.resume()
     }
 }
