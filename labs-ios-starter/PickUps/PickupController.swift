@@ -49,17 +49,10 @@ class PickupController {
 
     func schedule(pickup: Pickup, completion: @escaping (Result<Pickup,Error>) -> Void = { _ in }) {
         guard let collection = pickup.collectionType, let status = pickup.status, let ready = pickup.readyDate,let carton = pickup.cartons, let id = pickup.id else {return}
-        var cartons: [Any] = []
-        for i in 0...carton.count {
-            var product: [String: Any] = [:]
-            product["product"] = carton[i].product
-            product["percentFull"] = carton[i].percentFull
-            cartons.append(product)
-        }
         let variables: [String : Any] = ["collectionType": collection,
                                             "status": status,
                                             "readyDate": ready,
-                                            "cartons": cartons,
+                                            "cartons": carton,
                                             "propertyId": id]
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
