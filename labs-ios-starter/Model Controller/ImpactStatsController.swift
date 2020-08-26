@@ -34,7 +34,7 @@ class ImpactStatsController {
         request.httpMethod = "POST"
         
         let query = ImpactStatsQueries.impactQuery
-        let body: [String: Any] = ["query": query, "variables":["propertyId": id]]
+        let body: [String: Any] = ["query": query, "variables":["input":["propertyId": "\(id)"]]]
         
         request.httpBody = try! JSONSerialization.data(withJSONObject: body, options: [])
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -52,8 +52,17 @@ class ImpactStatsController {
             }
             
             do {
-                let impact = try JSONDecoder().decode(ImpactStats.self, from: data)
-                completion(.success(impact))
+                let rawData = try JSONDecoder().decode([String:[String:[String:ImpactStats]]].self, from: data)
+                let data = rawData["data"]
+                if let datas = data {
+                    let impact = datas["impactStatsByPropertyId"]
+                    if let impactNonOp = impact {
+                        let result = impactNonOp["properties"]
+                        if let finalResult = result {
+                            completion(.success(finalResult))
+                        }
+                    }
+                }
                 return
             } catch {
                 NSLog("\(error)")
