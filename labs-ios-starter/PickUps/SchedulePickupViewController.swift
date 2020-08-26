@@ -9,14 +9,25 @@
 import UIKit
 
 class SchedulePickupViewController: UIViewController {
-
+    @IBOutlet var datePicker: UIDatePicker!
+    @IBOutlet var bottleTextField: UITextField!
+    @IBOutlet var linenTextField: UITextField!
+    
+    @IBOutlet var otherTextField: UITextField!
+    @IBOutlet var soapTextField: UITextField!
+    @IBOutlet var paperTextField: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func schedulePressed(_ sender: Any) {
+        
+    }
+    
     /*
     // MARK: - Navigation
 
