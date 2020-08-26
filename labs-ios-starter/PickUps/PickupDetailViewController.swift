@@ -36,7 +36,16 @@ class PickupDetailViewController: UIViewController {
         guard let pickup = pickup, isViewLoaded else {return}
         readyDate.text = pickup.readyDate
         pickupDate.text = pickup.pickupDate ?? "Not avaliable yet"
-        products.text = "Service: \([pickup.cartons])"
+        var cartonList: String = ""
+        if let count = pickup.cartons?.count, count > 0 {
+            for i in 0...count - 1 {
+                cartonList.append(pickup.cartons![i].product)
+            }
+            products.text = "\(cartonList)"
+        } else {
+            products.text = "None"
+        }
+        
         confrimNum.text = pickup.confirmNum
         status.text = pickup.status
     }
