@@ -41,17 +41,31 @@ enum Properties {
 
 enum TheProperty {
     static let theProperty = """
-    query PropertyById($input: PropertyByIdInput) {
-        propertyById(input: $input) {
-            property {
-                id
-                name
-                propertyType
-                rooms
-                services
-                collectionType
+    query PropertyByID($input: PropertyByIdInput) {
+      propertyById(input: $input) {
+          property {
+          id
+          name
+          propertyType
+          collectionType
+          rooms
+          services
+          pickups {
+            id
+            confirmationCode
+            collectionType
+            status
+            readyDate
+            pickupDate
+            cartons {
+              id
+              product
+              percentFull
             }
+            notes
+          }
         }
+      }
     }
     """
 }
