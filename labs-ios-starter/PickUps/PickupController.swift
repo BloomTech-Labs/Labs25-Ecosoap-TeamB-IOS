@@ -47,7 +47,7 @@ class PickupController {
     // MARK: - Properties
     let url = URL(string: "http://35.208.9.187:9095/ios-api-2")!
 
-    func schedule(pickup: Pickup, completion: @escaping (Error?) -> Void = { _ in }) {
+    func schedule(pickup: Pickup, completion: @escaping (Result<Pickup,Error>) -> Void = { _ in }) {
         guard let collection = pickup.collectionType, let status = pickup.status, let ready = pickup.readyDate,let carton = pickup.cartons, let id = pickup.id else {return}
         var cartons: [Any] = []
         for i in 0...carton.count {
@@ -70,19 +70,37 @@ class PickupController {
             request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
         } catch {
             NSLog("Error encoding in put method: \(error)")
-            completion(error)
+            completion(.failure(error))
             return
         }
-        URLSession.shared.dataTask(with: request) { (_, response, error) in
+        URLSession.shared.dataTask(with: request) { (data, _, error) in
+            
             if let error = error {
                 NSLog("\(error)")
-                completion(error)
+                completion(.failure(error))
                 return
             }
-            if let response = response {
-                NSLog("\(response)")
+            
+            guard let data = data else {
+                NSLog("Data is nil")
+                return
             }
-            completion(nil)
+            
+            do {
+                let rawData = try JSONDecoder().decode([String:[String: [String: Pickup]]].self, from: data)
+                let data = rawData["data"]
+                if let datas = data {
+                    let pickup = datas["schedulePickup"]
+                    if let pickupNonOp = pickup {
+                        let result = pickupNonOp["pickup"]
+                        if let finalResult = result {
+                            completion(.success(finalResult))
+                        }
+                    }
+                }
+            } catch {
+                NSLog("Unable to decode pickup from data: \(error)")
+            }
         }.resume()
     }
     
@@ -126,7 +144,7 @@ class PickupController {
                     }
                 }
             } catch {
-                
+                NSLog("Unable to decode pickup from data: \(error)")
             }
         }.resume()
     }
