@@ -32,7 +32,6 @@ class ImpactViewController: UIViewController {
     func updateView() {
         impactController.fetchImpact(id: "PropertyId1") { impact in
             let result = try! impact.get()
-            print("\(result)")
             DispatchQueue.main.async {
                 self.soapLabel.text = "\(result.soapRecycled ?? 0)"
                 self.LinesnsLabel.text = "\(result.linensRecycled ?? 0)"

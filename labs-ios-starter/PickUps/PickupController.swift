@@ -22,6 +22,8 @@ enum Scheduling {
                 property
                 cartons {
                     id
+                    product
+                    percentFull
                 }
                 notes
             }

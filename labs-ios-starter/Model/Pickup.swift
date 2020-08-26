@@ -37,15 +37,9 @@ enum HospitalityService: String {
     case lin = "LINENS"
 }
 struct PickupCarton: Codable {
-    let id: String!
+    let id: String
     let product: String
     let percentFull: Int
-    
-    init(id: String = "4", product: String = HospitalityService.bot.rawValue, percentFull: Int = 3) {
-        self.id = id
-        self.percentFull = percentFull
-        self.product = product
-    }
 }
 
 
