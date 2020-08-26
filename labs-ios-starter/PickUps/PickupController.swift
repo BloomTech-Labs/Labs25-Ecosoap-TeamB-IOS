@@ -48,7 +48,7 @@ class PickupController {
     let url = URL(string: "http://35.208.9.187:9095/ios-api-2")!
 
     func schedule(pickup: Pickup, completion: @escaping (Result<Pickup,Error>) -> Void = { _ in }) {
-        guard let collection = pickup.collectionType, let status = pickup.status, let ready = pickup.readyDate,let carton = pickup.cartons, let id = pickup.id else {return}
+        guard let collection = pickup.collectionType, let status = pickup.status, let ready = pickup.readyDate,let carton = pickup.cartons, let id = pickup.property!.id else {return}
         let variables: [String : Any] = ["collectionType": collection,
                                             "status": status,
                                             "readyDate": ready,

@@ -19,21 +19,29 @@ class SchedulePickupViewController: UIViewController {
     @IBOutlet var soapTextField: UITextField!
     @IBOutlet var paperTextField: UITextField!
     
+    var pickupController: PickupController?
+    var property: Property?
+    
     var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
         formatter.timeZone = TimeZone(secondsFromGMT: 0)
         return formatter
     } ()
-    var cartons: [Any] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     @IBAction func schedulePressed(_ sender: Any) {
+        
+        guard let pickupController = pickupController, let property = property else {return}
+        var cartons: [Any] = []
+        
         let date = datePicker.date
         let dateStr = dateFormatter.string(from: date)
+        
         if let bottle = bottleTextField.text, !bottle.isEmpty {
             cartons.append(["product":"BOTTLES","percentFull":"\(bottle)"])
         }
@@ -50,6 +58,8 @@ class SchedulePickupViewController: UIViewController {
             cartons.append(["product":"LINENS","percentFull":"\(linen)"])
         }
         
+        let pickup = Pickup(id: nil, confirmNum: nil, readyDate: dateStr, pickupDate: nil, status: "SUBMITTED", collectionType: "LOCAL", notes: nil, cartons: cartons as? [PickupCarton], property: property)
+        pickupController.schedule(pickup: pickup)
         dismiss(animated: true, completion: nil)
     }
 
