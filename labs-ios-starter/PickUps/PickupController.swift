@@ -66,8 +66,10 @@ class PickupController {
             completion(.failure(error))
             return
         }
-        URLSession.shared.dataTask(with: request) { (data, _, error) in
-            
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let response = response {
+                print(response)
+            }
             if let error = error {
                 NSLog("\(error)")
                 completion(.failure(error))
