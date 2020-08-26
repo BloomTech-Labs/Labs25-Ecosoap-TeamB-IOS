@@ -59,7 +59,8 @@ class SchedulePickupViewController: UIViewController {
         }
         
         let pickup = Pickup(id: nil, confirmNum: nil, readyDate: dateStr, pickupDate: nil, status: "SUBMITTED", collectionType: "LOCAL", notes: nil, cartons: cartons as? [PickupCarton], property: property)
-        pickupController.schedule(pickup: pickup)
+        print(cartons)
+        //pickupController.schedule(pickup: pickup)
         dismiss(animated: true, completion: nil)
     }
 

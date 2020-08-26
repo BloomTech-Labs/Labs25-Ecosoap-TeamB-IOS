@@ -33,6 +33,10 @@ class PickupsViewController: UIViewController {
             guard let detailVC = segue.destination as? PickupDetailViewController, let indexPath = tableView.indexPathForSelectedRow else {return}
             detailVC.pickupController = pickupController
             detailVC.pickup = property?.pickups?[indexPath.row]
+        } else if segue.identifier == "ScheduleSegue" {
+            guard let addVC = segue.destination as? SchedulePickupViewController else {return}
+            addVC.property = property
+            addVC.pickupController = pickupController
         }
     }
 }
