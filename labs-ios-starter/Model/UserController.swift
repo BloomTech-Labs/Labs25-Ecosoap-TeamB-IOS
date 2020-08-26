@@ -63,7 +63,7 @@ class UserController {
         var request = URLRequest(url:url)
         request.httpMethod = "POST"
         let query = UserByID.user
-        let body: [String : Any] = ["query": query, "variables": ["userId": id]]
+        let body: [String : Any] = ["query": query, "variables": ["input":["userId": "\(id)"]]]
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
@@ -85,8 +85,17 @@ class UserController {
             }
             
             do {
-                let user = try JSONDecoder().decode(User.self, from: data)
-                completion(.success((user)))
+                let rawData = try JSONDecoder().decode([String:[String:[String:User]]].self, from: data)
+                let data = rawData["data"]
+                if let datas = data {
+                    let user = datas["userById"]
+                    if let userNonOp = user {
+                        let result = userNonOp["user"]
+                        if let finalResult = result {
+                            completion(.success(finalResult))
+                        }
+                    }
+                }
             } catch {
                 NSLog("\(error)")
             }
@@ -131,7 +140,6 @@ class UserController {
                         }
                     }
                 }
-//                completion(.success((properties)))
             } catch {
                 NSLog("\(error)")
             }
