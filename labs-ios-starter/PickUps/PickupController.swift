@@ -47,11 +47,18 @@ class PickupController {
     let url = URL(string: "http://35.208.9.187:9095/ios-api-2")!
 
     func schedule(pickup: Pickup, completion: @escaping (Error?) -> Void = { _ in }) {
-        guard let collection = pickup.collectionType, let status = pickup.status, let ready = pickup.readyDate,let cartons = pickup.cartons, let id = pickup.id else {return}
+        guard let collection = pickup.collectionType, let status = pickup.status, let ready = pickup.readyDate,let carton = pickup.cartons, let id = pickup.id else {return}
+        var cartons: [Any] = []
+        for i in 0...carton.count {
+            var product: [String: Any] = [:]
+            product["product"] = carton[i].product
+            product["percentFull"] = carton[i].percentFull
+            cartons.append(product)
+        }
         let variables: [String : Any] = ["collectionType": collection,
                                             "status": status,
                                             "readyDate": ready,
-                                            "cartons": [["product": cartons[0].product, "percentFull": cartons[0].percentFull]],
+                                            "cartons": cartons,
                                             "propertyId": id]
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
