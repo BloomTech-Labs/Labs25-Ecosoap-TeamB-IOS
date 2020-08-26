@@ -85,7 +85,7 @@ class PickupController {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         let mutation = Canceling.cancel
-        let body: [String : Any] = ["mutation" : mutation, "variables" : ["input": "\(variables)"]]
+        let body: [String : Any] = ["mutation" : mutation, "variables" : ["input": variables]]
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
