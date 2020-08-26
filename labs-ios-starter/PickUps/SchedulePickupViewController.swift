@@ -37,30 +37,25 @@ class SchedulePickupViewController: UIViewController {
     @IBAction func schedulePressed(_ sender: Any) {
         
         guard let pickupController = pickupController, let property = property else {return}
-        var cartons: [String:Any] = [:]
+        var cartons = [[String:Any]]()
         
         let date = datePicker.date
         let dateStr = dateFormatter.string(from: date)
         
         if let bottle = bottleTextField.text, !bottle.isEmpty {
-            cartons["product"] = "BOTTLES"
-            cartons["percentFull"] = Int(bottle)
+            cartons.append(["product":"BOTTLE","percentFull": Int(bottle)!])
         }
         if let soap = soapTextField.text, !soap.isEmpty {
-            cartons["product"] = "SOAP"
-            cartons["percentFull"] = Int(soap)
+            cartons.append(["product":"SOAP","percentFull": Int(soap)!])
         }
         if let paper = paperTextField.text, !paper.isEmpty {
-            cartons["product"] = "PAPER"
-            cartons["percentFull"] = Int(paper)
+            cartons.append(["product":"PAPER","percentFull": Int(paper)!])
         }
         if let other = otherTextField.text, !other.isEmpty {
-            cartons["product"] = "OTHER"
-            cartons["percentFull"] = Int(other)
+            cartons.append(["product":"OTHER","percentFull": Int(other)!])
         }
         if let linen = linenTextField.text, !linen.isEmpty {
-            cartons["product"] = "LINENS"
-            cartons["percentFull"] = Int(linen)
+            cartons.append(["product":"LINENS","percentFull": Int(linen)!])
         }
         
         print(cartons)
