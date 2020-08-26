@@ -36,6 +36,7 @@ enum Canceling {
     mutation CancelPickup($input: CancelPickupInput) {
         cancelPickup(input: $input) {
             pickup {
+                id
                 confirmationCode
             }
         }
@@ -85,31 +86,48 @@ class PickupController {
         }.resume()
     }
     
-    func cancelPickup(pickup: Pickup, completion: @escaping (Error?) -> Void = { _ in }) {
-        let variables: [String : Any] = ["pickupId": pickup.id!,
-                                            "confirmationCode": pickup.confirmNum!]
+    func cancelPickup(pickup: Pickup, completion: @escaping (Result<Pickup, Error>) -> Void = { _ in }) {
+        guard let id = pickup.id, let conNum = pickup.confirmNum else {return}
+        let variables: [String : Any] = ["pickupId": id,
+                                            "confirmationCode": conNum]
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         let mutation = Canceling.cancel
-        let body: [String : Any] = ["mutation" : mutation, "variables" : variables]
+        let body: [String : Any] = ["mutation" : mutation, "variables" : ["input": "\(variables)"]]
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
         } catch {
             NSLog("Error encoding in put method: \(error)")
-            completion(error)
+            completion(.failure(error))
             return
         }
-        URLSession.shared.dataTask(with: request) { (_, response, error) in
+        URLSession.shared.dataTask(with: request) { (data, _, error) in
             if let error = error {
                 NSLog("\(error)")
-                completion(error)
+                completion(.failure(error))
                 return
             }
-            if let response = response {
-                print("\(response)")
+            guard let data = data else {
+                NSLog("Data nil")
+                return
             }
-            completion(nil)
+            
+            do {
+                let rawData = try JSONDecoder().decode([String:[String: [String: Pickup]]].self, from: data)
+                let data = rawData["data"]
+                if let datas = data {
+                    let pickup = datas["cancelPickup"]
+                    if let pickupNonOp = pickup {
+                        let result = pickupNonOp["pickup"]
+                        if let finalResult = result {
+                            completion(.success(finalResult))
+                        }
+                    }
+                }
+            } catch {
+                
+            }
         }.resume()
     }
 }
