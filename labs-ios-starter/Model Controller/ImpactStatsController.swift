@@ -36,7 +36,7 @@ class ImpactStatsController {
         request.httpMethod = "POST"
         
         let query = ImpactStatsQueries.impactQuery
-        let body: [String: Any] = ["query": query, "variables":["input":["propertyId": "\(id)"]]]
+        let body: [String: Any] = ["query": query, "variables":["input":["propertyId": id]]]
         
         request.httpBody = try! JSONSerialization.data(withJSONObject: body, options: [])
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")

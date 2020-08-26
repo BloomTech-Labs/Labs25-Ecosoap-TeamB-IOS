@@ -77,7 +77,7 @@ class UserController {
         var request = URLRequest(url:url)
         request.httpMethod = "POST"
         let query = UserByID.user
-        let body: [String : Any] = ["query": query, "variables": ["input":["userId": "\(id)"]]]
+        let body: [String : Any] = ["query": query, "variables": ["input":["userId": id]]]
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
@@ -121,7 +121,7 @@ class UserController {
         var request = URLRequest(url:url)
         request.httpMethod = "POST"
         let query = Properties.properties
-        let body: [String : Any] = ["query": query, "variables": ["input":["userId":"\(user.id!)"]]]
+        let body: [String : Any] = ["query": query, "variables": ["input":["userId":user.id!]]]
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
@@ -165,7 +165,7 @@ class UserController {
         var request = URLRequest(url:url)
         request.httpMethod = "POST"
         let query = TheProperty.theProperty
-        let body: [String : Any] = ["query": query, "variables": ["input":["propertyId": "\(id)"]]]
+        let body: [String : Any] = ["query": query, "variables": ["input":["propertyId": id]]]
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
