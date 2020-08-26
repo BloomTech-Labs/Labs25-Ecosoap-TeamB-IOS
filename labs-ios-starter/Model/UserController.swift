@@ -63,7 +63,7 @@ class UserController {
         var request = URLRequest(url:url)
         request.httpMethod = "POST"
         let query = UserByID.user
-        let body: [String : Any] = ["query": query, "variables": ["userId": id]]
+        let body: [String : Any] = ["query": query, "variables": ["input":["userId": "\(id)"]]]
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
@@ -85,8 +85,17 @@ class UserController {
             }
             
             do {
-                let user = try JSONDecoder().decode(User.self, from: data)
-                completion(.success((user)))
+                let rawData = try JSONDecoder().decode([String:[String:[String:User]]].self, from: data)
+                let data = rawData["data"]
+                if let datas = data {
+                    let user = datas["userById"]
+                    if let userNonOp = user {
+                        let result = userNonOp["user"]
+                        if let finalResult = result {
+                            completion(.success(finalResult))
+                        }
+                    }
+                }
             } catch {
                 NSLog("\(error)")
             }
@@ -98,7 +107,7 @@ class UserController {
         var request = URLRequest(url:url)
         request.httpMethod = "POST"
         let query = Properties.properties
-        let body: [String : Any] = ["query": query, "variables": ["userId":user.id]]
+        let body: [String : Any] = ["query": query, "variables": ["input":["userId":"\(user.id!)"]]]
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
@@ -120,8 +129,17 @@ class UserController {
             }
             
             do {
-                let properties = try JSONDecoder().decode([Property].self, from: data)
-                completion(.success((properties)))
+                let rawData = try JSONDecoder().decode([String:[String:[String:[Property]]]].self, from: data)
+                let data = rawData["data"]
+                if let datas = data {
+                    let properties = datas["propertiesByUserId"]
+                    if let propertiesNonOp = properties {
+                        let result = propertiesNonOp["properties"]
+                        if let finalResult = result {
+                            completion(.success(finalResult))
+                        }
+                    }
+                }
             } catch {
                 NSLog("\(error)")
             }
@@ -155,8 +173,8 @@ class UserController {
             if let data = data {
                 do {
                     let rawData = try JSONDecoder().decode([String:[String:[String:Property]]].self, from: data)
-                    let propertyByID = rawData["data"]
-                    if let propertyID = propertyByID {
+                    let data = rawData["data"]
+                    if let propertyID = data {
                         let property = propertyID["propertyById"]
                         if let propertyNonOp = property {
                             let result = propertyNonOp["property"]

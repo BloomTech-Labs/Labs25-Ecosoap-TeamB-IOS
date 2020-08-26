@@ -50,15 +50,15 @@ struct PickupCarton: Codable {
 
 
 struct Pickup: Codable {
-    let id: String!
-    let confirmNum: String!
-    let readyDate: String!
+    let id: String?
+    let confirmNum: String?
+    let readyDate: String?
     let pickupDate: String?
-    let status: String!
-    let collectionType: String!
-    let notes: String
-    let cartons: [PickupCarton]!
-    let property: Property!
+    let status: String?
+    let collectionType: String?
+    let notes: String?
+    let cartons: [PickupCarton]?
+    let property: Property?
     
     
     enum CodingKeys: String, CodingKey {
@@ -75,14 +75,14 @@ struct Pickup: Codable {
         
 }
 struct Property: Codable {
-    let id: String!
-    let name: String!
-    let propertyType: String!
-    let rooms: Int!
-    let services: [String]!
-    let collectionType: String!
+    let id: String?
+    let name: String?
+    let propertyType: String?
+    let rooms: Int?
+    let services: [String]?
+    let collectionType: String?
     let pickups: [Pickup]?
-
+    
 }
 
 struct SchedulePickupPayload {

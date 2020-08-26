@@ -26,8 +26,6 @@ class PickupsViewController: UIViewController {
         searchBar.delegate = self
     }
     
-
-    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -53,8 +51,8 @@ extension PickupsViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PickupCell", for: indexPath)
         if let property = property {
             if let pickup = property.pickups?[indexPath.row] {
-                cell.textLabel?.text = pickup.confirmNum
-                cell.detailTextLabel?.text = pickup.status
+                cell.textLabel?.text = pickup.confirmNum ?? "nil"
+                cell.detailTextLabel?.text = pickup.status ?? "nil"
             }
 
         }
@@ -70,9 +68,9 @@ extension PickupsViewController: UISearchBarDelegate {
         guard let searchText = searchBar.text else {return}
         userController.fetchPropertyByID(id: "PropertyId1", completion: { result in
             guard let property = try? result.get() else {return}
-            print(property)
             DispatchQueue.main.async {
                 self.property = property
+                self.tableView.reloadData()
             }
         })
     }

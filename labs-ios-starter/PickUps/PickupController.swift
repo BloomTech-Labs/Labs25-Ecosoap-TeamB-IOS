@@ -45,12 +45,12 @@ class PickupController {
     let url = URL(string: "http://35.208.9.187:9095/ios-api-2")!
 
     func schedule(pickup: Pickup, completion: @escaping (Error?) -> Void = { _ in }) {
-        
-        let variables: [String : Any] = ["collectionType": pickup.collectionType!,
-                                            "status": pickup.status!,
-                                            "readyDate": pickup.readyDate!,
-                                            "cartons": [["product": pickup.cartons[0].product, "percentFull": pickup.cartons[0].percentFull]],
-                                            "propertyId": "4"]
+        guard let collection = pickup.collectionType, let status = pickup.status, let ready = pickup.readyDate,let cartons = pickup.cartons, let id = pickup.id else {return}
+        let variables: [String : Any] = ["collectionType": collection,
+                                            "status": status,
+                                            "readyDate": ready,
+                                            "cartons": [["product": cartons[0].product, "percentFull": cartons[0].percentFull]],
+                                            "propertyId": id]
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         let mutation = Scheduling.schedule

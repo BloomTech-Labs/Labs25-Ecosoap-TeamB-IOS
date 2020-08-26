@@ -14,10 +14,12 @@ class ImpactViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateView()
-        // Do any additional setup after loading the view.
+        
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateView()
+    }
     // MARK: - UI Properties
     
     @IBOutlet var soapLabel: UILabel!
@@ -28,16 +30,16 @@ class ImpactViewController: UIViewController {
     @IBOutlet var womenLabel: UILabel!
     
     func updateView() {
-        impactController.fetchImpact(id: "4") { impact in
+        impactController.fetchImpact(id: "PropertyId1") { impact in
             let result = try! impact.get()
-            NSLog("\(result)")
+            print("\(result)")
             DispatchQueue.main.async {
-                self.soapLabel.text = "\(String(describing: result.soapRecycled))"
-                self.LinesnsLabel.text = "\(String(describing: result.linensRecycled))"
-                self.bottlesLabel.text = "\(String(describing: result.bottlesRecycled))"
-                self.paperLabel.text = "\(String(describing: result.paperRecycled))"
-                self.peopleLabel.text = "\(String(describing: result.peopleServed))"
-                self.womenLabel.text = "\(String(describing: result.womenEmployed))"
+                self.soapLabel.text = "\(result.soapRecycled ?? 0)"
+                self.LinesnsLabel.text = "\(result.linensRecycled ?? 0)"
+                self.bottlesLabel.text = "\(result.bottlesRecycled ?? 0)"
+                self.paperLabel.text = "\(result.paperRecycled ?? 0)"
+                self.peopleLabel.text = "\(result.peopleServed ?? 0)"
+                self.womenLabel.text = "\(result.womenEmployed ?? 0)"
             }
         }
     }
