@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum createPayment {
+enum CreatePayment {
     static let create = """
     mutation CreatePayment($input: CreatePaymentInput) {
         createPayment(input: $input) {
@@ -42,4 +42,44 @@ enum Payments {
         }
     }
     """
+}
+
+class PaymentController {
+    let url = URL(string: "http://35.208.9.187:9095/ios-api-2")!
+    
+    func createAPayment(payment: Payment, completion: @escaping (Error?) -> ()) {
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        let variable: [String: Any] = ["amountPaid":payment.amountPaid!,
+                        "date": payment.date!,
+                        "paymentMethod": payment.paymentMethod!,
+                        "hospitalityContractId": payment.hospitalityContractid!]
+        let query = CreatePayment.create
+        let body: [String: Any] = ["query": query, "variables":["input":variable]]
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
+        } catch {
+            NSLog("Error creating payment")
+            completion(error)
+            return
+        }
+        
+        URLSession.shared.dataTask(with: request) { (data, _, error) in
+            if let data = data {
+                print(data)
+            }
+            
+            if let error = error {
+                NSLog("\(error)")
+                completion(error)
+                return
+            }
+            
+            completion(nil)
+        }.resume()
+    }
+    
 }
