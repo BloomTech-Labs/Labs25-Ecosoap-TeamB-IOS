@@ -679,7 +679,7 @@
         <!--Payments-->
         <scene sceneID="GAU-7O-jKZ">
             <objects>
-                <tableViewController id="m1E-ju-kG5" sceneMemberID="viewController">
+                <tableViewController id="m1E-ju-kG5" customClass="PaymentsTableViewController" customModule="Eco_Soap" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Vb1-C8-RZg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -730,10 +730,10 @@
             </objects>
             <point key="canvasLocation" x="3350.7246376811595" y="928.79464285714278"/>
         </scene>
-        <!--View Controller-->
+        <!--Create Payment View Controller-->
         <scene sceneID="vTU-u6-5ce">
             <objects>
-                <viewController id="Cud-6r-VZd" sceneMemberID="viewController">
+                <viewController id="Cud-6r-VZd" customClass="CreatePaymentViewController" customModule="Eco_Soap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FeW-R8-BRF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
