@@ -153,7 +153,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6uh-XJ-KwE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1044.9275362318842" y="-532.36607142857144"/>
+            <point key="canvasLocation" x="1061" y="-551"/>
         </scene>
         <!--Scheduling-->
         <scene sceneID="1Cy-aT-Ld6">
@@ -290,7 +290,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TGO-B6-CLP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1969.5652173913045" y="-551.11607142857144"/>
+            <point key="canvasLocation" x="2838" y="-551"/>
         </scene>
         <!--Prickups-->
         <scene sceneID="6oy-fV-Emk">
@@ -639,7 +639,7 @@
         <scene sceneID="DGb-Lw-uTB">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SGD-kQ-BcW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Pickups" image="person.2.square.stack" catalog="system" id="4KK-Qi-yLJ"/>
+                    <tabBarItem key="tabBarItem" title="Pickups" image="square.and.arrow.up" catalog="system" id="4KK-Qi-yLJ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="z9V-nA-Cbu">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -669,16 +669,64 @@
                         <segue destination="SGD-kQ-BcW" kind="relationship" relationship="viewControllers" id="i75-rn-tmx"/>
                         <segue destination="qCg-8S-Uib" kind="relationship" relationship="viewControllers" id="Vsc-8X-PuG"/>
                         <segue destination="Qtu-zv-a3B" kind="relationship" relationship="viewControllers" id="kJS-du-8Ie"/>
+                        <segue destination="svp-ye-1cs" kind="relationship" relationship="viewControllers" id="Ut6-6G-lfS"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hHh-fq-ggi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="150.72463768115944" y="193.52678571428569"/>
         </scene>
+        <!--Root View Controller-->
+        <scene sceneID="GAU-7O-jKZ">
+            <objects>
+                <tableViewController id="m1E-ju-kG5" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Vb1-C8-RZg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="yyj-ZJ-nvT">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yyj-ZJ-nvT" id="xMg-w6-CfU">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="m1E-ju-kG5" id="ksy-4N-0m8"/>
+                            <outlet property="delegate" destination="m1E-ju-kG5" id="6ek-6b-hlb"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="SPG-3p-6Ue"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7fh-zC-SOu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3351" y="929"/>
+        </scene>
+        <!--Payment-->
+        <scene sceneID="EID-Tp-PkN">
+            <objects>
+                <navigationController id="svp-ye-1cs" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Payment" image="creditcard" catalog="system" id="Nfx-ff-rne"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="oiT-Zy-FvV">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="m1E-ju-kG5" kind="relationship" relationship="rootViewController" id="bBz-MY-YBS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="adi-bW-96i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2262" y="929"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="creditcard" catalog="system" width="128" height="91"/>
         <image name="doc.text.magnifyingglass" catalog="system" width="116" height="128"/>
         <image name="person" catalog="system" width="128" height="117"/>
-        <image name="person.2.square.stack" catalog="system" width="113" height="128"/>
+        <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
     </resources>
 </document>
