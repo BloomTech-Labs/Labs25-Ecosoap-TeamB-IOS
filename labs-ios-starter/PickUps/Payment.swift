@@ -18,8 +18,14 @@ enum PaymentMethod: String {
 
 struct Payment: Codable {
     let id: String?
+    let invoiceCode: String?
+    let invoice: String?
     let amountPaid: Int?
     let amountDue: Int?
     let date: String?
+    let invoicePeriodStartDate: String?
+    let invoicePeriodEndDate: String?
+    let dueDate: String?
     let paymentMethod: String?
+    let hospitalityContractid: String?
 }
