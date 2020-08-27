@@ -685,7 +685,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="SAy-sS-ecB" detailTextLabel="cIM-AZ-61J" rowHeight="68" style="IBUITableViewCellStyleSubtitle" id="yyj-ZJ-nvT">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PaymentCell" textLabel="SAy-sS-ecB" detailTextLabel="cIM-AZ-61J" rowHeight="68" style="IBUITableViewCellStyleSubtitle" id="yyj-ZJ-nvT">
                                 <rect key="frame" x="0.0" y="28" width="414" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yyj-ZJ-nvT" id="xMg-w6-CfU">
@@ -708,6 +708,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Cud-6r-VZd" kind="show" identifier="PaymentDetailSegue" id="y7q-Rr-p03"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -718,7 +721,7 @@
                     <navigationItem key="navigationItem" title="Payments" id="SPG-3p-6Ue">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ZMJ-8c-6gR">
                             <connections>
-                                <segue destination="Cud-6r-VZd" kind="show" id="0Ix-aM-QX9"/>
+                                <segue destination="Cud-6r-VZd" kind="show" identifier="CreatePaymentSegue" id="0Ix-aM-QX9"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -896,6 +899,9 @@
             <point key="canvasLocation" x="2262" y="929"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="y7q-Rr-p03"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="circle" catalog="system" width="128" height="121"/>
         <image name="creditcard" catalog="system" width="128" height="91"/>
