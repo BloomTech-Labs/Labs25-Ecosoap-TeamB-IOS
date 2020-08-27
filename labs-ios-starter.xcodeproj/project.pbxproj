@@ -32,6 +32,10 @@
 		AE21B31624EC8E65003095F0 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B31524EC8E65003095F0 /* UserController.swift */; };
 		AE21B31824F4BC3D003095F0 /* PickupDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B31724F4BC3D003095F0 /* PickupDetailViewController.swift */; };
 		AE21B31A24F60A0C003095F0 /* SchedulePickupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B31924F60A0C003095F0 /* SchedulePickupViewController.swift */; };
+		AE21B31C24F7F553003095F0 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B31B24F7F553003095F0 /* Payment.swift */; };
+		AE21B31E24F7F657003095F0 /* PaymentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B31D24F7F657003095F0 /* PaymentController.swift */; };
+		AE21B32024F7F66B003095F0 /* CreatePaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B31F24F7F66B003095F0 /* CreatePaymentViewController.swift */; };
+		AE21B32324F7F6D0003095F0 /* PaymentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B32224F7F6D0003095F0 /* PaymentsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +66,10 @@
 		AE21B31524EC8E65003095F0 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserController.swift; path = "labs-ios-starter/Model/UserController.swift"; sourceTree = SOURCE_ROOT; };
 		AE21B31724F4BC3D003095F0 /* PickupDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickupDetailViewController.swift; sourceTree = "<group>"; };
 		AE21B31924F60A0C003095F0 /* SchedulePickupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchedulePickupViewController.swift; sourceTree = "<group>"; };
+		AE21B31B24F7F553003095F0 /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Payment.swift; path = "labs-ios-starter/PickUps/Payment.swift"; sourceTree = SOURCE_ROOT; };
+		AE21B31D24F7F657003095F0 /* PaymentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PaymentController.swift; path = "labs-ios-starter/PickUps/PaymentController.swift"; sourceTree = SOURCE_ROOT; };
+		AE21B31F24F7F66B003095F0 /* CreatePaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePaymentViewController.swift; sourceTree = "<group>"; };
+		AE21B32224F7F6D0003095F0 /* PaymentsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PaymentsTableViewController.swift; path = "labs-ios-starter/PickUps/PaymentsTableViewController.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +113,7 @@
 		466C4272249A8748007D033E /* labs-ios-starter */ = {
 			isa = PBXGroup;
 			children = (
+				AE21B32124F7F693003095F0 /* Payment */,
 				AE21B30E24E43AFB003095F0 /* Impact */,
 				AE15363F24E2F5F6009598A9 /* PickUps */,
 				46BEB4EB24C98EB400FE0CD1 /* Model */,
@@ -132,6 +141,7 @@
 		46BEB4EB24C98EB400FE0CD1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AE21B31B24F7F553003095F0 /* Payment.swift */,
 				AE21B31324EC8B18003095F0 /* User.swift */,
 				AE15364224E32742009598A9 /* ImpactStats.swift */,
 				46BEB4E024C9828800FE0CD1 /* Profile.swift */,
@@ -143,6 +153,7 @@
 		46BEB4EC24C98EBB00FE0CD1 /* Model Controller */ = {
 			isa = PBXGroup;
 			children = (
+				AE21B31D24F7F657003095F0 /* PaymentController.swift */,
 				AE21B31524EC8E65003095F0 /* UserController.swift */,
 				AE21B30F24E5DC04003095F0 /* PickupController.swift */,
 				46BEB4ED24C98ECC00FE0CD1 /* ProfileController.swift */,
@@ -187,6 +198,15 @@
 				AE21B30C24E43AF2003095F0 /* ImpactViewController.swift */,
 			);
 			path = Impact;
+			sourceTree = "<group>";
+		};
+		AE21B32124F7F693003095F0 /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				AE21B32224F7F6D0003095F0 /* PaymentsTableViewController.swift */,
+				AE21B31F24F7F66B003095F0 /* CreatePaymentViewController.swift */,
+			);
+			path = Payment;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,6 +291,7 @@
 				46BEB4EE24C98ECC00FE0CD1 /* ProfileController.swift in Sources */,
 				AE21B31824F4BC3D003095F0 /* PickupDetailViewController.swift in Sources */,
 				AE21B31024E5DC04003095F0 /* PickupController.swift in Sources */,
+				AE21B32324F7F6D0003095F0 /* PaymentsTableViewController.swift in Sources */,
 				AE15364324E32742009598A9 /* ImpactStats.swift in Sources */,
 				46BF10BE24D388FF001C6753 /* UIViewController+SimpleAlert.swift in Sources */,
 				46BEB4E724C98D8900FE0CD1 /* Notifications.swift in Sources */,
@@ -283,7 +304,10 @@
 				463AD24524CF2CDB00447BB8 /* AddProfileViewController.swift in Sources */,
 				466C4274249A8748007D033E /* AppDelegate.swift in Sources */,
 				46C2BC9224D432F90077E49D /* ProfileTabBarViewController.swift in Sources */,
+				AE21B31C24F7F553003095F0 /* Payment.swift in Sources */,
+				AE21B32024F7F66B003095F0 /* CreatePaymentViewController.swift in Sources */,
 				463AD24324CF275900447BB8 /* ProfileDetailViewController.swift in Sources */,
+				AE21B31E24F7F657003095F0 /* PaymentController.swift in Sources */,
 				AE21B31A24F60A0C003095F0 /* SchedulePickupViewController.swift in Sources */,
 				46BEB4E524C98CDC00FE0CD1 /* LoginViewController.swift in Sources */,
 				466C4276249A8748007D033E /* SceneDelegate.swift in Sources */,
