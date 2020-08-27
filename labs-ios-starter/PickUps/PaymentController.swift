@@ -82,4 +82,50 @@ class PaymentController {
         }.resume()
     }
     
+    func fetchPaymentsByPropertyID(id: String, completion: @escaping (Result<[Payment],Error>) -> ()) {
+        
+        var request = URLRequest(url:url)
+        request.httpMethod = "POST"
+        
+        let query = Payments.payments
+        let body: [String: Any] = ["query": query, "variables": ["input": ["propertyId": id]]]
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
+        } catch {
+            NSLog("Error fetching payments: \(error)")
+            completion(.failure(error))
+            return
+        }
+        
+        URLSession.shared.dataTask(with: request) {(data, _, error) in
+            
+            if let error = error {
+                NSLog("\(error)")
+                completion(.failure(error))
+                return
+            }
+            guard let data = data else {
+                NSLog("Data is nil")
+                return
+            }
+            
+            do {
+                let rawData = try JSONDecoder().decode([String:[String:[String:[Payment]]]].self, from: data)
+                let data = rawData["data"]
+                if let datas = data {
+                    let payments = datas["paymentsByPropertyIdPayload"]
+                    if let paymentsNonOp = payments {
+                        let result = paymentsNonOp["payments"]
+                        if let finalResult = result {
+                            completion(.success(finalResult))
+                        }
+                    }
+                }
+            } catch {
+                NSLog("\(error)")
+            }
+        }.resume()
+    }
 }
