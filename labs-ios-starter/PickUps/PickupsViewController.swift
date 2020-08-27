@@ -11,8 +11,8 @@ import OktaAuth
 
 class PickupsViewController: UIViewController {
     
-    @IBOutlet var searchBar: UISearchBar!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private var searchBar: UISearchBar!
+    @IBOutlet private weak var tableView: UITableView!
     let userController = UserController()
     var property: Property?
     let pickupController = PickupController()
@@ -30,7 +30,7 @@ class PickupsViewController: UIViewController {
         if let property = property {
             if property.id != nil {
                 userController.fetchPropertyByID(id: property.id!, completion: { result in
-                    guard let propertyFetched = try? result.get() else {return}
+                    guard let propertyFetched = try? result.get() else { return }
                     DispatchQueue.main.async {
                         self.property = propertyFetched
                         self.tableView.reloadData()
@@ -43,11 +43,11 @@ class PickupsViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowPickupsDetail" {
-            guard let detailVC = segue.destination as? PickupDetailViewController, let indexPath = tableView.indexPathForSelectedRow else {return}
+            guard let detailVC = segue.destination as? PickupDetailViewController, let indexPath = tableView.indexPathForSelectedRow else { return }
             detailVC.pickupController = pickupController
             detailVC.pickup = property?.pickups?[indexPath.row]
         } else if segue.identifier == "ScheduleSegue" {
-            guard let addVC = segue.destination as? SchedulePickupViewController else {return}
+            guard let addVC = segue.destination as? SchedulePickupViewController else { return }
             addVC.property = property
             addVC.pickupController = pickupController
         }
@@ -58,7 +58,7 @@ extension PickupsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        guard let property = property else {return 1}
+        guard let property = property else { return 1 }
         
         return property.pickups?.count ?? 0
     }
@@ -82,9 +82,9 @@ extension PickupsViewController: UITableViewDelegate, UITableViewDataSource {
 extension PickupsViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let searchText = searchBar.text else {return}
+        guard let searchText = searchBar.text else { return }
         userController.fetchPropertyByID(id: searchText, completion: { result in
-            guard let property = try? result.get() else {return}
+            guard let property = try? result.get() else { return }
             DispatchQueue.main.async {
                 self.property = property
                 self.tableView.reloadData()

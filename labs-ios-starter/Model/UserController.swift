@@ -72,12 +72,13 @@ enum TheProperty {
 
 class UserController {
     let url = URL(string: "http://35.208.9.187:9095/ios-api-2")!
-    func fetchUserData(id: String, completion: @escaping (Result<User,Error>) -> ()) {
+    
+    func fetchUserData(id: String, completion: @escaping (Result<User, Error>) -> Void) {
         
-        var request = URLRequest(url:url)
+        var request = URLRequest(url: url)
         request.httpMethod = "POST"
         let query = UserByID.user
-        let body: [String : Any] = ["query": query, "variables": ["input":["userId": id]]]
+        let body: [String: Any] = ["query": query, "variables": ["input": ["userId": id]]]
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
@@ -87,7 +88,7 @@ class UserController {
             return
         }
         
-        URLSession.shared.dataTask(with: request) {(data, _, error) in
+        URLSession.shared.dataTask(with: request) { data, _, error in
             if let error = error {
                 NSLog("\(error)")
                 completion(.failure(error))
@@ -99,7 +100,7 @@ class UserController {
             }
             
             do {
-                let rawData = try JSONDecoder().decode([String:[String:[String:User]]].self, from: data)
+                let rawData = try JSONDecoder().decode([String: [String: [String: User]]].self, from: data)
                 let data = rawData["data"]
                 if let datas = data {
                     let user = datas["userById"]
@@ -117,11 +118,11 @@ class UserController {
         }.resume()
     }
     
-    func fetchPropertiesByUser(user: User, completion: @escaping (Result<[Property],Error>) -> ()) {
-        var request = URLRequest(url:url)
+    func fetchPropertiesByUser(user: User, completion: @escaping (Result<[Property], Error>) -> Void) {
+        var request = URLRequest(url: url)
         request.httpMethod = "POST"
         let query = Properties.properties
-        let body: [String : Any] = ["query": query, "variables": ["input":["userId":user.id!]]]
+        let body: [String: Any] = ["query": query, "variables": ["input": ["userId": user.id!]]]
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
@@ -131,7 +132,7 @@ class UserController {
             return
         }
         
-        URLSession.shared.dataTask(with: request) {(data, _, error) in
+        URLSession.shared.dataTask(with: request) { data, _, error in
             if let error = error {
                 NSLog("\(error)")
                 completion(.failure(error))
@@ -143,7 +144,7 @@ class UserController {
             }
             
             do {
-                let rawData = try JSONDecoder().decode([String:[String:[String:[Property]]]].self, from: data)
+                let rawData = try JSONDecoder().decode([String: [String: [String: [Property]]]].self, from: data)
                 let data = rawData["data"]
                 if let datas = data {
                     let properties = datas["propertiesByUserId"]
@@ -161,11 +162,11 @@ class UserController {
         }.resume()
     }
     
-    func fetchPropertyByID(id: String, completion: @escaping (Result<Property,Error>) -> ()){
-        var request = URLRequest(url:url)
+    func fetchPropertyByID(id: String, completion: @escaping (Result<Property, Error>) -> Void) {
+        var request = URLRequest(url: url)
         request.httpMethod = "POST"
         let query = TheProperty.theProperty
-        let body: [String : Any] = ["query": query, "variables": ["input":["propertyId": id]]]
+        let body: [String: Any] = ["query": query, "variables": ["input": ["propertyId": id]]]
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
@@ -175,7 +176,7 @@ class UserController {
             return
         }
         
-        URLSession.shared.dataTask(with: request) {(data, _, error) in
+        URLSession.shared.dataTask(with: request) { data, _, error in
             if let error = error {
                 NSLog("\(error)")
                 completion(.failure(error))
@@ -183,7 +184,7 @@ class UserController {
             }
             if let data = data {
                 do {
-                    let rawData = try JSONDecoder().decode([String:[String:[String:Property]]].self, from: data)
+                    let rawData = try JSONDecoder().decode([String: [String: [String: Property]]].self, from: data)
                     let data = rawData["data"]
                     if let propertyID = data {
                         let property = propertyID["propertyById"]

@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum createPayment {
+enum CreatePayment {
     static let create = """
     mutation CreatePayment($input: CreatePaymentInput) {
         createPayment(input: $input) {

@@ -11,16 +11,16 @@ import UIKit
 class CreatePaymentViewController: UIViewController {
 
     
-    //MARK: -UIOutlets
-    @IBOutlet var idTextField: UITextField!
-    @IBOutlet var dateTextField: UITextField!
-    @IBOutlet var amountTextField: UITextField!
+    // MARK: - UIOutlets
+    @IBOutlet private var idTextField: UITextField!
+    @IBOutlet private var dateTextField: UITextField!
+    @IBOutlet private var amountTextField: UITextField!
     
-    @IBOutlet var ACHButton: UIButton!
-    @IBOutlet var creditButton: UIButton!
-    @IBOutlet var debitButton: UIButton!
-    @IBOutlet var wireButton: UIButton!
-    @IBOutlet var otherButton: UIButton!
+    @IBOutlet private var ACHButton: UIButton!
+    @IBOutlet private var creditButton: UIButton!
+    @IBOutlet private var debitButton: UIButton!
+    @IBOutlet private var wireButton: UIButton!
+    @IBOutlet private var otherButton: UIButton!
     
     
     override func viewDidLoad() {
@@ -28,7 +28,7 @@ class CreatePaymentViewController: UIViewController {
 
     }
     
-    //MARK: -PAYMENT BUTTON
+    // MARK: - PAYMENT BUTTON
     @IBAction func ACHTapped(_ sender: Any) {
     }
     @IBAction func creditTapped(_ sender: Any) {
@@ -41,7 +41,7 @@ class CreatePaymentViewController: UIViewController {
     }
     
     
-    //MARK: -DONE BUTTON
+    // MARK: - DONE BUTTON
     @IBAction func doneTapped(_ sender: Any) {
     }
     
