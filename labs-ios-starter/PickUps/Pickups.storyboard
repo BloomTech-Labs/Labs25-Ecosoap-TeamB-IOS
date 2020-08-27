@@ -818,22 +818,37 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tBd-cT-12S">
                                         <rect key="frame" x="0.0" y="0.0" width="20" height="22"/>
                                         <state key="normal" image="circle" catalog="system"/>
+                                        <connections>
+                                            <action selector="ACHTapped:" destination="Cud-6r-VZd" eventType="touchUpInside" id="2p7-HR-H8q"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bG5-AV-rg1">
                                         <rect key="frame" x="0.0" y="32" width="20" height="22"/>
                                         <state key="normal" image="circle" catalog="system"/>
+                                        <connections>
+                                            <action selector="creditTapped:" destination="Cud-6r-VZd" eventType="touchUpInside" id="brV-HI-ZrD"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cVW-4e-nJO">
                                         <rect key="frame" x="0.0" y="64" width="20" height="22"/>
                                         <state key="normal" image="circle" catalog="system"/>
+                                        <connections>
+                                            <action selector="debitTapped:" destination="Cud-6r-VZd" eventType="touchUpInside" id="6cI-vT-xel"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Obb-Zj-NeW">
                                         <rect key="frame" x="0.0" y="96" width="20" height="22"/>
                                         <state key="normal" image="circle" catalog="system"/>
+                                        <connections>
+                                            <action selector="wireTapped:" destination="Cud-6r-VZd" eventType="touchUpInside" id="Jww-Wf-tci"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AdO-TZ-CxT">
                                         <rect key="frame" x="0.0" y="128" width="20" height="22"/>
                                         <state key="normal" image="circle" catalog="system"/>
+                                        <connections>
+                                            <action selector="otherTapped:" destination="Cud-6r-VZd" eventType="touchUpInside" id="XeR-Ff-qqH"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -844,6 +859,9 @@
                                 <state key="normal" title="Done">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="doneTapped:" destination="Cud-6r-VZd" eventType="touchUpInside" id="ga6-36-U34"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -876,6 +894,16 @@
                         <viewLayoutGuide key="safeArea" id="Cw5-sk-AMy"/>
                     </view>
                     <navigationItem key="navigationItem" id="cwd-iy-TT6"/>
+                    <connections>
+                        <outlet property="ACHButton" destination="tBd-cT-12S" id="Vl7-AY-uug"/>
+                        <outlet property="amountTextField" destination="SeV-d1-702" id="425-k9-uap"/>
+                        <outlet property="creditButton" destination="bG5-AV-rg1" id="OaH-9E-5Id"/>
+                        <outlet property="dateTextField" destination="ot2-P7-5Ju" id="NNl-i5-Y74"/>
+                        <outlet property="debitButton" destination="cVW-4e-nJO" id="RAl-B7-0mb"/>
+                        <outlet property="idTextField" destination="BpY-j6-pda" id="Thj-lg-EHM"/>
+                        <outlet property="otherButton" destination="AdO-TZ-CxT" id="rSi-Cg-pWL"/>
+                        <outlet property="wireButton" destination="Obb-Zj-NeW" id="QAO-Nv-fLl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XMi-fJ-v8z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
