@@ -676,7 +676,7 @@
             </objects>
             <point key="canvasLocation" x="150.72463768115944" y="193.52678571428569"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Payments-->
         <scene sceneID="GAU-7O-jKZ">
             <objects>
                 <tableViewController id="m1E-ju-kG5" sceneMemberID="viewController">
@@ -685,12 +685,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="yyj-ZJ-nvT">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="SAy-sS-ecB" detailTextLabel="cIM-AZ-61J" rowHeight="68" style="IBUITableViewCellStyleSubtitle" id="yyj-ZJ-nvT">
+                                <rect key="frame" x="0.0" y="28" width="414" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yyj-ZJ-nvT" id="xMg-w6-CfU">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="68"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SAy-sS-ecB">
+                                            <rect key="frame" x="20" y="14" width="33.5" height="20.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cIM-AZ-61J">
+                                            <rect key="frame" x="20" y="37.5" width="44" height="14.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -699,19 +715,41 @@
                             <outlet property="delegate" destination="m1E-ju-kG5" id="6ek-6b-hlb"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="SPG-3p-6Ue"/>
+                    <navigationItem key="navigationItem" title="Payments" id="SPG-3p-6Ue">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ZMJ-8c-6gR">
+                            <connections>
+                                <segue destination="Cud-6r-VZd" kind="show" id="0Ix-aM-QX9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7fh-zC-SOu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3351" y="929"/>
+            <point key="canvasLocation" x="3350.7246376811595" y="928.79464285714278"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="vTU-u6-5ce">
+            <objects>
+                <viewController id="Cud-6r-VZd" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FeW-R8-BRF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Cw5-sk-AMy"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="cwd-iy-TT6"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XMi-fJ-v8z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4244" y="928"/>
         </scene>
         <!--Payment-->
         <scene sceneID="EID-Tp-PkN">
             <objects>
                 <navigationController id="svp-ye-1cs" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Payment" image="creditcard" catalog="system" id="Nfx-ff-rne"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="oiT-Zy-FvV">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="oiT-Zy-FvV">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
