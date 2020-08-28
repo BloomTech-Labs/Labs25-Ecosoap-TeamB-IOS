@@ -13,21 +13,28 @@ class LoginViewController: UIViewController {
     
     let profileController = ProfileController.shared
     
+    var authSuccessfulObserver: NSObjectProtocol?
+    var authExpiredObserver: NSObjectProtocol?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(forName: .oktaAuthenticationSuccessful,
-                                               object: nil,
-                                               queue: .main,
-                                               using: checkForExistingProfile)
+        authSuccessfulObserver = NotificationCenter.default.addObserver(forName: .oktaAuthenticationSuccessful,
+                                                                        object: nil,
+                                                                        queue: .main,
+                                                                        using: checkForExistingProfile)
         
-        NotificationCenter.default.addObserver(forName: .oktaAuthenticationExpired,
-                                               object: nil,
-                                               queue: .main,
-                                               using: alertUserOfExpiredCredentials)
-        
+        authExpiredObserver = NotificationCenter.default.addObserver(forName: .oktaAuthenticationExpired,
+                                                                     object: nil,
+                                                                     queue: .main,
+                                                                     using: alertUserOfExpiredCredentials)
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(authSuccessfulObserver as Any)
+        NotificationCenter.default.removeObserver(authExpiredObserver as Any)
+    }
+
     // MARK: - Actions
     
     @IBAction func signIn(_ sender: Any) {
