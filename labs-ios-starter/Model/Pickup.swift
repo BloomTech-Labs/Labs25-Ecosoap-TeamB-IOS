@@ -8,7 +8,7 @@
 
 import Foundation
 
-// MARK: -All the initialized properties are set to make a fake data as template
+// MARK: - All the initialized properties are set to make a fake data as template
 
 enum Status: String {
     case sub = "SUBMITTED"

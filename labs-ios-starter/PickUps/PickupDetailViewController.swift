@@ -9,11 +9,11 @@
 import UIKit
 
 class PickupDetailViewController: UIViewController {
-    @IBOutlet var readyDate: UILabel!
-    @IBOutlet var pickupDate: UILabel!
-    @IBOutlet var products: UILabel!
-    @IBOutlet var confrimNum: UILabel!
-    @IBOutlet var status: UILabel!
+    @IBOutlet private var readyDate: UILabel!
+    @IBOutlet private var pickupDate: UILabel!
+    @IBOutlet private var products: UILabel!
+    @IBOutlet private var confrimNum: UILabel!
+    @IBOutlet private var status: UILabel!
     
     var pickup: Pickup? {
         didSet {
@@ -33,17 +33,20 @@ class PickupDetailViewController: UIViewController {
         updateViews()
     }
     func updateViews() {
-        guard let pickup = pickup, isViewLoaded else {return}
+        guard let pickup = pickup, isViewLoaded else { return }
         readyDate.text = pickup.readyDate
         pickupDate.text = pickup.pickupDate ?? "Not avaliable yet"
         var cartonList: String = ""
-        if let count = pickup.cartons?.count, count > 0 {
-            for i in 0...count - 1 {
-                cartonList.append(pickup.cartons![i].product)
-            }
-            products.text = "\(cartonList)"
-        } else {
-            products.text = "None"
+
+        products.text = "None"
+        if let count = pickup.cartons?.count {
+            // FIXME: Empty Count Violation: Prefer checking `isEmpty` over comparing `count` to zero. (empty_count)
+            // if count > 0 {
+                for i in 0...count - 1 {
+                    cartonList.append(pickup.cartons![i].product)
+                }
+                products.text = "\(cartonList)"
+            // }
         }
         
         confrimNum.text = pickup.confirmNum

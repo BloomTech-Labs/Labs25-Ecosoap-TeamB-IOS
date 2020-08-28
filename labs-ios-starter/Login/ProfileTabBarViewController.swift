@@ -14,12 +14,12 @@ class ProfileTabBarViewController: UITabBarController {
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(forName: .oktaAuthenticationExpired,
-                                                             object: nil,
-                                                             queue: .main,
-                                                             using: dismissToLogin)
+                                               object: nil,
+                                               queue: .main,
+                                               using: dismissToLogin)
     }
     
-    func dismissToLogin(_ notification: Notification)  {
+    func dismissToLogin(_ notification: Notification) {
         dismiss(animated: true, completion: nil)
     }
 }
