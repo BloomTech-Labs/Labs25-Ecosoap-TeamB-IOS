@@ -47,16 +47,16 @@ enum Payments {
 class PaymentController {
     let url = URL(string: "http://35.208.9.187:9095/ios-api-2")!
     
-    func createAPayment(payment: Payment, completion: @escaping (Error?) -> ()) {
+    func createAPayment(payment: Payment, completion: @escaping (Error?) -> Void) {
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        let variable: [String: Any] = ["amountPaid":payment.amountPaid!,
-                        "date": payment.date!,
-                        "paymentMethod": payment.paymentMethod!,
-                        "hospitalityContractId": payment.hospitalityContractid!]
+        let variable: [String: Any] = ["amountPaid": payment.amountPaid!,
+                                       "date": payment.date!,
+                                       "paymentMethod": payment.paymentMethod!,
+                                       "hospitalityContractId": payment.hospitalityContractid!]
         let query = CreatePayment.create
-        let body: [String: Any] = ["query": query, "variables":["input":variable]]
+        let body: [String: Any] = ["query": query, "variables": ["input": variable]]
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         do {
@@ -67,7 +67,7 @@ class PaymentController {
             return
         }
         
-        URLSession.shared.dataTask(with: request) { (data, _, error) in
+        URLSession.shared.dataTask(with: request) { data, _, error in
             if let data = data {
                 print(data)
             }
@@ -82,9 +82,9 @@ class PaymentController {
         }.resume()
     }
     
-    func fetchPaymentsByPropertyID(id: String, completion: @escaping (Result<[Payment],Error>) -> ()) {
+    func fetchPaymentsByPropertyID(id: String, completion: @escaping (Result<[Payment], Error>) -> Void) {
         
-        var request = URLRequest(url:url)
+        var request = URLRequest(url: url)
         request.httpMethod = "POST"
         
         let query = Payments.payments
@@ -99,7 +99,7 @@ class PaymentController {
             return
         }
         
-        URLSession.shared.dataTask(with: request) {(data, _, error) in
+        URLSession.shared.dataTask(with: request) { data, _, error in
             
             if let error = error {
                 NSLog("\(error)")
@@ -112,7 +112,7 @@ class PaymentController {
             }
             
             do {
-                let rawData = try JSONDecoder().decode([String:[String:[String:[Payment]]]].self, from: data)
+                let rawData = try JSONDecoder().decode([String: [String: [String: [Payment]]]].self, from: data)
                 let data = rawData["data"]
                 if let datas = data {
                     let payments = datas["paymentsByPropertyIdPayload"]
