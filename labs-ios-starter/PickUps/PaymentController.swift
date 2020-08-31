@@ -47,7 +47,11 @@ enum Payments {
 class PaymentController {
     let url = URL(string: "http://35.208.9.187:9095/ios-api-2")!
     
-    func createAPayment(amount: String,date: String, paymentMehod: String, id: String, completion: @escaping (Error?) -> Void = {_ in}) {
+    func createAPayment(amount: String,
+                        date: String,
+                        paymentMehod: String,
+                        id: String,
+                        completion: @escaping (Error?) -> Void = { _ in }) {
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"

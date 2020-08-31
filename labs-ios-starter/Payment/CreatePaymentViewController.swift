@@ -74,7 +74,13 @@ class CreatePaymentViewController: UIViewController {
     
     // MARK: - DONE BUTTON
     @IBAction func doneTapped(_ sender: Any) {
-        guard let paymentController = paymentController, let id = idTextField.text, !id.isEmpty, let date = dateTextField.text, !date.isEmpty, let amount = amountTextField.text, !amount.isEmpty else {return}
+        guard let paymentController = paymentController,
+            let id = idTextField.text,
+            !id.isEmpty,
+            let date = dateTextField.text,
+            !date.isEmpty,
+            let amount = amountTextField.text,
+            !amount.isEmpty else { return }
         
         if isACH {
             self.paymentMethod = PaymentMethod.ach.rawValue
@@ -87,7 +93,7 @@ class CreatePaymentViewController: UIViewController {
         } else {
             self.paymentMethod = PaymentMethod.oth.rawValue
         }
-        guard paymentMethod != "" else {return}
+        guard paymentMethod != "" else { return }
         
         paymentController.createAPayment(amount: amount, date: date, paymentMehod: paymentMethod, id: id)
         navigationController?.popViewController(animated: true)

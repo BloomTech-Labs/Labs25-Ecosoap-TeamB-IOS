@@ -23,9 +23,9 @@ class PaymentsTableViewController: UITableViewController {
     }
     
     func setupViews() {
-        guard let property = PickupsViewController().property else {return}
+        guard let property = PickupsViewController().property else { return }
         paymentController.fetchPaymentsByPropertyID(id: property.id!, completion: { result in
-            guard let paymentFetched = try? result.get() else {return}
+            guard let paymentFetched = try? result.get() else { return }
             DispatchQueue.main.async {
                 self.payments = paymentFetched
                 self.tableView.reloadData()
@@ -61,7 +61,7 @@ class PaymentsTableViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CreatePaymentSegue" {
-            guard let addVC = segue.destination as? CreatePaymentViewController else {return}
+            guard let addVC = segue.destination as? CreatePaymentViewController else { return }
         }
     }
     
