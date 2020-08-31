@@ -10,28 +10,41 @@ import UIKit
 
 class PaymentsTableViewController: UITableViewController {
 
+    var payments: [Payment] = []
+    var paymentController = PaymentController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupViews()
+    }
+    
+    func setupViews() {
+        guard let property = PickupsViewController().property else {return}
+        paymentController.fetchPaymentsByPropertyID(id: property.id!, completion: { result in
+            guard let paymentFetched = try? result.get() else {return}
+            DispatchQueue.main.async {
+                self.payments = paymentFetched
+                self.tableView.reloadData()
+            }
+        })
+    }
+    
     // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return payments.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PaymentCell", for: indexPath)
+        
+        let payment = payments[indexPath.row]
+        cell.detailTextLabel?.text = payment.dueDate
+        cell.textLabel?.text = payment.hospitalityContractid
         return cell
     }
     
@@ -47,7 +60,9 @@ class PaymentsTableViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if segue.identifier == "CreatePaymentSegue" {
+            guard let addVC = segue.destination as? CreatePaymentViewController else {return}
+        }
     }
     
 
