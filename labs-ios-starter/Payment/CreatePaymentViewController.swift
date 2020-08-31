@@ -34,14 +34,39 @@ class CreatePaymentViewController: UIViewController {
     
     // MARK: - PAYMENT BUTTON
     @IBAction func ACHTapped(_ sender: Any) {
+        isACH = true
+        isCredit = false
+        isDebit = false
+        isWire = false
+        isOther = false
     }
     @IBAction func creditTapped(_ sender: Any) {
+        isACH = false
+        isCredit = true
+        isDebit = false
+        isWire = false
+        isOther = false
     }
     @IBAction func debitTapped(_ sender: Any) {
+        isACH = false
+        isCredit = false
+        isDebit = true
+        isWire = false
+        isOther = false
     }
     @IBAction func wireTapped(_ sender: Any) {
+        isACH = false
+        isCredit = false
+        isDebit = false
+        isWire = true
+        isOther = false
     }
     @IBAction func otherTapped(_ sender: Any) {
+        isACH = false
+        isCredit = false
+        isDebit = false
+        isWire = false
+        isOther = true
     }
     
     
