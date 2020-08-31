@@ -28,4 +28,5 @@ struct Payment: Codable {
     let dueDate: String?
     let paymentMethod: String?
     let hospitalityContractid: String?
+    
 }
