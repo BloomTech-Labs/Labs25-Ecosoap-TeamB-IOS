@@ -10,11 +10,25 @@ import UIKit
 
 class PaymentsTableViewController: UITableViewController {
 
+    var payments: [Payment] = []
+    var paymentController = PaymentController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
-
+    
+    func setupViews() {
+        guard let property = PickupsViewController().property else {return}
+        paymentController.fetchPaymentsByPropertyID(id: property.id!, completion: { result in
+            guard let paymentFetched = try? result.get() else {return}
+            DispatchQueue.main.async {
+                self.payments = paymentFetched
+                self.tableView.reloadData()
+            }
+        })
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
