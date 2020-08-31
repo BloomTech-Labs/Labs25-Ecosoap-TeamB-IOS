@@ -26,6 +26,7 @@ class CreatePaymentViewController: UIViewController {
     var isDebit: Bool = false
     var isWire: Bool = false
     var isOther: Bool = false
+    var paymentMethod: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,6 +74,20 @@ class CreatePaymentViewController: UIViewController {
     // MARK: - DONE BUTTON
     @IBAction func doneTapped(_ sender: Any) {
         guard let id = idTextField.text, !id.isEmpty, let date = dateTextField.text, !date.isEmpty, let amount = amountTextField.text, !amount.isEmpty else {return}
+        
+        if isACH {
+            self.paymentMethod = PaymentMethod.ach.rawValue
+        } else if isCredit {
+            self.paymentMethod = PaymentMethod.cre.rawValue
+        } else if isDebit {
+            self.paymentMethod = PaymentMethod.deb.rawValue
+        } else if isWire {
+            self.paymentMethod = PaymentMethod.wir.rawValue
+        } else {
+            self.paymentMethod = PaymentMethod.oth.rawValue
+        }
+        guard paymentMethod != "" else {return}
+        
         navigationController?.popViewController(animated: true)
     }
     
