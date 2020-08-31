@@ -47,14 +47,14 @@ enum Payments {
 class PaymentController {
     let url = URL(string: "http://35.208.9.187:9095/ios-api-2")!
     
-    func createAPayment(payment: Payment, completion: @escaping (Error?) -> Void) {
+    func createAPayment(amount: String,date: String, paymentMehod: String, id: String, completion: @escaping (Error?) -> Void = {_ in}) {
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        let variable: [String: Any] = ["amountPaid": payment.amountPaid!,
-                                       "date": payment.date!,
-                                       "paymentMethod": payment.paymentMethod!,
-                                       "hospitalityContractId": payment.hospitalityContractid!]
+        let variable: [String: Any] = ["amountPaid": amount,
+                                       "date": date,
+                                       "paymentMethod": paymentMehod,
+                                       "hospitalityContractId": id]
         let query = CreatePayment.create
         let body: [String: Any] = ["query": query, "variables": ["input": variable]]
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
