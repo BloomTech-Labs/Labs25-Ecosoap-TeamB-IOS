@@ -15,13 +15,17 @@ class CreatePaymentViewController: UIViewController {
     @IBOutlet private var idTextField: UITextField!
     @IBOutlet private var dateTextField: UITextField!
     @IBOutlet private var amountTextField: UITextField!
-    
     @IBOutlet private var ACHButton: UIButton!
     @IBOutlet private var creditButton: UIButton!
     @IBOutlet private var debitButton: UIButton!
     @IBOutlet private var wireButton: UIButton!
     @IBOutlet private var otherButton: UIButton!
     
+    var isACH: Bool = false
+    var isCredit: Bool = false
+    var isDebit: Bool = false
+    var isWire: Bool = false
+    var isOther: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +47,8 @@ class CreatePaymentViewController: UIViewController {
     
     // MARK: - DONE BUTTON
     @IBAction func doneTapped(_ sender: Any) {
+        guard let id = idTextField.text, !id.isEmpty, let date = dateTextField.text, !date.isEmpty, let amount = amountTextField.text, !amount.isEmpty else {return}
+        navigationController?.popViewController(animated: true)
     }
     
 }
