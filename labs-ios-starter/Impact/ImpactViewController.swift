@@ -11,9 +11,11 @@ import UIKit
 class ImpactViewController: UIViewController {
     
     let impactController = ImpactStatsController()
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -22,6 +24,7 @@ class ImpactViewController: UIViewController {
     }
     // MARK: - UI Properties
     
+    @IBOutlet var propertyIDLabel: UILabel!
     @IBOutlet private var soapLabel: UILabel!
     @IBOutlet private var LinesnsLabel: UILabel!
     @IBOutlet private var bottlesLabel: UILabel!
@@ -30,11 +33,15 @@ class ImpactViewController: UIViewController {
     @IBOutlet private var womenLabel: UILabel!
     
     func updateView() {
-        impactController.fetchImpact(id: "PropertyId1") { impact in
+        
+        guard let propertyID = defaults.string(forKey: "propertyID") else {return}
+        
+        impactController.fetchImpact(id: propertyID) { impact in
             do {
                 let result = try impact.get()
-
+                
                 DispatchQueue.main.async {
+                    self.propertyIDLabel.text = "\(propertyID)"
                     self.soapLabel.text = "\(result.soapRecycled ?? 0)"
                     self.LinesnsLabel.text = "\(result.linensRecycled ?? 0)"
                     self.bottlesLabel.text = "\(result.bottlesRecycled ?? 0)"
