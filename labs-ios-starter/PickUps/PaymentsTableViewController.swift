@@ -10,7 +10,7 @@ import UIKit
 
 class PaymentsTableViewController: UITableViewController {
 
-    var payments: [Payment] = []
+    var payments: [Payment]?
     var paymentController = PaymentController()
     let defaults = UserDefaults.standard
     
@@ -27,7 +27,9 @@ class PaymentsTableViewController: UITableViewController {
         guard let propertyID = defaults.string(forKey: "propertyID") else { return }
         self.navigationItem.title = "Payments"
         paymentController.fetchPaymentsByPropertyID(id: propertyID, completion: { result in
+            print("HI")
             guard let paymentFetched = try? result.get() else { return }
+            
             DispatchQueue.main.async {
                 self.payments = paymentFetched
                 self.tableView.reloadData()
@@ -47,15 +49,15 @@ class PaymentsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return payments.count
+        return payments?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PaymentCell", for: indexPath)
         
-        let payment = payments[indexPath.row]
-        cell.detailTextLabel?.text = payment.dueDate
-        cell.textLabel?.text = payment.hospitalityContractid
+        let payment = payments?[indexPath.row]
+        cell.detailTextLabel?.text = payment?.dueDate
+        cell.textLabel?.text = payment?.hospitalityContractid
         return cell
     }
     
@@ -76,7 +78,7 @@ class PaymentsTableViewController: UITableViewController {
             addVC.paymentController = paymentController
         } else if segue.identifier == "PaymentDetailSegue" {
             guard let detailVC = segue.destination as? PaymentDetailViewController, let indexPath = tableView.indexPathForSelectedRow else {return}
-            let payment = payments[indexPath.row]
+            let payment = payments?[indexPath.row]
             detailVC.payment = payment
         }
     }
