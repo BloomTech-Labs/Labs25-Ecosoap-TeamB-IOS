@@ -13,6 +13,12 @@ class PaymentsTableViewController: UITableViewController {
     var payments: [Payment]?
     var paymentController = PaymentController()
     let defaults = UserDefaults.standard
+    var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        return formatter
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,9 +33,7 @@ class PaymentsTableViewController: UITableViewController {
         guard let propertyID = defaults.string(forKey: "propertyID") else { return }
         self.navigationItem.title = "Payments"
         paymentController.fetchPaymentsByPropertyID(id: propertyID, completion: { result in
-            print("HI")
             guard let paymentFetched = try? result.get() else { return }
-            
             DispatchQueue.main.async {
                 self.payments = paymentFetched
                 self.tableView.reloadData()
@@ -56,8 +60,8 @@ class PaymentsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PaymentCell", for: indexPath)
         
         let payment = payments?[indexPath.row]
-        cell.detailTextLabel?.text = payment?.dueDate
-        cell.textLabel?.text = payment?.hospitalityContractid
+        cell.detailTextLabel?.text = payment?.id
+        cell.textLabel?.text = payment?.hospitalityContract?.id
         return cell
     }
     

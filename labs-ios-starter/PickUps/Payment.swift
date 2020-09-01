@@ -15,7 +15,9 @@ enum PaymentMethod: String {
     case wir = "WIRE"
     case oth = "OTHER"
 }
-
+struct HospitalityContract: Codable {
+    let id: String?
+}
 struct Payment: Codable {
     let id: String?
     let invoiceCode: String?
@@ -27,6 +29,6 @@ struct Payment: Codable {
     let invoicePeriodEndDate: String?
     let dueDate: String?
     let paymentMethod: String?
-    let hospitalityContractid: String?
+    let hospitalityContract: HospitalityContract?
     
 }

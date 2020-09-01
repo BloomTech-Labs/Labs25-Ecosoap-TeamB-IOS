@@ -17,6 +17,7 @@ class PickupsViewController: UIViewController {
     var property: Property?
     let pickupController = PickupController()
     let defaults = UserDefaults.standard
+    
     // MARK: - View Lifecycle
     
     override func viewDidLoad() {
