@@ -22,22 +22,22 @@ enum CreatePayment {
 
 enum Payments {
     static let payments = """
-    query paymentsByPropertyId(
-    $input: PaymentsByPropertyIdInput
-    ) {
-        payments {
-            id
-            invoiceCode
-            invoice
-            amountPaid
-            amountDue
-            date
-            invoicePeriodStartDate
-            invoicePeriodEndDate
-            dueDate
-            paymentMethod
-            hospitalityContract {
+    query paymentsByPropertyId($input: PaymentsByPropertyIdInput) {
+        paymentsByPropertyId(input: $input) {
+            payments {
                 id
+                invoiceCode
+                invoice
+                amountPaid
+                amountDue
+                date
+                invoicePeriodStartDate
+                invoicePeriodEndDate
+                dueDate
+                paymentMethod
+                hospitalityContract {
+                    id
+                }
             }
         }
     }
@@ -110,6 +110,7 @@ class PaymentController {
                 completion(.failure(error))
                 return
             }
+
             guard let data = data else {
                 NSLog("Data is nil")
                 return
@@ -119,7 +120,7 @@ class PaymentController {
                 let rawData = try JSONDecoder().decode([String: [String: [String: [Payment]]]].self, from: data)
                 let data = rawData["data"]
                 if let datas = data {
-                    let payments = datas["paymentsByPropertyIdPayload"]
+                    let payments = datas["paymentsByPropertyId"]
                     if let paymentsNonOp = payments {
                         let result = paymentsNonOp["payments"]
                         if let finalResult = result {

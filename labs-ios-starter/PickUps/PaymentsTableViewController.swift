@@ -10,8 +10,15 @@ import UIKit
 
 class PaymentsTableViewController: UITableViewController {
 
-    var payments: [Payment] = []
+    var payments: [Payment]?
     var paymentController = PaymentController()
+    let defaults = UserDefaults.standard
+    var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        return formatter
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +30,9 @@ class PaymentsTableViewController: UITableViewController {
     }
     
     func setupViews() {
-        guard let property = PickupsViewController().property else { return }
-        paymentController.fetchPaymentsByPropertyID(id: property.id!, completion: { result in
+        guard let propertyID = defaults.string(forKey: "propertyID") else { return }
+        self.navigationItem.title = "Payments"
+        paymentController.fetchPaymentsByPropertyID(id: propertyID, completion: { result in
             guard let paymentFetched = try? result.get() else { return }
             DispatchQueue.main.async {
                 self.payments = paymentFetched
@@ -34,17 +42,26 @@ class PaymentsTableViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard let propertyID = defaults.string(forKey: "propertyID") else { return ""}
+        return "\(propertyID)"
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return payments.count
+        return payments?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PaymentCell", for: indexPath)
         
-        let payment = payments[indexPath.row]
-        cell.detailTextLabel?.text = payment.dueDate
-        cell.textLabel?.text = payment.hospitalityContractid
+        let payment = payments?[indexPath.row]
+        cell.detailTextLabel?.text = payment?.id
+        cell.textLabel?.text = payment?.hospitalityContract?.id
         return cell
     }
     
@@ -65,7 +82,7 @@ class PaymentsTableViewController: UITableViewController {
             addVC.paymentController = paymentController
         } else if segue.identifier == "PaymentDetailSegue" {
             guard let detailVC = segue.destination as? PaymentDetailViewController, let indexPath = tableView.indexPathForSelectedRow else {return}
-            let payment = payments[indexPath.row]
+            let payment = payments?[indexPath.row]
             detailVC.payment = payment
         }
     }

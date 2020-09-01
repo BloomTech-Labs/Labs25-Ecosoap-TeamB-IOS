@@ -16,6 +16,7 @@ class PickupsViewController: UIViewController {
     let userController = UserController()
     var property: Property?
     let pickupController = PickupController()
+    let defaults = UserDefaults.standard
     
     // MARK: - View Lifecycle
     
@@ -29,6 +30,7 @@ class PickupsViewController: UIViewController {
         super.viewWillAppear(animated)
         if let property = property {
             if property.id != nil {
+                self.navigationItem.title = "\(property.id ?? "Eco Soap Bank")"
                 userController.fetchPropertyByID(id: property.id!, completion: { result in
                     guard let propertyFetched = try? result.get() else { return }
                     DispatchQueue.main.async {
@@ -86,7 +88,9 @@ extension PickupsViewController: UISearchBarDelegate {
         userController.fetchPropertyByID(id: searchText, completion: { result in
             guard let property = try? result.get() else { return }
             DispatchQueue.main.async {
+                self.defaults.set(property.id, forKey: "propertyID")
                 self.property = property
+                self.navigationItem.title = "\(property.id ?? "")"
                 self.tableView.reloadData()
             }
         })
