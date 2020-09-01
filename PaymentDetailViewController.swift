@@ -10,6 +10,7 @@ import UIKit
 
 class PaymentDetailViewController: UIViewController {
 
+    var payment: Payment?
     
     //MARK: -UIOutlets
     @IBOutlet var amountLabel: UILabel!
@@ -27,5 +28,18 @@ class PaymentDetailViewController: UIViewController {
     
     }
     
-    
+    func setupView() {
+        guard let payment = payment else {return}
+        
+        amountLabel.text = "\(payment.amountPaid ?? 0)"
+        contractLabel.text = payment.hospitalityContractid ?? "not avaliable"
+        invoiceLabel.text = payment.invoice ?? "not avaliable"
+        invoiceEndLabel.text = payment.invoicePeriodEndDate ?? "not avaliable"
+        invoiceStartLabel.text = payment.invoicePeriodStartDate ?? "not avaliable"
+        paymentMethodLabel.text = payment.paymentMethod ?? "not avaliable"
+        amountDueLabel.text = "\(payment.amountDue ?? 0)"
+        paymentIDLabel.text = payment.id
+        
+        
+    }
 }
