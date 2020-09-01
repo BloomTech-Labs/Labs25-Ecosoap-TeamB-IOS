@@ -24,8 +24,8 @@ class PaymentDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-    
+        
+        setupView()
     }
     
     func setupView() {
@@ -39,7 +39,5 @@ class PaymentDetailViewController: UIViewController {
         paymentMethodLabel.text = payment.paymentMethod ?? "not avaliable"
         amountDueLabel.text = "\(payment.amountDue ?? 0)"
         paymentIDLabel.text = payment.id
-        
-        
     }
 }
