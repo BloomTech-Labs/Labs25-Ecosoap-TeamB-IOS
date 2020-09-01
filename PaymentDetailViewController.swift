@@ -17,7 +17,7 @@ class PaymentDetailViewController: UIViewController {
     @IBOutlet var contractLabel: UILabel!
     @IBOutlet var invoiceEndLabel: UILabel!
     @IBOutlet var invoiceStartLabel: UILabel!
-    @IBOutlet var invoiceLabel: UILabel!
+    @IBOutlet var invoiceLabel: UITextView!
     @IBOutlet var paymentMethodLabel: UILabel!
     @IBOutlet var amountDueLabel: UILabel!
     @IBOutlet var paymentIDLabel: UILabel!
@@ -30,7 +30,7 @@ class PaymentDetailViewController: UIViewController {
     
     func setupView() {
         guard let payment = payment else {return}
-        
+        invoiceLabel.isUserInteractionEnabled = false
         amountLabel.text = "\(payment.amountPaid ?? 0)"
         contractLabel.text = payment.hospitalityContract?.id
         invoiceLabel.text = payment.invoice ?? "not avaliable"
