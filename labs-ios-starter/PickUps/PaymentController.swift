@@ -124,7 +124,6 @@ class PaymentController {
                     if let paymentsNonOp = payments {
                         let result = paymentsNonOp["payments"]
                         if let finalResult = result {
-                            print(finalResult)
                             completion(.success(finalResult))
                         }
                     }
