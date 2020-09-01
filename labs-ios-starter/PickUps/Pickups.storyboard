@@ -709,7 +709,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="c23-NE-Og8" kind="show" id="Uly-pc-dEq"/>
+                                    <segue destination="c23-NE-Og8" kind="show" identifier="PaymentDetailSegue" id="Uly-pc-dEq"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -730,10 +730,10 @@
             </objects>
             <point key="canvasLocation" x="3350.7246376811595" y="928.79464285714278"/>
         </scene>
-        <!--View Controller-->
+        <!--Payment Detail View Controller-->
         <scene sceneID="Xal-cq-gki">
             <objects>
-                <viewController id="c23-NE-Og8" sceneMemberID="viewController">
+                <viewController id="c23-NE-Og8" customClass="PaymentDetailViewController" customModule="Eco_Soap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kbd-GS-4mc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -851,10 +851,20 @@
                         <viewLayoutGuide key="safeArea" id="H8Y-P9-YS0"/>
                     </view>
                     <navigationItem key="navigationItem" id="JCN-s5-0IH"/>
+                    <connections>
+                        <outlet property="amountDueLabel" destination="wDy-2L-RKh" id="1Mh-hQ-Pw1"/>
+                        <outlet property="amountLabel" destination="xCF-FN-dL7" id="2Hy-DD-yqJ"/>
+                        <outlet property="contractLabel" destination="bEx-BX-9C8" id="nTE-nh-El3"/>
+                        <outlet property="invoiceEndLabel" destination="hHz-6H-gli" id="8Ab-SW-Z9u"/>
+                        <outlet property="invoiceLabel" destination="3Ve-Dl-p3m" id="aR5-Xw-4lb"/>
+                        <outlet property="invoiceStartLabel" destination="goH-Iw-LpZ" id="Hga-ZC-nOR"/>
+                        <outlet property="paymentIDLabel" destination="u7e-aN-nDo" id="oFG-N2-sge"/>
+                        <outlet property="paymentMethodLabel" destination="bSv-G7-HAj" id="3Rx-8u-aFN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iwk-kh-Gwo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3348" y="1632"/>
+            <point key="canvasLocation" x="3351" y="1730"/>
         </scene>
         <!--Create Payment View Controller-->
         <scene sceneID="vTU-u6-5ce">

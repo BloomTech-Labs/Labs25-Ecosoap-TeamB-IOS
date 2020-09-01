@@ -22,10 +22,11 @@
 		46BEB4F124C98F0D00FE0CD1 /* Pickups.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 46BEB4F024C98F0D00FE0CD1 /* Pickups.storyboard */; };
 		46BF10BE24D388FF001C6753 /* UIViewController+SimpleAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46BF10BD24D388FF001C6753 /* UIViewController+SimpleAlert.swift */; };
 		46C2BC9224D432F90077E49D /* ProfileTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46C2BC9124D432F90077E49D /* ProfileTabBarViewController.swift */; };
+		4E21FFBDD1D3A9EEE39B56CC /* Pods_labs_ios_starter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6190EF7479C9F58A2C71EAD4 /* Pods_labs_ios_starter.framework */; };
 		AE15364124E31FFB009598A9 /* Pickup.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE15364024E31FFB009598A9 /* Pickup.swift */; };
 		AE15364324E32742009598A9 /* ImpactStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE15364224E32742009598A9 /* ImpactStats.swift */; };
 		AE15364524E371A8009598A9 /* ImpactStatsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE15364424E371A8009598A9 /* ImpactStatsController.swift */; };
-		AE21B30924E43292003095F0 /* OktaAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AE21B30824E43292003095F0 /* OktaAuth */; };
+		AE21B30924E43292003095F0 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = AE21B30824E43292003095F0 /* SwiftPackageProductDependency */; };
 		AE21B30D24E43AF2003095F0 /* ImpactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B30C24E43AF2003095F0 /* ImpactViewController.swift */; };
 		AE21B31024E5DC04003095F0 /* PickupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B30F24E5DC04003095F0 /* PickupController.swift */; };
 		AE21B31424EC8B18003095F0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B31324EC8B18003095F0 /* User.swift */; };
@@ -36,9 +37,11 @@
 		AE21B31E24F7F657003095F0 /* PaymentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B31D24F7F657003095F0 /* PaymentController.swift */; };
 		AE21B32024F7F66B003095F0 /* CreatePaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B31F24F7F66B003095F0 /* CreatePaymentViewController.swift */; };
 		AE21B32324F7F6D0003095F0 /* PaymentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B32224F7F6D0003095F0 /* PaymentsTableViewController.swift */; };
+		AE4DE2F324FE513200839480 /* PaymentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4DE2F224FE513200839480 /* PaymentDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		25BC7139A76B1C8C094C7271 /* Pods-labs-ios-starter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-labs-ios-starter.debug.xcconfig"; path = "Target Support Files/Pods-labs-ios-starter/Pods-labs-ios-starter.debug.xcconfig"; sourceTree = "<group>"; };
 		463AD24224CF275900447BB8 /* ProfileDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewController.swift; sourceTree = "<group>"; };
 		463AD24424CF2CDB00447BB8 /* AddProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProfileViewController.swift; sourceTree = "<group>"; };
 		466C4270249A8748007D033E /* Eco-Soap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Eco-Soap.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,6 +60,7 @@
 		46BEB4F024C98F0D00FE0CD1 /* Pickups.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Pickups.storyboard; sourceTree = "<group>"; };
 		46BF10BD24D388FF001C6753 /* UIViewController+SimpleAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+SimpleAlert.swift"; sourceTree = "<group>"; };
 		46C2BC9124D432F90077E49D /* ProfileTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTabBarViewController.swift; sourceTree = "<group>"; };
+		6190EF7479C9F58A2C71EAD4 /* Pods_labs_ios_starter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_labs_ios_starter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE15364024E31FFB009598A9 /* Pickup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pickup.swift; sourceTree = "<group>"; };
 		AE15364224E32742009598A9 /* ImpactStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpactStats.swift; sourceTree = "<group>"; };
 		AE15364424E371A8009598A9 /* ImpactStatsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpactStatsController.swift; sourceTree = "<group>"; };
@@ -70,6 +74,8 @@
 		AE21B31D24F7F657003095F0 /* PaymentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PaymentController.swift; path = "labs-ios-starter/PickUps/PaymentController.swift"; sourceTree = SOURCE_ROOT; };
 		AE21B31F24F7F66B003095F0 /* CreatePaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePaymentViewController.swift; sourceTree = "<group>"; };
 		AE21B32224F7F6D0003095F0 /* PaymentsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PaymentsTableViewController.swift; path = "labs-ios-starter/PickUps/PaymentsTableViewController.swift"; sourceTree = SOURCE_ROOT; };
+		AE4DE2F224FE513200839480 /* PaymentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailViewController.swift; sourceTree = SOURCE_ROOT; };
+		B6F13EEA56B5137EC853D35C /* Pods-labs-ios-starter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-labs-ios-starter.release.xcconfig"; path = "Target Support Files/Pods-labs-ios-starter/Pods-labs-ios-starter.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,13 +83,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE21B30924E43292003095F0 /* OktaAuth in Frameworks */,
+				AE21B30924E43292003095F0 /* BuildFile in Frameworks */,
+				4E21FFBDD1D3A9EEE39B56CC /* Pods_labs_ios_starter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		455F51584606BEFD2B9D419F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6190EF7479C9F58A2C71EAD4 /* Pods_labs_ios_starter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		465DAA2724BD0BC100D94C24 /* App Lifecycle */ = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +114,8 @@
 			children = (
 				466C4272249A8748007D033E /* labs-ios-starter */,
 				466C4271249A8748007D033E /* Products */,
+				661657900A8BA74B87065AA5 /* Pods */,
+				455F51584606BEFD2B9D419F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -181,6 +198,16 @@
 			path = Profiles;
 			sourceTree = "<group>";
 		};
+		661657900A8BA74B87065AA5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				25BC7139A76B1C8C094C7271 /* Pods-labs-ios-starter.debug.xcconfig */,
+				B6F13EEA56B5137EC853D35C /* Pods-labs-ios-starter.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		AE15363F24E2F5F6009598A9 /* PickUps */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,6 +230,7 @@
 		AE21B32124F7F693003095F0 /* Payment */ = {
 			isa = PBXGroup;
 			children = (
+				AE4DE2F224FE513200839480 /* PaymentDetailViewController.swift */,
 				AE21B32224F7F6D0003095F0 /* PaymentsTableViewController.swift */,
 				AE21B31F24F7F66B003095F0 /* CreatePaymentViewController.swift */,
 			);
@@ -216,6 +244,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 466C4284249A8749007D033E /* Build configuration list for PBXNativeTarget "labs-ios-starter" */;
 			buildPhases = (
+				DA504501A5A6AFEC9175D65E /* [CP] Check Pods Manifest.lock */,
 				466C426C249A8748007D033E /* Sources */,
 				466C426D249A8748007D033E /* Frameworks */,
 				466C426E249A8748007D033E /* Resources */,
@@ -227,7 +256,7 @@
 			);
 			name = "labs-ios-starter";
 			packageProductDependencies = (
-				AE21B30824E43292003095F0 /* OktaAuth */,
+				AE21B30824E43292003095F0 /* SwiftPackageProductDependency */,
 			);
 			productName = LabsScaffolding;
 			productReference = 466C4270249A8748007D033E /* Eco-Soap.app */;
@@ -258,7 +287,7 @@
 			);
 			mainGroup = 466C4267249A8748007D033E;
 			packageReferences = (
-				AE21B30724E43292003095F0 /* XCRemoteSwiftPackageReference "OktaAuth" */,
+				AE21B30724E43292003095F0 /* RemoteSwiftPackageReference */,
 			);
 			productRefGroup = 466C4271249A8748007D033E /* Products */;
 			projectDirPath = "";
@@ -301,6 +330,28 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
+		DA504501A5A6AFEC9175D65E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-labs-ios-starter-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -320,6 +371,7 @@
 				46BEB4E124C9828800FE0CD1 /* Profile.swift in Sources */,
 				AE21B31424EC8B18003095F0 /* User.swift in Sources */,
 				46BEB4E924C98DAF00FE0CD1 /* PickupsViewController.swift in Sources */,
+				AE4DE2F324FE513200839480 /* PaymentDetailViewController.swift in Sources */,
 				AE21B30D24E43AF2003095F0 /* ImpactViewController.swift in Sources */,
 				AE15364524E371A8009598A9 /* ImpactStatsController.swift in Sources */,
 				463AD24524CF2CDB00447BB8 /* AddProfileViewController.swift in Sources */,
@@ -475,6 +527,7 @@
 		};
 		466C4285249A8749007D033E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 25BC7139A76B1C8C094C7271 /* Pods-labs-ios-starter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -495,6 +548,7 @@
 		};
 		466C4286249A8749007D033E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B6F13EEA56B5137EC853D35C /* Pods-labs-ios-starter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -537,7 +591,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		AE21B30724E43292003095F0 /* XCRemoteSwiftPackageReference "OktaAuth" */ = {
+		AE21B30724E43292003095F0 /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:SpencerCurtis/OktaAuth.git";
 			requirement = {
@@ -548,9 +602,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		AE21B30824E43292003095F0 /* OktaAuth */ = {
+		AE21B30824E43292003095F0 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = AE21B30724E43292003095F0 /* XCRemoteSwiftPackageReference "OktaAuth" */;
+			package = AE21B30724E43292003095F0 /* RemoteSwiftPackageReference */;
 			productName = OktaAuth;
 		};
 /* End XCSwiftPackageProductDependency section */
