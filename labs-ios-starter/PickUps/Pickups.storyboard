@@ -685,7 +685,7 @@
             </objects>
             <point key="canvasLocation" x="150.72463768115944" y="193.52678571428569"/>
         </scene>
-        <!--Payments-->
+        <!--Payments Table View Controller-->
         <scene sceneID="GAU-7O-jKZ">
             <objects>
                 <tableViewController id="m1E-ju-kG5" customClass="PaymentsTableViewController" customModule="Eco_Soap" customModuleProvider="target" sceneMemberID="viewController">
@@ -727,7 +727,7 @@
                             <outlet property="delegate" destination="m1E-ju-kG5" id="6ek-6b-hlb"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Payments" id="SPG-3p-6Ue">
+                    <navigationItem key="navigationItem" id="SPG-3p-6Ue">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ZMJ-8c-6gR">
                             <connections>
                                 <segue destination="Cud-6r-VZd" kind="show" identifier="CreatePaymentSegue" id="0Ix-aM-QX9"/>

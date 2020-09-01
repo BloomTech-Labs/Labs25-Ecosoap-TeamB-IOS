@@ -12,6 +12,7 @@ class PaymentsTableViewController: UITableViewController {
 
     var payments: [Payment] = []
     var paymentController = PaymentController()
+    let defaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +24,9 @@ class PaymentsTableViewController: UITableViewController {
     }
     
     func setupViews() {
-        guard let property = PickupsViewController().property else { return }
-        paymentController.fetchPaymentsByPropertyID(id: property.id!, completion: { result in
+        guard let propertyID = defaults.string(forKey: "propertyID") else { return }
+        self.navigationItem.title = "Payments"
+        paymentController.fetchPaymentsByPropertyID(id: propertyID, completion: { result in
             guard let paymentFetched = try? result.get() else { return }
             DispatchQueue.main.async {
                 self.payments = paymentFetched
@@ -34,6 +36,15 @@ class PaymentsTableViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard let propertyID = defaults.string(forKey: "propertyID") else { return ""}
+        return "\(propertyID)"
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return payments.count
