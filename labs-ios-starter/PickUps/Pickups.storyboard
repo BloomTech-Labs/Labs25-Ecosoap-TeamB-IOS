@@ -709,7 +709,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="c23-NE-Og8" kind="show" id="Uly-pc-dEq"/>
+                                    <segue destination="c23-NE-Og8" kind="show" identifier="PaymentDetailSegue" id="Uly-pc-dEq"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -730,10 +730,10 @@
             </objects>
             <point key="canvasLocation" x="3350.7246376811595" y="928.79464285714278"/>
         </scene>
-        <!--View Controller-->
+        <!--Payment Detail View Controller-->
         <scene sceneID="Xal-cq-gki">
             <objects>
-                <viewController id="c23-NE-Og8" sceneMemberID="viewController">
+                <viewController id="c23-NE-Og8" customClass="PaymentDetailViewController" customModule="Eco_Soap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Kbd-GS-4mc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -854,7 +854,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iwk-kh-Gwo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3348" y="1632"/>
+            <point key="canvasLocation" x="3351" y="1730"/>
         </scene>
         <!--Create Payment View Controller-->
         <scene sceneID="vTU-u6-5ce">

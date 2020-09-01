@@ -36,6 +36,7 @@
 		AE21B31E24F7F657003095F0 /* PaymentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B31D24F7F657003095F0 /* PaymentController.swift */; };
 		AE21B32024F7F66B003095F0 /* CreatePaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B31F24F7F66B003095F0 /* CreatePaymentViewController.swift */; };
 		AE21B32324F7F6D0003095F0 /* PaymentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B32224F7F6D0003095F0 /* PaymentsTableViewController.swift */; };
+		AE4DE2F324FE513200839480 /* PaymentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4DE2F224FE513200839480 /* PaymentDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		AE21B31D24F7F657003095F0 /* PaymentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PaymentController.swift; path = "labs-ios-starter/PickUps/PaymentController.swift"; sourceTree = SOURCE_ROOT; };
 		AE21B31F24F7F66B003095F0 /* CreatePaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePaymentViewController.swift; sourceTree = "<group>"; };
 		AE21B32224F7F6D0003095F0 /* PaymentsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PaymentsTableViewController.swift; path = "labs-ios-starter/PickUps/PaymentsTableViewController.swift"; sourceTree = SOURCE_ROOT; };
+		AE4DE2F224FE513200839480 /* PaymentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +205,7 @@
 		AE21B32124F7F693003095F0 /* Payment */ = {
 			isa = PBXGroup;
 			children = (
+				AE4DE2F224FE513200839480 /* PaymentDetailViewController.swift */,
 				AE21B32224F7F6D0003095F0 /* PaymentsTableViewController.swift */,
 				AE21B31F24F7F66B003095F0 /* CreatePaymentViewController.swift */,
 			);
@@ -320,6 +323,7 @@
 				46BEB4E124C9828800FE0CD1 /* Profile.swift in Sources */,
 				AE21B31424EC8B18003095F0 /* User.swift in Sources */,
 				46BEB4E924C98DAF00FE0CD1 /* PickupsViewController.swift in Sources */,
+				AE4DE2F324FE513200839480 /* PaymentDetailViewController.swift in Sources */,
 				AE21B30D24E43AF2003095F0 /* ImpactViewController.swift in Sources */,
 				AE15364524E371A8009598A9 /* ImpactStatsController.swift in Sources */,
 				463AD24524CF2CDB00447BB8 /* AddProfileViewController.swift in Sources */,
