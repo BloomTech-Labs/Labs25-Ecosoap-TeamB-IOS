@@ -851,6 +851,16 @@
                         <viewLayoutGuide key="safeArea" id="H8Y-P9-YS0"/>
                     </view>
                     <navigationItem key="navigationItem" id="JCN-s5-0IH"/>
+                    <connections>
+                        <outlet property="amountDueLabel" destination="wDy-2L-RKh" id="1Mh-hQ-Pw1"/>
+                        <outlet property="amountLabel" destination="xCF-FN-dL7" id="2Hy-DD-yqJ"/>
+                        <outlet property="contractLabel" destination="bEx-BX-9C8" id="nTE-nh-El3"/>
+                        <outlet property="invoiceEndLabel" destination="hHz-6H-gli" id="8Ab-SW-Z9u"/>
+                        <outlet property="invoiceLabel" destination="3Ve-Dl-p3m" id="aR5-Xw-4lb"/>
+                        <outlet property="invoiceStartLabel" destination="goH-Iw-LpZ" id="Hga-ZC-nOR"/>
+                        <outlet property="paymentIDLabel" destination="u7e-aN-nDo" id="oFG-N2-sge"/>
+                        <outlet property="paymentMethodLabel" destination="bSv-G7-HAj" id="3Rx-8u-aFN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iwk-kh-Gwo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
