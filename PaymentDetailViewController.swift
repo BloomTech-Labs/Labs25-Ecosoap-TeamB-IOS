@@ -31,7 +31,6 @@ class PaymentDetailViewController: UIViewController {
     func setupView() {
         guard let payment = payment else {return}
 
-        print("\(String(describing: startDate))")
         invoiceLabel.isUserInteractionEnabled = false
         amountLabel.text = "\(payment.amountPaid ?? 0)"
         contractLabel.text = payment.hospitalityContract?.id
