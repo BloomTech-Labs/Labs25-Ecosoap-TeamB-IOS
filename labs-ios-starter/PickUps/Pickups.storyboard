@@ -292,7 +292,7 @@
             </objects>
             <point key="canvasLocation" x="2838" y="-551"/>
         </scene>
-        <!--Prickups-->
+        <!--Pickups View Controller-->
         <scene sceneID="6oy-fV-Emk">
             <objects>
                 <viewController id="shw-uE-C45" customClass="PickupsViewController" customModule="Eco_Soap" customModuleProvider="target" sceneMemberID="viewController">
@@ -358,7 +358,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ctD-id-37G"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Prickups" largeTitleDisplayMode="always" id="W7h-qs-wzd">
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="W7h-qs-wzd">
                         <barButtonItem key="rightBarButtonItem" title="Schedule" id="Obl-la-E2s">
                             <connections>
                                 <segue destination="Gq1-Av-gap" kind="show" identifier="ScheduleSegue" id="AIC-pl-elG"/>
@@ -443,7 +443,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fjh-K0-TS0">
-                                <rect key="frame" x="140" y="468" width="134" height="73"/>
+                                <rect key="frame" x="100" y="468" width="214" height="73"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="73" id="ISp-FL-3IR"/>
@@ -460,14 +460,14 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="fjh-K0-TS0" firstAttribute="leading" secondItem="thw-Hf-FAq" secondAttribute="leading" constant="140" id="1Cg-zr-Gfb"/>
+                            <constraint firstItem="fjh-K0-TS0" firstAttribute="leading" secondItem="thw-Hf-FAq" secondAttribute="leading" constant="100" id="1Cg-zr-Gfb"/>
                             <constraint firstItem="Ier-EO-YcR" firstAttribute="top" secondItem="thw-Hf-FAq" secondAttribute="top" constant="20" id="2AD-pX-SQI"/>
                             <constraint firstItem="fjh-K0-TS0" firstAttribute="centerX" secondItem="nd5-c5-JJ9" secondAttribute="centerX" id="2MX-SI-f6L"/>
                             <constraint firstItem="MTB-UP-so2" firstAttribute="leading" secondItem="WSQ-6M-ILx" secondAttribute="trailing" constant="40" id="9zX-67-Cos"/>
                             <constraint firstItem="35O-F1-O4e" firstAttribute="leading" secondItem="thw-Hf-FAq" secondAttribute="leading" constant="40" id="AW1-Ur-joj"/>
                             <constraint firstItem="6DT-2H-yfJ" firstAttribute="top" secondItem="35O-F1-O4e" secondAttribute="bottom" constant="20" id="Aig-kn-PaU"/>
                             <constraint firstItem="thw-Hf-FAq" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Ier-EO-YcR" secondAttribute="trailing" constant="239" id="CYl-z1-9c6"/>
-                            <constraint firstItem="thw-Hf-FAq" firstAttribute="trailing" secondItem="fjh-K0-TS0" secondAttribute="trailing" constant="140" id="DB8-n9-fCu"/>
+                            <constraint firstItem="thw-Hf-FAq" firstAttribute="trailing" secondItem="fjh-K0-TS0" secondAttribute="trailing" constant="100" id="DB8-n9-fCu"/>
                             <constraint firstItem="NsV-2K-Dmz" firstAttribute="top" secondItem="35O-F1-O4e" secondAttribute="bottom" constant="20" id="EiF-iW-jzU"/>
                             <constraint firstItem="irS-66-JhD" firstAttribute="top" secondItem="WSQ-6M-ILx" secondAttribute="bottom" constant="20" id="Kvy-zu-P4C"/>
                             <constraint firstItem="thw-Hf-FAq" firstAttribute="bottom" secondItem="fjh-K0-TS0" secondAttribute="bottom" constant="272" id="NaH-oQ-TZ6"/>
