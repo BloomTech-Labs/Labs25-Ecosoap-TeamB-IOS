@@ -71,11 +71,7 @@ class PaymentController {
             return
         }
         
-        URLSession.shared.dataTask(with: request) { data, _, error in
-            if let data = data {
-                print(data)
-            }
-            
+        URLSession.shared.dataTask(with: request) { _, _, error in
             if let error = error {
                 NSLog("\(error)")
                 completion(error)
