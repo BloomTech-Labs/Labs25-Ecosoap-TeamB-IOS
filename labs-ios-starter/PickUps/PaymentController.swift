@@ -47,7 +47,7 @@ enum Payments {
 class PaymentController {
     let url = URL(string: "http://35.208.9.187:9095/ios-api-2")!
     
-    func createAPayment(amount: String,
+    func createAPayment(amount: Int,
                         date: String,
                         paymentMehod: String,
                         id: String,
@@ -71,11 +71,7 @@ class PaymentController {
             return
         }
         
-        URLSession.shared.dataTask(with: request) { data, _, error in
-            if let data = data {
-                print(data)
-            }
-            
+        URLSession.shared.dataTask(with: request) { _, _, error in
             if let error = error {
                 NSLog("\(error)")
                 completion(error)
