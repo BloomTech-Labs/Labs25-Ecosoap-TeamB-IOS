@@ -26,7 +26,7 @@
 		AE15364124E31FFB009598A9 /* Pickup.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE15364024E31FFB009598A9 /* Pickup.swift */; };
 		AE15364324E32742009598A9 /* ImpactStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE15364224E32742009598A9 /* ImpactStats.swift */; };
 		AE15364524E371A8009598A9 /* ImpactStatsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE15364424E371A8009598A9 /* ImpactStatsController.swift */; };
-		AE21B30924E43292003095F0 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = AE21B30824E43292003095F0 /* SwiftPackageProductDependency */; };
+		AE21B30924E43292003095F0 /* OktaAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AE21B30824E43292003095F0 /* OktaAuth */; };
 		AE21B30D24E43AF2003095F0 /* ImpactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B30C24E43AF2003095F0 /* ImpactViewController.swift */; };
 		AE21B31024E5DC04003095F0 /* PickupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B30F24E5DC04003095F0 /* PickupController.swift */; };
 		AE21B31424EC8B18003095F0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B31324EC8B18003095F0 /* User.swift */; };
@@ -83,7 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE21B30924E43292003095F0 /* BuildFile in Frameworks */,
+				AE21B30924E43292003095F0 /* OktaAuth in Frameworks */,
 				4E21FFBDD1D3A9EEE39B56CC /* Pods_labs_ios_starter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -204,7 +204,6 @@
 				25BC7139A76B1C8C094C7271 /* Pods-labs-ios-starter.debug.xcconfig */,
 				B6F13EEA56B5137EC853D35C /* Pods-labs-ios-starter.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -256,7 +255,7 @@
 			);
 			name = "labs-ios-starter";
 			packageProductDependencies = (
-				AE21B30824E43292003095F0 /* SwiftPackageProductDependency */,
+				AE21B30824E43292003095F0 /* OktaAuth */,
 			);
 			productName = LabsScaffolding;
 			productReference = 466C4270249A8748007D033E /* Eco-Soap.app */;
@@ -287,7 +286,7 @@
 			);
 			mainGroup = 466C4267249A8748007D033E;
 			packageReferences = (
-				AE21B30724E43292003095F0 /* RemoteSwiftPackageReference */,
+				AE21B30724E43292003095F0 /* XCRemoteSwiftPackageReference "OktaAuth" */,
 			);
 			productRefGroup = 466C4271249A8748007D033E /* Products */;
 			projectDirPath = "";
@@ -328,7 +327,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		DA504501A5A6AFEC9175D65E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -591,7 +590,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		AE21B30724E43292003095F0 /* RemoteSwiftPackageReference */ = {
+		AE21B30724E43292003095F0 /* XCRemoteSwiftPackageReference "OktaAuth" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:SpencerCurtis/OktaAuth.git";
 			requirement = {
@@ -602,9 +601,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		AE21B30824E43292003095F0 /* SwiftPackageProductDependency */ = {
+		AE21B30824E43292003095F0 /* OktaAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = AE21B30724E43292003095F0 /* RemoteSwiftPackageReference */;
+			package = AE21B30724E43292003095F0 /* XCRemoteSwiftPackageReference "OktaAuth" */;
 			productName = OktaAuth;
 		};
 /* End XCSwiftPackageProductDependency section */
