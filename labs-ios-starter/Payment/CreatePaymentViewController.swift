@@ -37,38 +37,63 @@ class CreatePaymentViewController: UIViewController {
     // MARK: - PAYMENT BUTTON
     @IBAction func ACHTapped(_ sender: Any) {
         isACH = true
+        ACHButton.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
         isCredit = false
+        creditButton.setImage(UIImage(systemName: "circle"), for: .normal)
         isDebit = false
+        debitButton.setImage(UIImage(systemName: "circle"), for: .normal)
         isWire = false
+        wireButton.setImage(UIImage(systemName: "circle"), for: .normal)
         isOther = false
+        otherButton.setImage(UIImage(systemName: "circle"), for: .normal)
     }
     @IBAction func creditTapped(_ sender: Any) {
         isACH = false
+        ACHButton.setImage(UIImage(systemName: "circle"), for: .normal)
         isCredit = true
+        creditButton.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
         isDebit = false
+        debitButton.setImage(UIImage(systemName: "circle"), for: .normal)
         isWire = false
+        wireButton.setImage(UIImage(systemName: "circle"), for: .normal)
         isOther = false
+        otherButton.setImage(UIImage(systemName: "circle"), for: .normal)
     }
     @IBAction func debitTapped(_ sender: Any) {
         isACH = false
+        ACHButton.setImage(UIImage(systemName: "circle"), for: .normal)
         isCredit = false
+        creditButton.setImage(UIImage(systemName: "circle"), for: .normal)
         isDebit = true
+        debitButton.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
         isWire = false
+        wireButton.setImage(UIImage(systemName: "circle"), for: .normal)
         isOther = false
+        otherButton.setImage(UIImage(systemName: "circle"), for: .normal)
     }
     @IBAction func wireTapped(_ sender: Any) {
         isACH = false
+        ACHButton.setImage(UIImage(systemName: "circle"), for: .normal)
         isCredit = false
+        creditButton.setImage(UIImage(systemName: "circle"), for: .normal)
         isDebit = false
+        debitButton.setImage(UIImage(systemName: "circle"), for: .normal)
         isWire = true
+        wireButton.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
         isOther = false
+        otherButton.setImage(UIImage(systemName: "circle"), for: .normal)
     }
     @IBAction func otherTapped(_ sender: Any) {
         isACH = false
+        ACHButton.setImage(UIImage(systemName: "circle"), for: .normal)
         isCredit = false
+        creditButton.setImage(UIImage(systemName: "circle"), for: .normal)
         isDebit = false
+        debitButton.setImage(UIImage(systemName: "circle"), for: .normal)
         isWire = false
+        wireButton.setImage(UIImage(systemName: "circle"), for: .normal)
         isOther = true
+        otherButton.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
     }
     
     
