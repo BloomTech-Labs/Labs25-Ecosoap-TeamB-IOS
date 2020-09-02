@@ -119,8 +119,9 @@ class CreatePaymentViewController: UIViewController {
             self.paymentMethod = PaymentMethod.oth.rawValue
         }
         guard paymentMethod != "" else { return }
+        guard let amountInInt = Int(amount) else {return}
         
-        paymentController.createAPayment(amount: amount, date: date, paymentMehod: paymentMethod, id: id)
+        paymentController.createAPayment(amount: amountInInt, date: date, paymentMehod: paymentMethod, id: id)
         navigationController?.popViewController(animated: true)
     }
     
