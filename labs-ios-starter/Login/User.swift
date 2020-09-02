@@ -13,5 +13,8 @@ struct User: Codable {
     let email: String?
     let firstName: String?
     let lasrName: String?
+    let middleName: String?
+    let skype: String?
+    let phone: String?
     let properties: [Property]?
 }
