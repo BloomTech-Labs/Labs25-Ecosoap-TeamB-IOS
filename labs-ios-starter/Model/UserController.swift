@@ -18,7 +18,7 @@ enum UserByID {
                 lastName
                 email
                 phone
-                address
+                skype
                 properties
             }
         }
