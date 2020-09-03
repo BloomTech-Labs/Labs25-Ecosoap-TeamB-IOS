@@ -10,6 +10,9 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
+    var user: User?
+    var isEditClicked: Bool = false
+    
     //MARK: -UIOutlets
     @IBOutlet var idLabel: UILabel!
     @IBOutlet var firstName: UITextField!
@@ -26,7 +29,20 @@ class ProfileViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    func setupViews() {
+        guard let user = user else {return}
+        idLabel.text = user.id ?? ""
+        firstName.text = user.firstName ?? ""
+        lastName.text = user.lasrName ?? ""
+        middleName.text = user.middleName ?? ""
+        email.text = user.email ?? ""
+        skype.text = user.skype ?? ""
+        phone.text = user.phone ?? ""
+        button.title = "Edit"
+    }
+    
     @IBAction func buttonTapped(_ sender: Any) {
+        isEditing.toggle()
     }
     
 
