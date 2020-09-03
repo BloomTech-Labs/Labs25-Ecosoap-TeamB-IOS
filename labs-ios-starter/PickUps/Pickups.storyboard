@@ -184,17 +184,6 @@
                                     <constraint firstAttribute="height" constant="162" id="mzh-z8-Ibt"/>
                                 </constraints>
                             </datePicker>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ybX-ep-Jdy">
-                                <rect key="frame" x="120" y="615" width="174" height="48"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <state key="normal" title="Schedule">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="schedulePressed:" destination="Gq1-Av-gap" eventType="touchUpInside" id="28o-4Z-oat"/>
-                                </connections>
-                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="s4s-Eg-80m">
                                 <rect key="frame" x="40" y="412" width="58.5" height="182.5"/>
                                 <subviews>
@@ -265,7 +254,36 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="7rs-GN-aCr" firstAttribute="leading" secondItem="e6z-Kd-SpB" secondAttribute="leading" id="3gA-J5-BRt"/>
+                                    <constraint firstAttribute="trailing" secondItem="hfV-6U-v3U" secondAttribute="trailing" id="5UE-xk-a47"/>
+                                    <constraint firstItem="Chi-iU-DmF" firstAttribute="leading" secondItem="e6z-Kd-SpB" secondAttribute="leading" id="6iY-Sx-6Rb"/>
+                                    <constraint firstItem="8Eo-KA-ZXH" firstAttribute="top" secondItem="hfV-6U-v3U" secondAttribute="bottom" constant="7" id="6px-Po-oJr"/>
+                                    <constraint firstItem="SwA-tL-b5O" firstAttribute="top" secondItem="e6z-Kd-SpB" secondAttribute="top" id="CeS-Y5-Yu7"/>
+                                    <constraint firstAttribute="trailing" secondItem="SwA-tL-b5O" secondAttribute="trailing" id="HO7-fA-y4g"/>
+                                    <constraint firstItem="Chi-iU-DmF" firstAttribute="top" secondItem="7rs-GN-aCr" secondAttribute="bottom" constant="7" id="Mfj-CU-CVc"/>
+                                    <constraint firstItem="SwA-tL-b5O" firstAttribute="leading" secondItem="e6z-Kd-SpB" secondAttribute="leading" id="Qvw-ux-0EX"/>
+                                    <constraint firstItem="hfV-6U-v3U" firstAttribute="leading" secondItem="e6z-Kd-SpB" secondAttribute="leading" id="Qy7-Xl-rzE"/>
+                                    <constraint firstAttribute="trailing" secondItem="Chi-iU-DmF" secondAttribute="trailing" id="auD-IN-Gws"/>
+                                    <constraint firstAttribute="trailing" secondItem="7rs-GN-aCr" secondAttribute="trailing" id="gSn-sp-50B"/>
+                                    <constraint firstAttribute="bottom" secondItem="Chi-iU-DmF" secondAttribute="bottom" id="sPl-ds-Dxo"/>
+                                    <constraint firstItem="hfV-6U-v3U" firstAttribute="top" secondItem="SwA-tL-b5O" secondAttribute="bottom" constant="7" id="sqb-zB-jFZ"/>
+                                    <constraint firstItem="7rs-GN-aCr" firstAttribute="top" secondItem="8Eo-KA-ZXH" secondAttribute="bottom" constant="7" id="v5f-Wb-0Lk"/>
+                                    <constraint firstAttribute="trailing" secondItem="8Eo-KA-ZXH" secondAttribute="trailing" id="yQ6-3n-nmQ"/>
+                                    <constraint firstItem="8Eo-KA-ZXH" firstAttribute="leading" secondItem="e6z-Kd-SpB" secondAttribute="leading" id="yhr-6k-XhC"/>
+                                </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ybX-ep-Jdy">
+                                <rect key="frame" x="100" y="650" width="214" height="48"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Schedule">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="schedulePressed:" destination="Gq1-Av-gap" eventType="touchUpInside" id="28o-4Z-oat"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -275,12 +293,13 @@
                             <constraint firstItem="gJN-DH-WuZ" firstAttribute="top" secondItem="zEP-Ll-Run" secondAttribute="top" constant="20" id="9ja-E8-PGQ"/>
                             <constraint firstItem="s4s-Eg-80m" firstAttribute="top" secondItem="MYo-8g-ZXP" secondAttribute="bottom" constant="40" id="BP8-Tv-WnU"/>
                             <constraint firstItem="5IR-PX-04y" firstAttribute="leading" secondItem="zEP-Ll-Run" secondAttribute="leading" constant="197" id="Cmm-uR-MzG"/>
+                            <constraint firstItem="ybX-ep-Jdy" firstAttribute="leading" secondItem="zEP-Ll-Run" secondAttribute="leading" constant="100" id="GNe-cY-11d"/>
                             <constraint firstItem="MYo-8g-ZXP" firstAttribute="top" secondItem="gJN-DH-WuZ" secondAttribute="bottom" constant="20" id="IH6-PI-iKp"/>
-                            <constraint firstItem="zEP-Ll-Run" firstAttribute="bottom" secondItem="ybX-ep-Jdy" secondAttribute="bottom" constant="150" id="T2H-Tm-xdb"/>
-                            <constraint firstItem="ybX-ep-Jdy" firstAttribute="leading" secondItem="zEP-Ll-Run" secondAttribute="leading" constant="120" id="Ux9-Ea-PnK"/>
-                            <constraint firstItem="zEP-Ll-Run" firstAttribute="trailing" secondItem="ybX-ep-Jdy" secondAttribute="trailing" constant="120" id="VZS-Lj-Go9"/>
+                            <constraint firstItem="ybX-ep-Jdy" firstAttribute="centerX" secondItem="QMd-j8-5ZD" secondAttribute="centerX" id="UbE-fJ-G37"/>
+                            <constraint firstItem="zEP-Ll-Run" firstAttribute="trailing" secondItem="ybX-ep-Jdy" secondAttribute="trailing" constant="100" id="VxM-lz-ukB"/>
                             <constraint firstItem="MYo-8g-ZXP" firstAttribute="leading" secondItem="zEP-Ll-Run" secondAttribute="leading" id="eYm-z6-8LV"/>
                             <constraint firstItem="gJN-DH-WuZ" firstAttribute="centerX" secondItem="QMd-j8-5ZD" secondAttribute="centerX" id="kP6-Rz-Jge"/>
+                            <constraint firstItem="ybX-ep-Jdy" firstAttribute="top" secondItem="e6z-Kd-SpB" secondAttribute="bottom" constant="50" id="lDH-Lh-6Ki"/>
                             <constraint firstItem="MYo-8g-ZXP" firstAttribute="trailing" secondItem="zEP-Ll-Run" secondAttribute="trailing" id="lk3-WC-YAx"/>
                             <constraint firstItem="e6z-Kd-SpB" firstAttribute="top" secondItem="MYo-8g-ZXP" secondAttribute="bottom" constant="30" id="sgP-oj-3Az"/>
                             <constraint firstItem="e6z-Kd-SpB" firstAttribute="leading" secondItem="s4s-Eg-80m" secondAttribute="trailing" constant="20" id="wr8-Nc-Qn3"/>
