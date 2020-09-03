@@ -24,7 +24,7 @@ class ImpactViewController: UIViewController {
     }
     // MARK: - UI Properties
     
-    @IBOutlet var propertyIDLabel: UILabel!
+    @IBOutlet private var propertyIDLabel: UILabel!
     @IBOutlet private var soapLabel: UILabel!
     @IBOutlet private var LinesnsLabel: UILabel!
     @IBOutlet private var bottlesLabel: UILabel!
@@ -34,7 +34,7 @@ class ImpactViewController: UIViewController {
     
     func updateView() {
         
-        guard let propertyID = defaults.string(forKey: "propertyID") else {return}
+        guard let propertyID = defaults.string(forKey: "propertyID") else { return }
         
         impactController.fetchImpact(id: propertyID) { impact in
             do {

@@ -12,15 +12,15 @@ class PaymentDetailViewController: UIViewController {
 
     var payment: Payment?
     
-    //MARK: -UIOutlets
-    @IBOutlet var amountLabel: UILabel!
-    @IBOutlet var contractLabel: UILabel!
-    @IBOutlet var invoiceEndLabel: UILabel!
-    @IBOutlet var invoiceStartLabel: UILabel!
-    @IBOutlet var invoiceLabel: UITextView!
-    @IBOutlet var paymentMethodLabel: UILabel!
-    @IBOutlet var amountDueLabel: UILabel!
-    @IBOutlet var paymentIDLabel: UILabel!
+    // MARK: - UIOutlets
+    @IBOutlet private var amountLabel: UILabel!
+    @IBOutlet private var contractLabel: UILabel!
+    @IBOutlet private var invoiceEndLabel: UILabel!
+    @IBOutlet private var invoiceStartLabel: UILabel!
+    @IBOutlet private var invoiceLabel: UITextView!
+    @IBOutlet private var paymentMethodLabel: UILabel!
+    @IBOutlet private var amountDueLabel: UILabel!
+    @IBOutlet private var paymentIDLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +29,7 @@ class PaymentDetailViewController: UIViewController {
     }
     
     func setupView() {
-        guard let payment = payment else {return}
+        guard let payment = payment else { return }
 
         invoiceLabel.isUserInteractionEnabled = false
         amountLabel.text = "\(payment.amountPaid ?? 0)"
