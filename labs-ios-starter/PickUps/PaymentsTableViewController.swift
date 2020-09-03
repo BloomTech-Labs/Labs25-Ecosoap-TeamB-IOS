@@ -44,11 +44,11 @@ class PaymentsTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        1
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        guard let propertyID = defaults.string(forKey: "propertyID") else { return ""}
+        guard let propertyID = defaults.string(forKey: "propertyID") else { return "" }
         return "\(propertyID)"
     }
     
@@ -74,7 +74,7 @@ class PaymentsTableViewController: UITableViewController {
             guard let addVC = segue.destination as? CreatePaymentViewController else { return }
             addVC.paymentController = paymentController
         } else if segue.identifier == "PaymentDetailSegue" {
-            guard let detailVC = segue.destination as? PaymentDetailViewController, let indexPath = tableView.indexPathForSelectedRow else {return}
+            guard let detailVC = segue.destination as? PaymentDetailViewController, let indexPath = tableView.indexPathForSelectedRow else { return }
             let payment = payments?[indexPath.row]
             detailVC.payment = payment
         }
