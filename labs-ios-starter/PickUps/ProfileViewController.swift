@@ -16,7 +16,7 @@ class ProfileViewController: UIViewController {
         }
     }
     var isEditClicked: Bool = false
-    var userController: UserController?
+    var userController = UserController()
     // MARK: - UIOutlets
     @IBOutlet var idLabel: UILabel!
     @IBOutlet var firstName: UITextField!
@@ -36,7 +36,15 @@ class ProfileViewController: UIViewController {
     }
     
     func setupViews() {
-        guard let user = user else {return}
+        
+        userController.fetchUserData(id: "UserId1", completion: { result in
+            do {
+                let user = try result.get()
+                self.user = user
+            } catch {
+                NSLog("fetching user info failed")
+            }
+        })
         idLabel.isUserInteractionEnabled = false
         firstName.isUserInteractionEnabled = false
         lastName.isUserInteractionEnabled = false
@@ -44,7 +52,7 @@ class ProfileViewController: UIViewController {
         email.isUserInteractionEnabled = false
         skype.isUserInteractionEnabled = false
         phone.isUserInteractionEnabled = false
-        
+        guard let user = user else {return}
         idLabel.text = user.id ?? ""
         firstName.text = user.firstName ?? ""
         lastName.text = user.lasrName ?? ""
@@ -68,12 +76,16 @@ class ProfileViewController: UIViewController {
             phone.isUserInteractionEnabled = true
         } else if isEditing == false {
             button.title = "Edit"
+            guard let firstNameChanged = firstName.text, !firstNameChanged.isEmpty, let lastNameChanged = lastName.text, !lastNameChanged.isEmpty, let middleNameChanged = middleName.text, let emailChanged = email.text, !emailChanged.isEmpty, let phoneChanged = phone.text, !phoneChanged.isEmpty, let skypeChanged = skype.text, !skypeChanged.isEmpty else {return}
+            
             firstName.isUserInteractionEnabled = false
             lastName.isUserInteractionEnabled = false
             middleName.isUserInteractionEnabled = false
             email.isUserInteractionEnabled = false
             skype.isUserInteractionEnabled = false
             phone.isUserInteractionEnabled = false
+            
+            
         }
         
     }
