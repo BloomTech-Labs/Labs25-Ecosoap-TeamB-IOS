@@ -36,6 +36,7 @@
 		AE21B31E24F7F657003095F0 /* PaymentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B31D24F7F657003095F0 /* PaymentController.swift */; };
 		AE21B32024F7F66B003095F0 /* CreatePaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B31F24F7F66B003095F0 /* CreatePaymentViewController.swift */; };
 		AE21B32324F7F6D0003095F0 /* PaymentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B32224F7F6D0003095F0 /* PaymentsTableViewController.swift */; };
+		AE2D3D862501403300DAF921 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2D3D852501403300DAF921 /* ProfileViewController.swift */; };
 		AE4DE2F324FE513200839480 /* PaymentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4DE2F224FE513200839480 /* PaymentDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +73,7 @@
 		AE21B31D24F7F657003095F0 /* PaymentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PaymentController.swift; path = "labs-ios-starter/PickUps/PaymentController.swift"; sourceTree = SOURCE_ROOT; };
 		AE21B31F24F7F66B003095F0 /* CreatePaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePaymentViewController.swift; sourceTree = "<group>"; };
 		AE21B32224F7F6D0003095F0 /* PaymentsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PaymentsTableViewController.swift; path = "labs-ios-starter/PickUps/PaymentsTableViewController.swift"; sourceTree = SOURCE_ROOT; };
+		AE2D3D852501403300DAF921 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = "labs-ios-starter/PickUps/ProfileViewController.swift"; sourceTree = SOURCE_ROOT; };
 		AE4DE2F224FE513200839480 /* PaymentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailViewController.swift; sourceTree = SOURCE_ROOT; };
 		B6F13EEA56B5137EC853D35C /* Pods-labs-ios-starter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-labs-ios-starter.release.xcconfig"; path = "Target Support Files/Pods-labs-ios-starter/Pods-labs-ios-starter.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -191,6 +193,7 @@
 		46BEB4F224C98F1100FE0CD1 /* Profiles */ = {
 			isa = PBXGroup;
 			children = (
+				AE2D3D852501403300DAF921 /* ProfileViewController.swift */,
 			);
 			path = Profiles;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				AE21B32024F7F66B003095F0 /* CreatePaymentViewController.swift in Sources */,
 				AE21B31E24F7F657003095F0 /* PaymentController.swift in Sources */,
 				AE21B31A24F60A0C003095F0 /* SchedulePickupViewController.swift in Sources */,
+				AE2D3D862501403300DAF921 /* ProfileViewController.swift in Sources */,
 				46BEB4E524C98CDC00FE0CD1 /* LoginViewController.swift in Sources */,
 				466C4276249A8748007D033E /* SceneDelegate.swift in Sources */,
 			);

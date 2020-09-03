@@ -516,7 +516,7 @@
         <!--Profile-->
         <scene sceneID="BCJ-ov-d7q">
             <objects>
-                <viewController id="iv4-Wu-uvp" customClass="ProfileDetailViewController" customModule="Eco_Soap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="iv4-Wu-uvp" customClass="ProfileViewController" customModule="Eco_Soap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="N1u-LA-j4m">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -634,7 +634,23 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MXa-dR-Pru"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Profile" id="NGs-DR-hpd"/>
+                    <navigationItem key="navigationItem" title="Profile" id="NGs-DR-hpd">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="LhZ-f3-COq">
+                            <connections>
+                                <action selector="buttonTapped:" destination="iv4-Wu-uvp" id="nrC-0N-qvP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="button" destination="LhZ-f3-COq" id="Bli-3F-TYV"/>
+                        <outlet property="email" destination="jeV-4j-Sfv" id="2Bu-aO-zqp"/>
+                        <outlet property="firstName" destination="Yey-pN-P3T" id="Nuu-BM-xwb"/>
+                        <outlet property="idLabel" destination="NIz-ph-Z1q" id="Stl-1A-BdV"/>
+                        <outlet property="lastName" destination="8Oc-0M-ovh" id="ZJ8-iU-hQw"/>
+                        <outlet property="middleName" destination="iYy-Jc-hnF" id="FhL-r2-2CA"/>
+                        <outlet property="phone" destination="D76-vM-Eeq" id="75r-qh-6gG"/>
+                        <outlet property="skype" destination="DSR-zI-DGJ" id="BKc-Mc-oD0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jIr-97-2Ze" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
