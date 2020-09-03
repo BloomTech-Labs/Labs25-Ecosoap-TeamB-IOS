@@ -13,16 +13,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: ebd40293f4aa8d0c86e80d7a0aa2ccdd3e6895be
 
-DEPENDENCIES:
-  - SwiftLint
-
-SPEC REPOS:
-  trunk:
-    - SwiftLint
-
-SPEC CHECKSUMS:
-  SwiftLint: bbfed21bf4451dcbd0f5cdbee44a18e06cf91b12
-
-PODFILE CHECKSUM: ebd40293f4aa8d0c86e80d7a0aa2ccdd3e6895be
-
-COCOAPODS: 1.9.1
+COCOAPODS: 1.9.3
