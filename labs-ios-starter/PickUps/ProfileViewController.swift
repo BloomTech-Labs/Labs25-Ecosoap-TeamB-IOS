@@ -29,12 +29,22 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupViews()
     }
     
     func setupViews() {
         guard let user = user else {return}
+        idLabel.isUserInteractionEnabled = false
+        firstName.isUserInteractionEnabled = false
+        lastName.isUserInteractionEnabled = false
+        middleName.isUserInteractionEnabled = false
+        email.isUserInteractionEnabled = false
+        skype.isUserInteractionEnabled = false
+        phone.isUserInteractionEnabled = false
+        
         idLabel.text = user.id ?? ""
         firstName.text = user.firstName ?? ""
         lastName.text = user.lasrName ?? ""
@@ -52,6 +62,7 @@ class ProfileViewController: UIViewController {
         } else {
             button.title = "Edit"
         }
+        
         
         
     }
