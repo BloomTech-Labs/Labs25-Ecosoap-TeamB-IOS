@@ -10,10 +10,14 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    var user: User?
+    var user: User? {
+        didSet {
+            setupViews()
+        }
+    }
     var isEditClicked: Bool = false
-    
-    //MARK: -UIOutlets
+    var userController: UserController?
+    // MARK: - UIOutlets
     @IBOutlet var idLabel: UILabel!
     @IBOutlet var firstName: UITextField!
     @IBOutlet var lastName: UITextField!
@@ -43,6 +47,13 @@ class ProfileViewController: UIViewController {
     
     @IBAction func buttonTapped(_ sender: Any) {
         isEditing.toggle()
+        if isEditing {
+            button.title = "Save"
+        } else {
+            button.title = "Edit"
+        }
+        
+        
     }
     
 
