@@ -19,7 +19,9 @@ enum UserByID {
                 email
                 phone
                 skype
-                properties
+                properties {
+                    id
+                }
             }
         }
     }

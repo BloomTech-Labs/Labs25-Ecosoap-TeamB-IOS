@@ -40,7 +40,10 @@ class ProfileViewController: UIViewController {
         userController.fetchUserData(id: "UserId1", completion: { result in
             do {
                 let user = try result.get()
-                self.user = user
+                DispatchQueue.main.async {
+                    self.user = user
+                }
+                
             } catch {
                 NSLog("fetching user info failed")
             }
