@@ -57,13 +57,24 @@ class ProfileViewController: UIViewController {
     
     @IBAction func buttonTapped(_ sender: Any) {
         isEditing.toggle()
+        
         if isEditing {
             button.title = "Save"
-        } else {
+            firstName.isUserInteractionEnabled = true
+            lastName.isUserInteractionEnabled = true
+            middleName.isUserInteractionEnabled = true
+            email.isUserInteractionEnabled = true
+            skype.isUserInteractionEnabled = true
+            phone.isUserInteractionEnabled = true
+        } else if isEditing == false {
             button.title = "Edit"
+            firstName.isUserInteractionEnabled = false
+            lastName.isUserInteractionEnabled = false
+            middleName.isUserInteractionEnabled = false
+            email.isUserInteractionEnabled = false
+            skype.isUserInteractionEnabled = false
+            phone.isUserInteractionEnabled = false
         }
-        
-        
         
     }
     
