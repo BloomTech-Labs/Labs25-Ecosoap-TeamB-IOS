@@ -75,7 +75,6 @@ class ProfileViewController: UIViewController {
             skype.isUserInteractionEnabled = true
             phone.isUserInteractionEnabled = true
         } else if isEditing == false {
-            button.title = "Edit"
             guard let firstNameChanged = firstName.text, !firstNameChanged.isEmpty, let lastNameChanged = lastName.text, !lastNameChanged.isEmpty, let middleNameChanged = middleName.text, let emailChanged = email.text, !emailChanged.isEmpty, let phoneChanged = phone.text, !phoneChanged.isEmpty, let skypeChanged = skype.text, !skypeChanged.isEmpty else {return}
             
             firstName.isUserInteractionEnabled = false
@@ -85,7 +84,7 @@ class ProfileViewController: UIViewController {
             skype.isUserInteractionEnabled = false
             phone.isUserInteractionEnabled = false
             
-            
+            button.title = "Edit"
         }
         
     }
