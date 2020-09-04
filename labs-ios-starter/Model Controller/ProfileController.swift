@@ -186,7 +186,11 @@ class ProfileController {
         dataTask.resume()
     }
     
-    func updateAuthenticatedUserProfile(_ profile: Profile, with name: String, email: String, avatarURL: URL, completion: @escaping (Profile) -> Void) {
+    func updateAuthenticatedUserProfile(_ profile: Profile,
+                                        with name: String,
+                                        email: String,
+                                        avatarURL: URL,
+                                        completion: @escaping (Profile) -> Void) {
         
         var oktaCredentials: OktaCredentials
         
