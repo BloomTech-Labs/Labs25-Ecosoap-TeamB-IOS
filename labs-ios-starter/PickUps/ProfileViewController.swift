@@ -18,14 +18,14 @@ class ProfileViewController: UIViewController {
     var isEditClicked: Bool = false
     var userController = UserController()
     // MARK: - UIOutlets
-    @IBOutlet var idLabel: UILabel!
-    @IBOutlet var firstName: UITextField!
-    @IBOutlet var lastName: UITextField!
-    @IBOutlet var middleName: UITextField!
-    @IBOutlet var email: UITextField!
-    @IBOutlet var skype: UITextField!
-    @IBOutlet var phone: UITextField!
-    @IBOutlet var button: UIBarButtonItem!
+    @IBOutlet private var idLabel: UILabel!
+    @IBOutlet private var firstName: UITextField!
+    @IBOutlet private var lastName: UITextField!
+    @IBOutlet private var middleName: UITextField!
+    @IBOutlet private var email: UITextField!
+    @IBOutlet private var skype: UITextField!
+    @IBOutlet private var phone: UITextField!
+    @IBOutlet private var button: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +55,7 @@ class ProfileViewController: UIViewController {
         email.isUserInteractionEnabled = false
         skype.isUserInteractionEnabled = false
         phone.isUserInteractionEnabled = false
-        guard let user = user else {return}
+        guard let user = user else { return }
         idLabel.text = user.id ?? ""
         firstName.text = user.firstName ?? ""
         lastName.text = user.lasrName ?? ""
@@ -78,7 +78,17 @@ class ProfileViewController: UIViewController {
             skype.isUserInteractionEnabled = true
             phone.isUserInteractionEnabled = true
         } else if isEditing == false {
-            guard let firstNameChanged = firstName.text, !firstNameChanged.isEmpty, let lastNameChanged = lastName.text, !lastNameChanged.isEmpty, let middleNameChanged = middleName.text, let emailChanged = email.text, !emailChanged.isEmpty, let phoneChanged = phone.text, !phoneChanged.isEmpty, let skypeChanged = skype.text, !skypeChanged.isEmpty else {return}
+            guard let firstNameChanged = firstName.text,
+                !firstNameChanged.isEmpty,
+                let lastNameChanged = lastName.text,
+                !lastNameChanged.isEmpty,
+                let middleNameChanged = middleName.text,
+                let emailChanged = email.text,
+                !emailChanged.isEmpty,
+                let phoneChanged = phone.text,
+                !phoneChanged.isEmpty,
+                let skypeChanged = skype.text,
+                !skypeChanged.isEmpty else { return }
             
             firstName.isUserInteractionEnabled = false
             lastName.isUserInteractionEnabled = false
