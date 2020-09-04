@@ -11,7 +11,7 @@
         <scene sceneID="MFu-kE-uYA">
             <objects>
                 <navigationController id="qCg-8S-Uib" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Impact Tracking" selectedImage="doc.text.magnifyingglass" catalog="system" id="y3G-Lb-i3M"/>
+                    <tabBarItem key="tabBarItem" title="Impact Tracking" image="doc.text.magnifyingglass" catalog="system" id="y3G-Lb-i3M"/>
                     <navigationItem key="navigationItem" id="GgI-wq-2xR"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bOR-gw-RcR">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
