@@ -8,6 +8,25 @@
 
 import Foundation
 
+enum Update {
+    static let update = """
+        mutation Update($input:UpdateUserProfileInput) {
+            updateUserProfile(input: $input) {
+                user {
+                    id
+                    firstName
+                    lastName
+                    middleName
+                    email
+                    password
+                    phone
+                    skype
+                }
+            }
+        }
+    """
+}
+
 enum UserByID {
     static let user = """
     query UserbyID($input: UserByIdInput) {
@@ -74,6 +93,11 @@ enum TheProperty {
 
 class UserController {
     let url = URL(string: "http://35.208.9.187:9095/ios-api-2")!
+    
+    func updateUserInfo(id: String, firstName: String, lastName: String, middleName: String, email: String, skype: String, phone: String) {
+        
+    }
+    
     
     func fetchUserData(id: String, completion: @escaping (Result<User, Error>) -> Void) {
         
