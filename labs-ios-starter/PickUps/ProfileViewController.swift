@@ -58,7 +58,7 @@ class ProfileViewController: UIViewController {
         guard let user = user else { return }
         idLabel.text = user.id ?? ""
         firstName.text = user.firstName ?? ""
-        lastName.text = user.lasrName ?? ""
+        lastName.text = user.lastName ?? ""
         middleName.text = user.middleName ?? ""
         email.text = user.email ?? ""
         skype.text = user.skype ?? ""
@@ -89,6 +89,16 @@ class ProfileViewController: UIViewController {
                 !phoneChanged.isEmpty,
                 let skypeChanged = skype.text,
                 !skypeChanged.isEmpty else { return }
+            
+            userController.updateUserInfo(id: "UserId1", firstName: firstNameChanged, lastName: lastNameChanged, middleName: middleNameChanged, email: emailChanged, skype: skypeChanged, phone: phoneChanged, completion: { result in
+                
+                guard let userUpdated = try? result.get() else { return }
+                
+                DispatchQueue.main.async {
+                    self.user = userUpdated
+                    self.view.reloadInputViews()
+                }
+            })
             
             firstName.isUserInteractionEnabled = false
             lastName.isUserInteractionEnabled = false
