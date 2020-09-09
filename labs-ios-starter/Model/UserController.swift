@@ -106,7 +106,7 @@ class UserController {
                                        "email": email,
                                        "skype": skype,
                                        "phone": phone]
-        let body: [String: Any] = ["query": query, "variables":["input": variable]]
+        let body: [String: Any] = ["query": query, "variables": ["input": variable]]
         
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         do {
