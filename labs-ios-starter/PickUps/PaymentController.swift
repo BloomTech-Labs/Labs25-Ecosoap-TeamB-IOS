@@ -55,14 +55,16 @@ class PaymentController {
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
         let variable: [String: Any] = ["amountPaid": amount,
                                        "date": date,
                                        "paymentMethod": paymentMehod,
                                        "hospitalityContractId": id]
         let query = CreatePayment.create
-        let body: [String: Any] = ["query": query, "variables": ["input": variable]]
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
+        let body: [String: Any] = ["query": query,
+                                   "variables": ["input": variable]]
+
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
         } catch {
@@ -71,13 +73,20 @@ class PaymentController {
             return
         }
         
-        URLSession.shared.dataTask(with: request) { _, _, error in
+        URLSession.shared.dataTask(with: request) { _, response, error in
             if let error = error {
                 NSLog("\(error)")
                 completion(error)
                 return
             }
-            
+
+            if let response = response as? HTTPURLResponse,
+                response.statusCode != 200 {
+                NSLog("createAPayment: Server returned \(response.statusCode) instead of success(200).")
+                completion(nil) // FIXME: What is the correct thing to return here?
+            }
+
+            print("createAPayment successful.")
             completion(nil)
         }.resume()
     }
