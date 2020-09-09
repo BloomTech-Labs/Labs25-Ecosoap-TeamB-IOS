@@ -7,11 +7,33 @@
 //
 
 import UIKit
+import Stripe
 
 class CreatePaymentViewController: UIViewController {
 
-    
-    // MARK: - UIOutlets
+    // MARK: - Properites
+    lazy var cardTextField: STPPaymentCardTextField = {
+        let cardTextField = STPPaymentCardTextField()
+        return cardTextField
+    }()
+
+    lazy var payButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.layer.cornerRadius = 5
+        button.backgroundColor = .systemBlue
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 22)
+        button.setTitle("Pay", for: .normal)
+        button.addTarget(self, action: #selector(pay), for: .touchUpInside)
+        return button
+    }()
+
+    @objc
+    func pay() {
+        // ...
+        print("pay button pressed")
+    }
+
+    // MARK: - Actions
     @IBOutlet private var idTextField: UITextField!
     @IBOutlet private var dateTextField: UITextField!
     @IBOutlet private var amountTextField: UITextField!
@@ -29,12 +51,25 @@ class CreatePaymentViewController: UIViewController {
     var paymentMethod: String = ""
     var paymentController: PaymentController?
     
+    // MARK: - View Lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.backgroundColor = .white
+        let stackView = UIStackView(arrangedSubviews: [cardTextField, payButton])
+        stackView.axis = .vertical
+        stackView.spacing = 20
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(stackView)
+        NSLayoutConstraint.activate([
+            stackView.leftAnchor.constraint(equalToSystemSpacingAfter: view.leftAnchor, multiplier: 2),
+            view.rightAnchor.constraint(equalToSystemSpacingAfter: stackView.rightAnchor, multiplier: 2),
+            stackView.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 2),
+        ])
     }
-    
-    // MARK: - PAYMENT BUTTON
+
+    // MARK: - Outlets
+
     @IBAction func ACHTapped(_ sender: Any) {
         isACH = true
         ACHButton.setImage(UIImage(systemName: "checkmark.circle.fill"), for: .normal)
@@ -47,6 +82,7 @@ class CreatePaymentViewController: UIViewController {
         isOther = false
         otherButton.setImage(UIImage(systemName: "circle"), for: .normal)
     }
+
     @IBAction func creditTapped(_ sender: Any) {
         isACH = false
         ACHButton.setImage(UIImage(systemName: "circle"), for: .normal)
@@ -124,5 +160,7 @@ class CreatePaymentViewController: UIViewController {
         paymentController.createAPayment(amount: amountInInt, date: date, paymentMehod: paymentMethod, id: id)
         navigationController?.popViewController(animated: true)
     }
-    
+
+    // MARK: - Private
+
 }
