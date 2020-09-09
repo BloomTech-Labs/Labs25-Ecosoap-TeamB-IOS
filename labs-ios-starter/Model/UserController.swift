@@ -8,6 +8,25 @@
 
 import Foundation
 
+enum Update {
+    static let update = """
+        mutation Update($input:UpdateUserProfileInput) {
+            updateUserProfile(input: $input) {
+                user {
+                    id
+                    firstName
+                    lastName
+                    middleName
+                    email
+                    password
+                    phone
+                    skype
+                }
+            }
+        }
+    """
+}
+
 enum UserByID {
     static let user = """
     query UserbyID($input: UserByIdInput) {
@@ -74,6 +93,59 @@ enum TheProperty {
 
 class UserController {
     let url = URL(string: "http://35.208.9.187:9095/ios-api-2")!
+    
+    func updateUserInfo(id: String, firstName: String, lastName: String, middleName: String, email: String, skype: String, phone: String, completion: @escaping (Result<User, Error>) -> Void) {
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        let query = Update.update
+        let variable: [String: Any] = ["id": id,
+                                       "firstName": firstName,
+                                       "lastName": lastName,
+                                       "middleName": middleName,
+                                       "email": email,
+                                       "skype": skype,
+                                       "phone": phone]
+        let body: [String: Any] = ["query": query, "variables":["input": variable]]
+        
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
+        } catch {
+            NSLog("Error update user: \(error)")
+            completion(.failure(error))
+            return
+        }
+        
+        URLSession.shared.dataTask(with: request) { data, _, error in
+            if let error = error {
+                NSLog("\(error)")
+                completion(.failure(error))
+                return
+            }
+            guard let data = data else {
+                NSLog("Data is nil")
+                return
+            }
+            
+            do {
+                let rawData = try JSONDecoder().decode([String: [String: [String: User]]].self, from: data)
+                let data = rawData["data"]
+                if let datas = data {
+                    let user = datas["updateUserProfile"]
+                    if let userNonOp = user {
+                        let result = userNonOp["user"]
+                        if let finalResult = result {
+                            completion(.success(finalResult))
+                        }
+                    }
+                }
+            } catch {
+                NSLog("\(error)")
+            }
+        }.resume()
+    }
+    
     
     func fetchUserData(id: String, completion: @escaping (Result<User, Error>) -> Void) {
         

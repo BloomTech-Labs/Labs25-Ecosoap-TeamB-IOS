@@ -10,3 +10,13 @@ August 2020
 - In Terminal, from the Labs25-Ecosoap-TeamB-IOS directory; execute `pod update` to properly initialize the [SwiftLint](https://github.com/LambdaSchool/ios-swiftlint-rules) Cocoa Pod 
 
 - Be sure to open `labs-ios-starter.xcworkspace` and not `labs-ios-starter.xcodeproj`
+
+# Features:
+
+- Pickup Scheduling and Canceling: including view for pickup history
+
+- Payment Creation: including view for payment history
+
+- Profile: view for profile info and update feature
+
+---

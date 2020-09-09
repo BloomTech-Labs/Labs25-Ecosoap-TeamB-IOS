@@ -12,7 +12,7 @@ struct User: Codable {
     let id: String?
     let email: String?
     let firstName: String?
-    let lasrName: String?
+    let lastName: String?
     let middleName: String?
     let skype: String?
     let phone: String?
