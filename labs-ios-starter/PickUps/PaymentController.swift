@@ -8,6 +8,14 @@
 
 import Foundation
 
+enum HTTPMethod: String {
+    case post   = "POST"   // Create
+    case get    = "GET"    // Read
+    case put    = "PUT"    // Update/Replace
+    case patch  = "PATCH"  // Update/Replace
+    case delete = "DELETE" // Delete
+}
+
 enum CreatePayment {
     static let create = """
     mutation CreatePayment($input: CreatePaymentInput) {
@@ -54,7 +62,7 @@ class PaymentController {
                         completion: @escaping (Error?) -> Void = { _ in }) {
         
         var request = URLRequest(url: url)
-        request.httpMethod = "POST"
+        request.httpMethod = HTTPMethod.post.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
         let variable: [String: Any] = ["amountPaid": amount,
@@ -94,7 +102,7 @@ class PaymentController {
     func fetchPaymentsByPropertyID(id: String, completion: @escaping (Result<[Payment], Error>) -> Void) {
         
         var request = URLRequest(url: url)
-        request.httpMethod = "POST"
+        request.httpMethod = HTTPMethod.post.rawValue
         
         let query = Payments.payments
         let body: [String: Any] = ["query": query, "variables": ["input": ["propertyId": id]]]
