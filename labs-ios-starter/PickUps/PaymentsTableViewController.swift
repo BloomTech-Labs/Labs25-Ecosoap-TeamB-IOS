@@ -24,6 +24,7 @@ class PaymentsTableViewController: UITableViewController {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
+        setupViews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
