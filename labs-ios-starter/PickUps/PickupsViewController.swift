@@ -9,6 +9,10 @@
 import UIKit
 import OktaAuth
 
+protocol DropDownProtocol {
+    func dropDownPressed(string: String)
+}
+
 class PickupsViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
@@ -28,7 +32,7 @@ class PickupsViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        //button = DropdownButton.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        button = DropdownButton.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Properties", for: .normal)
         self.view.addSubview(button)
@@ -96,7 +100,23 @@ extension PickupsViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 
-class DropdownButton: UIButton {
+class DropdownButton: UIButton, DropDownProtocol {
+    
+    func dropDownPressed(string: String) {
+        self.setTitle(string, for: .normal)
+        self.dismissDropDown()
+    }
+    
+    func dismissDropDown() {
+        isOpen = false
+        NSLayoutConstraint.deactivate([self.height])
+        self.height.constant = 0
+        NSLayoutConstraint.activate([self.height])
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+            self.dropdownView.center.y -= self.dropdownView.frame.height / 2
+            self.dropdownView.layoutIfNeeded()
+        }, completion: nil)
+    }
     
     var dropdownView = DropdownView()
     var height = NSLayoutConstraint()
@@ -106,6 +126,7 @@ class DropdownButton: UIButton {
         self.backgroundColor = UIColor.lightGray
         
         dropdownView = DropdownView.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        dropdownView.delegate = self
         dropdownView.translatesAutoresizingMaskIntoConstraints = false
     }
     
@@ -122,9 +143,23 @@ class DropdownButton: UIButton {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if isOpen == false {
+            isOpen = true
+            NSLayoutConstraint.deactivate([self.height])
+            self.height.constant = 150
+            NSLayoutConstraint.activate([self.height])
             
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+                self.dropdownView.layoutIfNeeded()
+            }, completion: nil)
         } else {
-             
+             isOpen = false
+            NSLayoutConstraint.deactivate([self.height])
+            self.height.constant = 0
+            NSLayoutConstraint.activate([self.height])
+            
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+                self.dropdownView.layoutIfNeeded()
+            }, completion: nil)
         }
     }
     
@@ -137,11 +172,15 @@ class DropdownView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     var dropdownOptions = [Property]()
     var tableView = UITableView()
+    var delegate: DropDownProtocol!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.backgroundColor = UIColor.lightGray
+        self.backgroundColor = UIColor.lightGray
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(tableView)
@@ -157,17 +196,20 @@ class DropdownView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dropdownOptions.count
+        let rows = dropdownOptions.count
+        return rows
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         cell.textLabel?.text = dropdownOptions[indexPath.row].name ?? ""
+        cell.backgroundColor = UIColor.lightGray
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(dropdownOptions[indexPath.row].name)
+        self.delegate.dropDownPressed(string: dropdownOptions[indexPath.row].name ?? "")
+        self.tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }
