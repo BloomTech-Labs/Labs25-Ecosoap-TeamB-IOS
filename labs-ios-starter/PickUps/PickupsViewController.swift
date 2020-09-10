@@ -13,6 +13,7 @@ class PickupsViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
     
+    var button = DropdownButton()
     
     let userController = UserController()
     var property: Property?
@@ -26,6 +27,17 @@ class PickupsViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        
+        //button = DropdownButton.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Properties", for: .normal)
+        self.view.addSubview(button)
+        
+        button.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        button.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 100).isActive = true
+        button.widthAnchor.constraint(equalToConstant: 500).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        
         userController.fetchPropertiesByUser(userId: "UserId1", completion: { result in
             guard let propertiesFetched = try? result.get() else { return }
             DispatchQueue.main.async {
@@ -84,6 +96,42 @@ extension PickupsViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 
+class DropdownButton: UIButton {
+    
+    var dropdownView = DropdownView()
+    var height = NSLayoutConstraint()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.backgroundColor = UIColor.lightGray
+        
+        dropdownView = DropdownView.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        dropdownView.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    override func didMoveToSuperview() {
+        self.superview?.addSubview(dropdownView)
+        self.superview?.bringSubviewToFront(dropdownView)
+        dropdownView.topAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        dropdownView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        dropdownView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
+        height = dropdownView.heightAnchor.constraint(equalToConstant: 0)
+    }
+    
+    var isOpen: Bool = false
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if isOpen == false {
+            
+        } else {
+             
+        }
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
 
 class DropdownView: UIView, UITableViewDelegate, UITableViewDataSource {
     
