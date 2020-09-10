@@ -180,6 +180,7 @@ class DropdownView: UIView, UITableViewDelegate, UITableViewDataSource {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = UIColor.lightGray
+        tableView.isScrollEnabled = true
         self.backgroundColor = UIColor.lightGray
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
