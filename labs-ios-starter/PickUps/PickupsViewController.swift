@@ -11,8 +11,8 @@ import OktaAuth
 
 class PickupsViewController: UIViewController {
     
-    @IBOutlet private weak var dropdownButton: UIButton!
     @IBOutlet private weak var tableView: UITableView!
+    
     
     let userController = UserController()
     var property: Property?
@@ -61,21 +61,17 @@ class PickupsViewController: UIViewController {
             addVC.pickupController = pickupController
         }
     }
-    @IBAction func buttonTapped(_ sender: Any) {
-    }
+   
 }
 
 extension PickupsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         guard let property = property else { return 1 }
-        
         return property.pickups?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "PickupCell", for: indexPath)
         if let property = property {
             if let pickup = property.pickups?[indexPath.row] {
@@ -83,8 +79,47 @@ extension PickupsViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.detailTextLabel?.text = pickup.status ?? "nil"
             }
         }
-        
         return cell
+    }
+}
+
+
+
+class DropdownView: UIView, UITableViewDelegate, UITableViewDataSource {
+    
+    var dropdownOptions = [Property]()
+    var tableView = UITableView()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(tableView)
+        
+        tableView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+        tableView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+        tableView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dropdownOptions.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        cell.textLabel?.text = dropdownOptions[indexPath.row].name ?? ""
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(dropdownOptions[indexPath.row].name)
     }
     
 }
