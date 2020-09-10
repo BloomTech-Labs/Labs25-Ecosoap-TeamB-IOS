@@ -11,11 +11,14 @@ import OktaAuth
 
 class PickupsViewController: UIViewController {
     
+    @IBOutlet private weak var dropdownButton: UIButton!
     @IBOutlet private weak var tableView: UITableView!
+    
     let userController = UserController()
     var property: Property?
     let pickupController = PickupController()
     let defaults = UserDefaults.standard
+    var properties: [Property]?
     
     // MARK: - View Lifecycle
     
@@ -23,6 +26,12 @@ class PickupsViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        userController.fetchPropertiesByUser(userId: "UserId1", completion: { result in
+            guard let propertiesFetched = try? result.get() else { return }
+            DispatchQueue.main.async {
+                self.properties = propertiesFetched
+            }
+        })
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -52,6 +61,8 @@ class PickupsViewController: UIViewController {
             addVC.pickupController = pickupController
         }
     }
+    @IBAction func buttonTapped(_ sender: Any) {
+    }
 }
 
 extension PickupsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -71,11 +82,9 @@ extension PickupsViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.textLabel?.text = pickup.confirmNum ?? "nil"
                 cell.detailTextLabel?.text = pickup.status ?? "nil"
             }
-
         }
         
         return cell
     }
     
 }
-

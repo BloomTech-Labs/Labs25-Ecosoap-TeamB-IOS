@@ -371,6 +371,9 @@
                                 <state key="normal" title="Properties">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="buttonTapped:" destination="shw-uE-C45" eventType="touchUpInside" id="Rrv-fa-hCv"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -393,6 +396,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="dropdownButton" destination="lX4-PX-ozT" id="c6y-rR-pR0"/>
                         <outlet property="tableView" destination="ppC-Hy-tSJ" id="54E-Bu-N2d"/>
                     </connections>
                 </viewController>
