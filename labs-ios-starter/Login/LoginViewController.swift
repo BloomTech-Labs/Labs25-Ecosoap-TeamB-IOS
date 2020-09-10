@@ -36,7 +36,10 @@ class LoginViewController: UIViewController {
     }
 
     // MARK: - Actions
+
+    // User will invoke this to signin via Okta
     @IBAction func signIn(_ sender: Any) {
+        // This will invoice mobile Safari to have user login via Okta
         UIApplication.shared.open(ProfileController.shared.oktaAuth.identityAuthURL()!)
     }
     
@@ -52,7 +55,8 @@ class LoginViewController: UIViewController {
     }
     
     // MARK: Notification Handling
-    
+
+    // This gets called when returning from Safari after login
     private func checkForExistingProfile(with notification: Notification) {
         checkForExistingProfile()
     }
