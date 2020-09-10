@@ -11,7 +11,6 @@ import OktaAuth
 
 class PickupsViewController: UIViewController {
     
-    @IBOutlet private var searchBar: UISearchBar!
     @IBOutlet private weak var tableView: UITableView!
     let userController = UserController()
     var property: Property?
@@ -24,7 +23,6 @@ class PickupsViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        searchBar.delegate = self
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -81,19 +79,3 @@ extension PickupsViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
-extension PickupsViewController: UISearchBarDelegate {
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let searchText = searchBar.text else { return }
-        userController.fetchPropertyByID(id: searchText, completion: { result in
-            guard let property = try? result.get() else { return }
-            DispatchQueue.main.async {
-                self.defaults.set(property.id, forKey: "propertyID")
-                self.property = property
-                self.navigationItem.title = "\(property.id ?? "")"
-                self.tableView.reloadData()
-            }
-        })
-    }
-    
-}
