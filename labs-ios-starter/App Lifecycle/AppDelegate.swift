@@ -18,6 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         Stripe.setDefaultPublishableKey("pk_test_TYooMQauvdEDq54NiTphI7jx")
 
+        // Location of various user-visible documentation, support, and configuration files.
+        print(NSSearchPathForDirectoriesInDomains(.libraryDirectory, .userDomainMask, true).last! as String)
+
         return true
     }
 
