@@ -55,6 +55,8 @@ class CreatePaymentViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+//        return()
+
         view.backgroundColor = .white
         let stackView = UIStackView(arrangedSubviews: [cardTextField, payButton])
         stackView.axis = .vertical
@@ -62,9 +64,12 @@ class CreatePaymentViewController: UIViewController {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(stackView)
         NSLayoutConstraint.activate([
-            stackView.leftAnchor.constraint(equalToSystemSpacingAfter: view.leftAnchor, multiplier: 2),
-            view.rightAnchor.constraint(equalToSystemSpacingAfter: stackView.rightAnchor, multiplier: 2),
-            stackView.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 2),
+            stackView.leftAnchor.constraint(equalToSystemSpacingAfter: view.leftAnchor,
+                                            multiplier: 2),
+            view.rightAnchor.constraint(equalToSystemSpacingAfter: stackView.rightAnchor,
+                                        multiplier: 2),
+            stackView.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor,
+                                           multiplier: 2),
         ])
     }
 
