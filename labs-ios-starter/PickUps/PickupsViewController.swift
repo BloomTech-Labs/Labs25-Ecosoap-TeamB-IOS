@@ -13,16 +13,16 @@ protocol DropDownProtocol {
     func dropDownPressed(string: String)
 }
 
+let defaults = UserDefaults.standard
+
 class PickupsViewController: UIViewController {
     
     @IBOutlet private weak var tableView: UITableView!
     
     var button = DropdownButton()
-    
     let userController = UserController()
     var property: Property?
     let pickupController = PickupController()
-    let defaults = UserDefaults.standard
     
     // MARK: - View Lifecycle
     
@@ -57,19 +57,23 @@ class PickupsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let property = property {
-            if property.id != nil {
-                self.navigationItem.title = "\(property.id ?? "Eco Soap Bank")"
-                userController.fetchPropertyByID(id: property.id!, completion: { result in
-                    guard let propertyFetched = try? result.get() else { return }
-                    DispatchQueue.main.async {
-                        self.property = propertyFetched
-                        self.tableView.reloadData()
-                    }
-                })
-            }
-        }
+        
+        let propertyId = "\(defaults.string(forKey: "PropertyId") ?? "")"
+           
+            userController.fetchPropertyByID(id: propertyId, completion: { result in
+                guard let propertyFetched = try? result.get() else { return }
+                DispatchQueue.main.async {
+                    self.property = propertyFetched
+                    self.tableView.reloadData()
+                }
+            })
+        
     }
+    
+    @objc func reload() {
+        self.tableView.reloadData()
+    }
+    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -219,8 +223,11 @@ class DropdownView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
         self.delegate.dropDownPressed(string: dropdownOptions[indexPath.row].id ?? "")
+        defaults.set(dropdownOptions[indexPath.row].id, forKey: "PropertyId")
         self.tableView.deselectRow(at: indexPath, animated: true)
+        
     }
     
 }
