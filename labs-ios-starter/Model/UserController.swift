@@ -94,7 +94,14 @@ enum TheProperty {
 class UserController {
     let url = URL(string: "http://35.208.9.187:9095/ios-api-2")!
     
-    func updateUserInfo(id: String, firstName: String, lastName: String, middleName: String, email: String, skype: String, phone: String, completion: @escaping (Result<User, Error>) -> Void) {
+    func updateUserInfo(id: String,
+                        firstName: String,
+                        lastName: String,
+                        middleName: String,
+                        email: String,
+                        skype: String = "",
+                        phone: String = "",
+                        completion: @escaping (Result<User, Error>) -> Void) {
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
