@@ -23,7 +23,6 @@ class PickupsViewController: UIViewController {
     var property: Property?
     let pickupController = PickupController()
     let defaults = UserDefaults.standard
-    var properties: [Property]?
     
     // MARK: - View Lifecycle
     
@@ -45,10 +44,17 @@ class PickupsViewController: UIViewController {
         userController.fetchPropertiesByUser(userId: "UserId1", completion: { result in
             guard let propertiesFetched = try? result.get() else { return }
             DispatchQueue.main.async {
-                self.properties = propertiesFetched
+                self.button.dropdownView.dropdownOptions = propertiesFetched
+                self.button.dropdownView.tableView.reloadData()
             }
         })
     }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let property = property {
@@ -152,7 +158,7 @@ class DropdownButton: UIButton, DropDownProtocol {
                 self.dropdownView.layoutIfNeeded()
             }, completion: nil)
         } else {
-             isOpen = false
+            isOpen = false
             NSLayoutConstraint.deactivate([self.height])
             self.height.constant = 0
             NSLayoutConstraint.activate([self.height])
@@ -163,7 +169,7 @@ class DropdownButton: UIButton, DropDownProtocol {
         }
     }
     
-    required init?(coder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
@@ -186,14 +192,18 @@ class DropdownView: UIView, UITableViewDelegate, UITableViewDataSource {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(tableView)
         
-        tableView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        tableView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+        tableView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 50).isActive = true
+        tableView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -50).isActive = true
         tableView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
     
-    required init?(coder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -203,13 +213,13 @@ class DropdownView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        cell.textLabel?.text = dropdownOptions[indexPath.row].name ?? ""
+        cell.textLabel?.text = dropdownOptions[indexPath.row].id ?? ""
         cell.backgroundColor = UIColor.lightGray
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.delegate.dropDownPressed(string: dropdownOptions[indexPath.row].name ?? "")
+        self.delegate.dropDownPressed(string: dropdownOptions[indexPath.row].id ?? "")
         self.tableView.deselectRow(at: indexPath, animated: true)
     }
     
