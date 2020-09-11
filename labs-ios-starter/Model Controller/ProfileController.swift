@@ -208,8 +208,7 @@ class ProfileController {
             return
         }
         
-        let requestURL = baseURL
-            .appendingPathComponent("profiles")
+        let requestURL = baseURL.appendingPathComponent("profiles")
         
         var request = URLRequest(url: requestURL)
         request.httpMethod = "PUT"
@@ -230,9 +229,7 @@ class ProfileController {
             var profile = profile
             
             defer {
-                DispatchQueue.main.async {
-                    completion(profile)
-                }
+                DispatchQueue.main.async { completion(profile) }
             }
             
             if let error = error {

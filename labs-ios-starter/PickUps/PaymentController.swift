@@ -8,6 +8,14 @@
 
 import Foundation
 
+enum HTTPMethod: String {
+    case post   = "POST"   // Create
+    case get    = "GET"    // Read
+    case put    = "PUT"    // Update/Replace
+    case patch  = "PATCH"  // Update/Replace
+    case delete = "DELETE" // Delete
+}
+
 enum CreatePayment {
     static let create = """
     mutation CreatePayment($input: CreatePaymentInput) {
@@ -54,15 +62,17 @@ class PaymentController {
                         completion: @escaping (Error?) -> Void = { _ in }) {
         
         var request = URLRequest(url: url)
-        request.httpMethod = "POST"
+        request.httpMethod = HTTPMethod.post.rawValue
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
         let variable: [String: Any] = ["amountPaid": amount,
                                        "date": date,
                                        "paymentMethod": paymentMehod,
                                        "hospitalityContractId": id]
         let query = CreatePayment.create
-        let body: [String: Any] = ["query": query, "variables": ["input": variable]]
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
+        let body: [String: Any] = ["query": query,
+                                   "variables": ["input": variable]]
+
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
         } catch {
@@ -71,13 +81,20 @@ class PaymentController {
             return
         }
         
-        URLSession.shared.dataTask(with: request) { _, _, error in
+        URLSession.shared.dataTask(with: request) { _, response, error in
             if let error = error {
                 NSLog("\(error)")
                 completion(error)
                 return
             }
-            
+
+            if let response = response as? HTTPURLResponse,
+                response.statusCode != 200 {
+                NSLog("createAPayment: Server returned \(response.statusCode) instead of success(200).")
+                completion(nil) // FIXME: What is the correct thing to return here?
+            }
+
+            print("createAPayment successful.")
             completion(nil)
         }.resume()
     }
@@ -85,7 +102,7 @@ class PaymentController {
     func fetchPaymentsByPropertyID(id: String, completion: @escaping (Result<[Payment], Error>) -> Void) {
         
         var request = URLRequest(url: url)
-        request.httpMethod = "POST"
+        request.httpMethod = HTTPMethod.post.rawValue
         
         let query = Payments.payments
         let body: [String: Any] = ["query": query, "variables": ["input": ["propertyId": id]]]

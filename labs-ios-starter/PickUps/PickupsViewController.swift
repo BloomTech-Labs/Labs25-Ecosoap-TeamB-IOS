@@ -9,10 +9,16 @@
 import UIKit
 import OktaAuth
 
-protocol DropDownProtocol {
+// Swift Lint wants us to make the declation of the delegate weak
+// But then that produces another error that basically requires us to
+// declare the protocol with @objc
+// https://stackoverflow.com/questions/33471858/swift-protocol-weak-cannot-be-applied-to-non-class-type
+
+@objc protocol DropDownProtocol {
     func dropDownPressed(string: String)
 }
-protocol ReloadProtocal {
+
+@objc protocol ReloadProtocal {
     func reload()
 }
 
@@ -48,7 +54,7 @@ class PickupsViewController: UIViewController, ReloadProtocal {
         tableView.delegate = self
         tableView.dataSource = self
         
-        button = DropdownButton.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        button = DropdownButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Properties", for: .normal)
         self.view.addSubview(button)
@@ -149,7 +155,7 @@ class DropdownButton: UIButton, DropDownProtocol {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.lightGray
-        dropdownView = DropdownView.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        dropdownView = DropdownView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         dropdownView.delegate = self
         dropdownView.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -187,6 +193,7 @@ class DropdownButton: UIButton, DropDownProtocol {
         }
     }
     
+    @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -194,10 +201,10 @@ class DropdownButton: UIButton, DropDownProtocol {
 
 class DropdownView: UIView, UITableViewDelegate, UITableViewDataSource {
     
-    var reloadDelegate: ReloadProtocal!
+    weak var reloadDelegate: ReloadProtocal!
     var dropdownOptions = [Property]()
     var tableView = UITableView()
-    var delegate: DropDownProtocol!
+    weak var delegate: DropDownProtocol!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -216,14 +223,13 @@ class DropdownView: UIView, UITableViewDelegate, UITableViewDataSource {
         tableView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
     }
-    
+
+    @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
+    func numberOfSections(in tableView: UITableView) -> Int { 1 }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let rows = dropdownOptions.count
