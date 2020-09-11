@@ -32,7 +32,10 @@ class PaymentsTableViewController: UITableViewController {
     }
     
     func setupViews() {
-        guard let propertyID = defaults.string(forKey: "PropertyId") else { return }
+        guard let propertyID = defaults.string(forKey: "PropertyId") else {
+            NotificationCenter.default.post(name: NSNotification.Name("MissingProperty"), object: self)
+            return
+        }
         self.navigationItem.title = "Payments"
         paymentController.fetchPaymentsByPropertyID(id: propertyID, completion: { result in
             guard let paymentFetched = try? result.get() else { return }
