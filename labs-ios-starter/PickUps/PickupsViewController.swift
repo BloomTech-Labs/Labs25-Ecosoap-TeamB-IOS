@@ -93,8 +93,8 @@ class PickupsViewController: UIViewController, ReloadProtocal {
         }
         NotificationCenter.default.addObserver(self, selector: #selector(alert), name: NSNotification.Name("MissingProperty"), object: nil)
     }
+    
     @objc func alert() {
-        self.dismiss(animated: true, completion: nil)
         let alert = UIAlertController(title: "Property Missing", message: "Please select a propety", preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(alertAction)
