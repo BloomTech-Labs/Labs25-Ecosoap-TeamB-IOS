@@ -192,11 +192,11 @@ class UserController {
         }.resume()
     }
     
-    func fetchPropertiesByUser(user: User, completion: @escaping (Result<[Property], Error>) -> Void) {
+    func fetchPropertiesByUser(userId: String, completion: @escaping (Result<[Property], Error>) -> Void) {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         let query = Properties.properties
-        let body: [String: Any] = ["query": query, "variables": ["input": ["userId": user.id!]]]
+        let body: [String: Any] = ["query": query, "variables": ["input": ["userId": userId]]]
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])

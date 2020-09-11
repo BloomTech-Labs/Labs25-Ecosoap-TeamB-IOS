@@ -12,7 +12,6 @@ class PaymentsTableViewController: UITableViewController {
 
     var payments: [Payment]?
     var paymentController = PaymentController()
-    let defaults = UserDefaults.standard
     var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
@@ -33,7 +32,7 @@ class PaymentsTableViewController: UITableViewController {
     }
     
     func setupViews() {
-        guard let propertyID = defaults.string(forKey: "propertyID") else { return }
+        guard let propertyID = defaults.string(forKey: "PropertyId") else { return }
         self.navigationItem.title = "Payments"
         paymentController.fetchPaymentsByPropertyID(id: propertyID, completion: { result in
             guard let paymentFetched = try? result.get() else { return }
@@ -50,7 +49,7 @@ class PaymentsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        guard let propertyID = defaults.string(forKey: "propertyID") else { return "" }
+        guard let propertyID = defaults.string(forKey: "PropertyID") else { return "" }
         return "\(propertyID)"
     }
     

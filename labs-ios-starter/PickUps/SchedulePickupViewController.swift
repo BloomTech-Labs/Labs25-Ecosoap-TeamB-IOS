@@ -56,7 +56,6 @@ class SchedulePickupViewController: UIViewController {
             cartons.append(["product": "LINENS", "percentFull": Int(linen)!])
         }
         
-        print(cartons)
         pickupController.schedule(collectionType: "LOCAL", status: "SUBMITTED", readyDate: dateStr, cartons: cartons, id: property.id!)
         navigationController?.popViewController(animated: true)
     }
