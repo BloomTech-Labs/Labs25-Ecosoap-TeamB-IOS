@@ -57,23 +57,32 @@ class CreatePaymentViewController: UIViewController {
            return label
     }()
 
+    var paymentMethod: String = ""
+    var paymentController: PaymentController?
+
+    // MARK: - Actions
+
     @objc
     func pay() {
         // ...
         print("pay button pressed")
+
+        guard let paymentController = paymentController,
+            let id = idTextField.text,
+            !id.isEmpty,
+            let amount = amountTextField.text,
+            !amount.isEmpty else { return }
+
+        guard let amountInInt = Int(amount) else { return }
+
+        paymentController.createAPayment(amount: amountInInt,
+                                         date: "2020-09-09",
+                                         paymentMehod: PaymentMethod.cre.rawValue,
+                                         id: id)
+        
+        navigationController?.popViewController(animated: true)
     }
 
-    // MARK: - Actions
-    @IBOutlet private var dateTextField: UITextField!
-
-    var isACH: Bool = false
-    var isCredit: Bool = false
-    var isDebit: Bool = false
-    var isWire: Bool = false
-    var isOther: Bool = false
-    var paymentMethod: String = ""
-    var paymentController: PaymentController?
-    
     // MARK: - View Lifecycle
 
     override func viewDidLoad() {
@@ -102,34 +111,6 @@ class CreatePaymentViewController: UIViewController {
     }
 
     // MARK: - Outlets
-
-    // MARK: - DONE BUTTON
-    @IBAction func doneTapped(_ sender: Any) {
-        guard let paymentController = paymentController,
-            let id = idTextField.text,
-            !id.isEmpty,
-            let date = dateTextField.text,
-            !date.isEmpty,
-            let amount = amountTextField.text,
-            !amount.isEmpty else { return }
-        
-        if isACH {
-            self.paymentMethod = PaymentMethod.ach.rawValue
-        } else if isCredit {
-            self.paymentMethod = PaymentMethod.cre.rawValue
-        } else if isDebit {
-            self.paymentMethod = PaymentMethod.deb.rawValue
-        } else if isWire {
-            self.paymentMethod = PaymentMethod.wir.rawValue
-        } else {
-            self.paymentMethod = PaymentMethod.oth.rawValue
-        }
-        guard paymentMethod != "" else { return }
-        guard let amountInInt = Int(amount) else { return }
-        
-        paymentController.createAPayment(amount: amountInInt, date: date, paymentMehod: paymentMethod, id: id)
-        navigationController?.popViewController(animated: true)
-    }
 
     // MARK: - Private
 
