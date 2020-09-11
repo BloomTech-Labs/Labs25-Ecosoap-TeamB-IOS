@@ -21,7 +21,16 @@ public var defaults = UserDefaults.standard
 class PickupsViewController: UIViewController, ReloadProtocal {
     
     func reload() {
-        self.tableView.reloadData()
+        if let propertyId = defaults.string(forKey: "PropertyId") {
+            self.button.setTitle(propertyId, for: .normal)
+            userController.fetchPropertyByID(id: propertyId, completion: { result in
+                guard let propertyFetched = try? result.get() else { return }
+                DispatchQueue.main.async {
+                    self.property = propertyFetched
+                    self.tableView.reloadData()
+                }
+            })
+        }
     }
     
     @IBOutlet private weak var tableView: UITableView!
@@ -231,8 +240,8 @@ class DropdownView: UIView, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         self.delegate.dropDownPressed(string: dropdownOptions[indexPath.row].id ?? "")
-        self.reloadDelegate.reload()
         defaults.set(dropdownOptions[indexPath.row].id, forKey: "PropertyId")
+        self.reloadDelegate.reload()
         self.tableView.deselectRow(at: indexPath, animated: true)
         
     }
