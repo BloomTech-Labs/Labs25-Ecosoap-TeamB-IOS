@@ -12,10 +12,17 @@ import OktaAuth
 protocol DropDownProtocol {
     func dropDownPressed(string: String)
 }
+protocol ReloadProtocal {
+    func reload()
+}
 
-let defaults = UserDefaults.standard
+public var defaults = UserDefaults.standard
 
-class PickupsViewController: UIViewController {
+class PickupsViewController: UIViewController, ReloadProtocal {
+    
+    func reload() {
+        self.tableView.reloadData()
+    }
     
     @IBOutlet private weak var tableView: UITableView!
     
@@ -28,6 +35,7 @@ class PickupsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -40,7 +48,7 @@ class PickupsViewController: UIViewController {
         button.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 100).isActive = true
         button.widthAnchor.constraint(equalToConstant: 500).isActive = true
         button.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        
+        button.dropdownView.reloadDelegate = self
         userController.fetchPropertiesByUser(userId: "UserId1", completion: { result in
             guard let propertiesFetched = try? result.get() else { return }
             DispatchQueue.main.async {
@@ -58,8 +66,8 @@ class PickupsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let propertyId = "\(defaults.string(forKey: "PropertyId") ?? "")"
-           
+        if let propertyId = defaults.string(forKey: "PropertyId") {
+            self.button.setTitle(propertyId, for: .normal)
             userController.fetchPropertyByID(id: propertyId, completion: { result in
                 guard let propertyFetched = try? result.get() else { return }
                 DispatchQueue.main.async {
@@ -67,11 +75,9 @@ class PickupsViewController: UIViewController {
                     self.tableView.reloadData()
                 }
             })
+        }
         
-    }
-    
-    @objc func reload() {
-        self.tableView.reloadData()
+        
     }
     
     // MARK: - Navigation
@@ -134,7 +140,6 @@ class DropdownButton: UIButton, DropDownProtocol {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.lightGray
-        
         dropdownView = DropdownView.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         dropdownView.delegate = self
         dropdownView.translatesAutoresizingMaskIntoConstraints = false
@@ -180,6 +185,7 @@ class DropdownButton: UIButton, DropDownProtocol {
 
 class DropdownView: UIView, UITableViewDelegate, UITableViewDataSource {
     
+    var reloadDelegate: ReloadProtocal!
     var dropdownOptions = [Property]()
     var tableView = UITableView()
     var delegate: DropDownProtocol!
@@ -225,6 +231,7 @@ class DropdownView: UIView, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         self.delegate.dropDownPressed(string: dropdownOptions[indexPath.row].id ?? "")
+        self.reloadDelegate.reload()
         defaults.set(dropdownOptions[indexPath.row].id, forKey: "PropertyId")
         self.tableView.deselectRow(at: indexPath, animated: true)
         
