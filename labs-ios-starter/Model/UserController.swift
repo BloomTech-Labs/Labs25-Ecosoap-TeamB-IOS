@@ -99,8 +99,8 @@ class UserController {
                         lastName: String,
                         middleName: String,
                         email: String,
-                        skype: String = "",
-                        phone: String = "",
+                        skype: String,
+                        phone: String,
                         completion: @escaping (Result<User, Error>) -> Void) {
         
         var request = URLRequest(url: url)
