@@ -37,7 +37,7 @@ class ProfileViewController: UIViewController {
     
     func setupViews() {
         
-        userController.fetchUserData(id: "UserId1", completion: { result in
+        userController.fetchUserData(id: "00uz44bqf7JXE6Naf4x6", completion: { result in
             do {
                 let user = try result.get()
                 DispatchQueue.main.async {
