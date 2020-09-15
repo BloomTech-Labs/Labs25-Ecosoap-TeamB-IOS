@@ -650,14 +650,13 @@
                         <viewLayoutGuide key="safeArea" id="MXa-dR-Pru"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="NGs-DR-hpd">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="LhZ-f3-COq">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="LhZ-f3-COq">
                             <connections>
                                 <action selector="buttonTapped:" destination="iv4-Wu-uvp" id="nrC-0N-qvP"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="button" destination="LhZ-f3-COq" id="Bli-3F-TYV"/>
                         <outlet property="email" destination="jeV-4j-Sfv" id="2Bu-aO-zqp"/>
                         <outlet property="firstName" destination="Yey-pN-P3T" id="Nuu-BM-xwb"/>
                         <outlet property="idLabel" destination="NIz-ph-Z1q" id="Stl-1A-BdV"/>

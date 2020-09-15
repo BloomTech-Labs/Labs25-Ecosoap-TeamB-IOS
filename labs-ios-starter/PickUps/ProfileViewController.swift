@@ -15,7 +15,6 @@ class ProfileViewController: UIViewController {
             setupViews()
         }
     }
-    var isEditClicked: Bool = false
     var userController = UserController()
     // MARK: - UIOutlets
     @IBOutlet private var idLabel: UILabel!
@@ -25,7 +24,6 @@ class ProfileViewController: UIViewController {
     @IBOutlet private var email: UITextField!
     @IBOutlet private var skype: UITextField!
     @IBOutlet private var phone: UITextField!
-    @IBOutlet private var button: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,13 +46,6 @@ class ProfileViewController: UIViewController {
                 NSLog("fetching user info failed")
             }
         })
-        idLabel.isUserInteractionEnabled = false
-        firstName.isUserInteractionEnabled = false
-        lastName.isUserInteractionEnabled = false
-        middleName.isUserInteractionEnabled = false
-        email.isUserInteractionEnabled = false
-        skype.isUserInteractionEnabled = false
-        phone.isUserInteractionEnabled = false
         guard let user = user else { return }
         idLabel.text = user.id ?? ""
         firstName.text = user.firstName ?? ""
@@ -63,52 +54,18 @@ class ProfileViewController: UIViewController {
         email.text = user.email ?? ""
         skype.text = user.skype ?? ""
         phone.text = user.phone ?? ""
-        button.title = "Edit"
     }
     
     @IBAction func buttonTapped(_ sender: Any) {
-        isEditing.toggle()
-        
-        if isEditing {
-            button.title = "Save"
-            firstName.isUserInteractionEnabled = true
-            lastName.isUserInteractionEnabled = true
-            middleName.isUserInteractionEnabled = true
-            email.isUserInteractionEnabled = true
-            skype.isUserInteractionEnabled = true
-            phone.isUserInteractionEnabled = true
-        } else if isEditing == false {
-            guard let firstNameChanged = firstName.text,
-                !firstNameChanged.isEmpty,
-                let lastNameChanged = lastName.text,
-                !lastNameChanged.isEmpty,
-                let middleNameChanged = middleName.text,
-                let emailChanged = email.text,
-                !emailChanged.isEmpty,
-                let phoneChanged = phone.text,
-                !phoneChanged.isEmpty,
-                let skypeChanged = skype.text,
-                !skypeChanged.isEmpty else { return }
-            
-            userController.updateUserInfo(id: "UserId1", firstName: firstNameChanged, lastName: lastNameChanged, middleName: middleNameChanged, email: emailChanged, skype: skypeChanged, phone: phoneChanged, completion: { result in
-                
-                guard let userUpdated = try? result.get() else { return }
-                
-                DispatchQueue.main.async {
-                    self.user = userUpdated
-                    self.view.reloadInputViews()
-                }
-            })
-            
-            firstName.isUserInteractionEnabled = false
-            lastName.isUserInteractionEnabled = false
-            middleName.isUserInteractionEnabled = false
-            email.isUserInteractionEnabled = false
-            skype.isUserInteractionEnabled = false
-            phone.isUserInteractionEnabled = false
-            
-            button.title = "Edit"
-        }
+        guard let firstChanged = firstName.text, !firstChanged.isEmpty, let middleChanged = middleName.text, let lastChanged = lastName.text, !lastChanged.isEmpty, let emailChanged = email.text, !emailChanged.isEmpty, let skypeChanged = skype.text, let phoneChange = phone.text, !phoneChange.isEmpty else { return }
+        userController.updateUserInfo(id: "00uz44bqf7JXE6Naf4x6", firstName: firstChanged, lastName: lastChanged, middleName: middleChanged, email: emailChanged, skype: skypeChanged, phone: phoneChange, completion: { result in
+            do {
+                let userChanged = try result.get()
+                self.user = userChanged
+            } catch {
+                NSLog("user info update failed")
+            }
+        })
         
     }
     
