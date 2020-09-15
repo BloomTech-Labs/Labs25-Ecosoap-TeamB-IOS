@@ -34,7 +34,7 @@ class ImpactViewController: UIViewController {
     
     func updateView() {
         
-        guard let propertyID = defaults.string(forKey: "propertyID") else { return }
+        guard let propertyID = defaults.string(forKey: "PropertyId") else { return }
         
         impactController.fetchImpact(id: propertyID) { impact in
             do {
