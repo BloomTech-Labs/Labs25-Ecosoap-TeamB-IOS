@@ -33,12 +33,12 @@ class ProfileViewController: UIViewController {
         userController.fetchUserData(id: "00uz44bqf7JXE6Naf4x6", completion: { result in
             do {
                 let user = try result.get()
+
                 DispatchQueue.main.async {
                     self.user = user
                 }
-
             } catch {
-                NSLog("ProfileViewController: fetching user info failed")
+                NSLog("viewDidLoad: fetching user info failed")
             }
         })
     }
@@ -80,11 +80,15 @@ class ProfileViewController: UIViewController {
                                       phone: phoneChange,
                                       completion: { result in
             do {
+                // After updating user info, grab the inforamtion from the server
+                // to verify update worked.
                 let userChanged = try result.get()
 
-                self.user = userChanged
+                DispatchQueue.main.async {
+                    self.user = userChanged
+                }
             } catch {
-                NSLog("user info update failed")
+                NSLog("buttonTapped: user info update failed")
             }
         })
         
