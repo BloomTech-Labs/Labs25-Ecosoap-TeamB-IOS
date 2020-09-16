@@ -25,6 +25,7 @@
 		92D968ED2501FADE00477B97 /* Stripe.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92D968EC2501FADE00477B97 /* Stripe.xcframework */; };
 		92E766AB251196BA00978A03 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92E766AA251196BA00978A03 /* Profile.storyboard */; };
 		92E766AD25119F7800978A03 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E766AC25119F7800978A03 /* ProfileViewController.swift */; };
+		92E766B12511A09C00978A03 /* Impact.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92E766B02511A09C00978A03 /* Impact.storyboard */; };
 		AE15364124E31FFB009598A9 /* Pickup.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE15364024E31FFB009598A9 /* Pickup.swift */; };
 		AE15364324E32742009598A9 /* ImpactStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE15364224E32742009598A9 /* ImpactStats.swift */; };
 		AE15364524E371A8009598A9 /* ImpactStatsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE15364424E371A8009598A9 /* ImpactStatsController.swift */; };
@@ -65,6 +66,7 @@
 		92D968EC2501FADE00477B97 /* Stripe.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Stripe.xcframework; sourceTree = "<group>"; };
 		92E766AA251196BA00978A03 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Profile.storyboard; path = "labs-ios-starter/Profile/Profile.storyboard"; sourceTree = SOURCE_ROOT; };
 		92E766AC25119F7800978A03 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = "labs-ios-starter/Profile/ProfileViewController.swift"; sourceTree = SOURCE_ROOT; };
+		92E766B02511A09C00978A03 /* Impact.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Impact.storyboard; sourceTree = "<group>"; };
 		AE15364024E31FFB009598A9 /* Pickup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pickup.swift; sourceTree = "<group>"; };
 		AE15364224E32742009598A9 /* ImpactStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpactStats.swift; sourceTree = "<group>"; };
 		AE15364424E371A8009598A9 /* ImpactStatsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpactStatsController.swift; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				AE21B30C24E43AF2003095F0 /* ImpactViewController.swift */,
+				92E766B02511A09C00978A03 /* Impact.storyboard */,
 			);
 			path = Impact;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92E766B12511A09C00978A03 /* Impact.storyboard in Resources */,
 				466C4280249A8749007D033E /* LaunchScreen.storyboard in Resources */,
 				466C427D249A8749007D033E /* Assets.xcassets in Resources */,
 				92E766AB251196BA00978A03 /* Profile.storyboard in Resources */,
