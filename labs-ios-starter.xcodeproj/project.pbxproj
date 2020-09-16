@@ -136,7 +136,7 @@
 		466C4272249A8748007D033E /* labs-ios-starter */ = {
 			isa = PBXGroup;
 			children = (
-				46BEB4F224C98F1100FE0CD1 /* Profiles */,
+				46BEB4F224C98F1100FE0CD1 /* Profile */,
 				AE21B32124F7F693003095F0 /* Payment */,
 				AE21B30E24E43AFB003095F0 /* Impact */,
 				AE15363F24E2F5F6009598A9 /* PickUps */,
@@ -196,13 +196,13 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		46BEB4F224C98F1100FE0CD1 /* Profiles */ = {
+		46BEB4F224C98F1100FE0CD1 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
 				92E766AC25119F7800978A03 /* ProfileViewController.swift */,
 				92E766AA251196BA00978A03 /* Profile.storyboard */,
 			);
-			path = Profiles;
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		661657900A8BA74B87065AA5 /* Pods */ = {
