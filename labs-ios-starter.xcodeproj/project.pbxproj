@@ -111,8 +111,8 @@
 			isa = PBXGroup;
 			children = (
 				466C4273249A8748007D033E /* AppDelegate.swift */,
-				466C4275249A8748007D033E /* SceneDelegate.swift */,
 				466C427E249A8749007D033E /* LaunchScreen.storyboard */,
+				466C4275249A8748007D033E /* SceneDelegate.swift */,
 			);
 			path = "App Lifecycle";
 			sourceTree = "<group>";
@@ -138,18 +138,18 @@
 		466C4272249A8748007D033E /* labs-ios-starter */ = {
 			isa = PBXGroup;
 			children = (
-				46BEB4F224C98F1100FE0CD1 /* Profile */,
-				AE21B32124F7F693003095F0 /* Payment */,
-				AE21B30E24E43AFB003095F0 /* Impact */,
-				AE15363F24E2F5F6009598A9 /* PickUps */,
-				46BEB4EB24C98EB400FE0CD1 /* Model */,
-				46BEB4EC24C98EBB00FE0CD1 /* Model Controller */,
-				46BEB4EF24C98ED900FE0CD1 /* Login */,
-				46BEB4EA24C98EA300FE0CD1 /* Helpers */,
 				465DAA2724BD0BC100D94C24 /* App Lifecycle */,
 				466C427C249A8749007D033E /* Assets.xcassets */,
-				466C4281249A8749007D033E /* Info.plist */,
 				466C4287249A889F007D033E /* File Organization.md */,
+				46BEB4EA24C98EA300FE0CD1 /* Helpers */,
+				AE21B30E24E43AFB003095F0 /* Impact */,
+				466C4281249A8749007D033E /* Info.plist */,
+				46BEB4EF24C98ED900FE0CD1 /* Login */,
+				46BEB4EB24C98EB400FE0CD1 /* Model */,
+				46BEB4EC24C98EBB00FE0CD1 /* Model Controller */,
+				AE21B32124F7F693003095F0 /* Payment */,
+				AE15363F24E2F5F6009598A9 /* PickUps */,
+				46BEB4F224C98F1100FE0CD1 /* Profile */,
 			);
 			path = "labs-ios-starter";
 			sourceTree = "<group>";
@@ -166,11 +166,11 @@
 		46BEB4EB24C98EB400FE0CD1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AE21B31B24F7F553003095F0 /* Payment.swift */,
-				AE21B31324EC8B18003095F0 /* User.swift */,
 				AE15364224E32742009598A9 /* ImpactStats.swift */,
-				46BEB4E024C9828800FE0CD1 /* Profile.swift */,
+				AE21B31B24F7F553003095F0 /* Payment.swift */,
 				AE15364024E31FFB009598A9 /* Pickup.swift */,
+				46BEB4E024C9828800FE0CD1 /* Profile.swift */,
+				AE21B31324EC8B18003095F0 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -178,11 +178,11 @@
 		46BEB4EC24C98EBB00FE0CD1 /* Model Controller */ = {
 			isa = PBXGroup;
 			children = (
+				AE15364424E371A8009598A9 /* ImpactStatsController.swift */,
 				AE21B31D24F7F657003095F0 /* PaymentController.swift */,
-				AE21B31524EC8E65003095F0 /* UserController.swift */,
 				AE21B30F24E5DC04003095F0 /* PickupController.swift */,
 				46BEB4ED24C98ECC00FE0CD1 /* ProfileController.swift */,
-				AE15364424E371A8009598A9 /* ImpactStatsController.swift */,
+				AE21B31524EC8E65003095F0 /* UserController.swift */,
 			);
 			path = "Model Controller";
 			sourceTree = "<group>";
@@ -190,8 +190,8 @@
 		46BEB4EF24C98ED900FE0CD1 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				46BEB4E424C98CDC00FE0CD1 /* LoginViewController.swift */,
 				463AD24424CF2CDB00447BB8 /* AddProfileViewController.swift */,
+				46BEB4E424C98CDC00FE0CD1 /* LoginViewController.swift */,
 				466C4279249A8748007D033E /* Main.storyboard */,
 				46C2BC9124D432F90077E49D /* ProfileTabBarViewController.swift */,
 			);
@@ -201,8 +201,8 @@
 		46BEB4F224C98F1100FE0CD1 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				92E766AC25119F7800978A03 /* ProfileViewController.swift */,
 				92E766AA251196BA00978A03 /* Profile.storyboard */,
+				92E766AC25119F7800978A03 /* ProfileViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -219,10 +219,10 @@
 		AE15363F24E2F5F6009598A9 /* PickUps */ = {
 			isa = PBXGroup;
 			children = (
-				46BEB4E824C98DAF00FE0CD1 /* PickupsViewController.swift */,
-				46BEB4F024C98F0D00FE0CD1 /* Pickups.storyboard */,
-				AE21B31924F60A0C003095F0 /* SchedulePickupViewController.swift */,
 				AE21B31724F4BC3D003095F0 /* PickupDetailViewController.swift */,
+				46BEB4F024C98F0D00FE0CD1 /* Pickups.storyboard */,
+				46BEB4E824C98DAF00FE0CD1 /* PickupsViewController.swift */,
+				AE21B31924F60A0C003095F0 /* SchedulePickupViewController.swift */,
 			);
 			path = PickUps;
 			sourceTree = "<group>";
@@ -230,8 +230,8 @@
 		AE21B30E24E43AFB003095F0 /* Impact */ = {
 			isa = PBXGroup;
 			children = (
-				AE21B30C24E43AF2003095F0 /* ImpactViewController.swift */,
 				92E766B02511A09C00978A03 /* Impact.storyboard */,
+				AE21B30C24E43AF2003095F0 /* ImpactViewController.swift */,
 			);
 			path = Impact;
 			sourceTree = "<group>";
@@ -239,9 +239,9 @@
 		AE21B32124F7F693003095F0 /* Payment */ = {
 			isa = PBXGroup;
 			children = (
+				AE21B31F24F7F66B003095F0 /* CreatePaymentViewController.swift */,
 				AE4DE2F224FE513200839480 /* PaymentDetailViewController.swift */,
 				AE21B32224F7F6D0003095F0 /* PaymentsTableViewController.swift */,
-				AE21B31F24F7F66B003095F0 /* CreatePaymentViewController.swift */,
 			);
 			path = Payment;
 			sourceTree = "<group>";
