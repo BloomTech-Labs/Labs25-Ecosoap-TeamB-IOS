@@ -58,6 +58,7 @@ class LoginViewController: UIViewController {
     }
     
     private func checkForExistingProfile() {
+        
         profileController.checkForExistingAuthenticatedUserProfile { [weak self] _ in
             
             guard let self = self,

@@ -19,17 +19,8 @@ class ProfileController {
 //                            redirectURI: "labs://scaffolding/implicit/callback")
     //OktaAuth(baseURL: URL(string: "https://dev-668428.okta.com")!,clientID: "0oapaqacafrGUTfKx4x6",redirectURI: "org.ecosoapbank.ESBPortal:/login")
     private(set) var authenticatedUserProfile: Profile?
-    private(set) var profiles: [Profile] = []
-    
+  
     private let baseURL = URL(string: "https://labs-api-starter.herokuapp.com/")!
-    
-//    private init() {
-//        NotificationCenter.default.addObserver(self,
-//                                               selector: #selector(refreshProfiles),
-//                                               name: .oktaAuthenticationSuccessful,
-//                                               object: nil)
-//    }
-
     
     func getAuthenticatedUserProfile(completion: @escaping () -> Void = { }) {
         var oktaCredentials: OktaCredentials
@@ -128,112 +119,6 @@ class ProfileController {
         dataTask.resume()
     }
     
-    // NOTE: This method is unused, but left as an example for creating a profile.
-    
-    func createProfile(with email: String,
-                       name: String,
-                       avatarURL: URL) -> Profile? {
-        var oktaCredentials: OktaCredentials
-        
-        do {
-            oktaCredentials = try oktaAuth.credentialsIfAvailable()
-        } catch {
-            postAuthenticationExpiredNotification()
-            NSLog("Credentials do not exist. Unable to create a profile for the authenticated user")
-            return nil
-        }
-        
-        guard let userID = oktaCredentials.userID else {
-            NSLog("Credentials do not exist. Unable to create profile")
-            return nil
-        }
-        return Profile(id: userID, email: email, name: name, avatarURL: avatarURL)
-    }
-    
-    // NOTE: This method is unused, but left as an example for creating a profile on the scaffolding backend.
-    
-    func addProfile(_ profile: Profile,
-                    completion: @escaping () -> Void) {
-        
-        var oktaCredentials: OktaCredentials
-        
-        do {
-            oktaCredentials = try oktaAuth.credentialsIfAvailable()
-        } catch {
-            postAuthenticationExpiredNotification()
-            NSLog("Credentials do not exist. Unable to add profile to API")
-            defer {
-                DispatchQueue.main.async {
-                    completion()
-                }
-            }
-            return
-        }
-        
-        let requestURL = baseURL.appendingPathComponent("profiles")
-        var request = URLRequest(url: requestURL)
-        request.httpMethod = "POST"
-        request.addValue("Bearer \(oktaCredentials.idToken)", forHTTPHeaderField: "Authorization")
-        
-        do {
-            request.httpBody = try JSONEncoder().encode(profile)
-        } catch {
-            NSLog("Error encoding profile: \(profile)")
-            defer {
-                DispatchQueue.main.async {
-                    completion()
-                }
-            }
-            return
-        }
-        
-        let dataTask = URLSession.shared.dataTask(with: request) { _, response, error in
-            
-            defer {
-                DispatchQueue.main.async {
-                    completion()
-                }
-            }
-            
-            if let error = error {
-                NSLog("Error adding profile: \(error)")
-            }
-            
-            if let response = response as? HTTPURLResponse,
-                response.statusCode != 200 {
-                NSLog("Returned status code is not the expected 200. Instead it is \(response.statusCode)")
-                return
-            }
-            
-            self.profiles.append(profile)
-        }
-        dataTask.resume()
-    }
-    
-    func image(for url: URL,
-               completion: @escaping (UIImage?) -> Void) {
-        let dataTask = URLSession.shared.dataTask(with: url) { data, _, error in
-            
-            var fetchedImage: UIImage?
-            
-            defer {
-                DispatchQueue.main.async {
-                    completion(fetchedImage)
-                }
-            }
-            if let error = error {
-                NSLog("Error fetching image for url: \(url.absoluteString), error: \(error)")
-                return
-            }
-            
-            guard let data = data,
-                let image = UIImage(data: data) else {
-                    return
-            }
-            fetchedImage = image
-        }
-        dataTask.resume()
-    }
     
     func postAuthenticationExpiredNotification() {
         NotificationCenter.default.post(name: .oktaAuthenticationExpired, object: nil)
