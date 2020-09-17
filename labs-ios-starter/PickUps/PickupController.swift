@@ -46,15 +46,24 @@ class PickupController {
     // MARK: - Properties
     let url = URL(string: "http://35.208.9.187:9095/ios-api-2")!
 
-    func schedule(collectionType: String, status: String, readyDate: String, cartons: Any, id: String, completion: @escaping (Error?) -> Void = { _ in }) {
+    func schedule(collectionType: String,
+                  status: String,
+                  readyDate: String,
+                  cartons: Any, id: String,
+                  completion: @escaping (Error?) -> Void = { _ in }) {
         
-        let variables: [String: Any] = ["collectionType": collectionType, "status": status, "readyDate": readyDate, "cartons": cartons, "propertyId": id]
-        
+        let variables: [String: Any] = ["collectionType": collectionType,
+                                        "status": status,
+                                        "readyDate": readyDate,
+                                        "cartons": cartons,
+                                        "propertyId": id]
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         let mutation = Scheduling.schedule
-        let body: [String: Any] = ["query": mutation, "variables": ["input": variables]]
+        let body: [String: Any] = ["query": mutation,
+                                   "variables": ["input": variables]]
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
         } catch {
@@ -78,15 +87,19 @@ class PickupController {
         }.resume()
     }
     
-    func cancelPickup(pickup: Pickup, completion: @escaping (Result<Pickup, Error>) -> Void = { _ in }) {
+    func cancelPickup(pickup: Pickup,
+                      completion: @escaping (Result<Pickup, Error>) -> Void = { _ in }) {
+        
         guard let id = pickup.id, let conNum = pickup.confirmNum else { return }
         let variables: [String: Any] = ["pickupId": id,
                                         "confirmationCode": conNum]
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         let mutation = Canceling.cancel
-        let body: [String: Any] = ["mutation": mutation, "variables": ["input": variables]]
+        let body: [String: Any] = ["mutation": mutation,
+                                   "variables": ["input": variables]]
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
         } catch {
