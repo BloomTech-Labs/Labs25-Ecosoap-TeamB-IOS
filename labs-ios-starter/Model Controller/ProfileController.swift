@@ -114,7 +114,7 @@ class ProfileController {
             return
         }
         print(userID)
-        
+        defaults.set(userID, forKey: "UserID")
         getSingleProfile(userID) { profile in
             self.authenticatedUserProfile = profile
             DispatchQueue.main.async {

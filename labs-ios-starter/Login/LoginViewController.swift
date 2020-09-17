@@ -62,8 +62,9 @@ class LoginViewController: UIViewController {
             
             guard let self = self,
                 self.presentedViewController == nil else { return }
-            
-            self.performSegue(withIdentifier: "ShowDetailProfileList", sender: nil)
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "ShowDetailProfileList", sender: nil)
+            }
         }
     }
     
