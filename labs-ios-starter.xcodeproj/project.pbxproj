@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		463AD24524CF2CDB00447BB8 /* AddProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463AD24424CF2CDB00447BB8 /* AddProfileViewController.swift */; };
 		466C4274249A8748007D033E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466C4273249A8748007D033E /* AppDelegate.swift */; };
 		466C4276249A8748007D033E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466C4275249A8748007D033E /* SceneDelegate.swift */; };
 		466C427B249A8748007D033E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 466C4279249A8748007D033E /* Main.storyboard */; };
@@ -45,7 +44,6 @@
 
 /* Begin PBXFileReference section */
 		25BC7139A76B1C8C094C7271 /* Pods-labs-ios-starter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-labs-ios-starter.debug.xcconfig"; path = "Target Support Files/Pods-labs-ios-starter/Pods-labs-ios-starter.debug.xcconfig"; sourceTree = "<group>"; };
-		463AD24424CF2CDB00447BB8 /* AddProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProfileViewController.swift; sourceTree = "<group>"; };
 		466C4270249A8748007D033E /* Eco-Soap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Eco-Soap.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		466C4273249A8748007D033E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		466C4275249A8748007D033E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -190,7 +188,6 @@
 		46BEB4EF24C98ED900FE0CD1 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				463AD24424CF2CDB00447BB8 /* AddProfileViewController.swift */,
 				46BEB4E424C98CDC00FE0CD1 /* LoginViewController.swift */,
 				466C4279249A8748007D033E /* Main.storyboard */,
 				46C2BC9124D432F90077E49D /* ProfileTabBarViewController.swift */,
@@ -385,7 +382,6 @@
 				AE4DE2F324FE513200839480 /* PaymentDetailViewController.swift in Sources */,
 				AE21B30D24E43AF2003095F0 /* ImpactViewController.swift in Sources */,
 				AE15364524E371A8009598A9 /* ImpactStatsController.swift in Sources */,
-				463AD24524CF2CDB00447BB8 /* AddProfileViewController.swift in Sources */,
 				466C4274249A8748007D033E /* AppDelegate.swift in Sources */,
 				46C2BC9224D432F90077E49D /* ProfileTabBarViewController.swift in Sources */,
 				AE21B31C24F7F553003095F0 /* Payment.swift in Sources */,

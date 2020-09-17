@@ -13,9 +13,10 @@ class ProfileController {
     
     static let shared = ProfileController()
     
-    let oktaAuth = OktaAuth(baseURL: URL(string: "https://auth.lambdalabs.dev/")!,
-                            clientID: "0oalwkxvqtKeHBmLI4x6",
-                            redirectURI: "labs://scaffolding/implicit/callback")
+    let oktaAuth = OktaAuth(baseURL: URL(string: "https://dev-668428.okta.com")!,clientID: "0oapaqacafrGUTfKx4x6",redirectURI: "labs://scaffolding/implicit/callback")
+//        OktaAuth(baseURL: URL(string: "https://auth.lambdalabs.dev/")!,
+//                            clientID: "0oalwkxvqtKeHBmLI4x6",
+//                            redirectURI: "labs://scaffolding/implicit/callback")
     //OktaAuth(baseURL: URL(string: "https://dev-668428.okta.com")!,clientID: "0oapaqacafrGUTfKx4x6",redirectURI: "org.ecosoapbank.ESBPortal:/login")
     private(set) var authenticatedUserProfile: Profile?
     private(set) var profiles: [Profile] = []
@@ -113,8 +114,6 @@ class ProfileController {
             return
         }
         print(userID)
-        print(oktaCredentials.idToken)
-        print(oktaCredentials.accessToken)
         
         getSingleProfile(userID) { profile in
             self.authenticatedUserProfile = profile
