@@ -23,74 +23,13 @@ class ProfileController {
     
     private let baseURL = URL(string: "https://labs-api-starter.herokuapp.com/")!
     
-    private init() {
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(refreshProfiles),
-                                               name: .oktaAuthenticationSuccessful,
-                                               object: nil)
-    }
-    
-    @objc func refreshProfiles() {
-       getAllProfiles()
-    }
-    
-    func getAllProfiles(completion: @escaping () -> Void = {}) {
+//    private init() {
+//        NotificationCenter.default.addObserver(self,
+//                                               selector: #selector(refreshProfiles),
+//                                               name: .oktaAuthenticationSuccessful,
+//                                               object: nil)
+//    }
 
-        var oktaCredentials: OktaCredentials
-
-        do {
-            oktaCredentials = try oktaAuth.credentialsIfAvailable()
-        } catch {
-            postAuthenticationExpiredNotification()
-            NSLog("Credentials do not exist. Unable to get profiles from API")
-            DispatchQueue.main.async {
-                completion()
-            }
-            return
-        }
-
-        let requestURL = baseURL.appendingPathComponent("profiles")
-        var request = URLRequest(url: requestURL)
-
-        request.addValue("Bearer \(oktaCredentials.idToken)", forHTTPHeaderField: "Authorization")
-
-        let dataTask = URLSession.shared.dataTask(with: request) { data, response, error in
-
-            defer {
-                DispatchQueue.main.async {
-                    completion()
-                }
-            }
-
-            if let error = error {
-                NSLog("Error getting all profiles: \(error)")
-            }
-
-            if let response = response as? HTTPURLResponse,
-                response.statusCode != 200 {
-                NSLog("Returned status code is not the expected 200. Instead it is \(response.statusCode)")
-            }
-
-            guard let data = data else {
-                NSLog("No data returned from getting all profiles")
-                return
-            }
-
-            let decoder = JSONDecoder()
-
-            do {
-                let profiles = try decoder.decode([Profile].self, from: data)
-
-                DispatchQueue.main.async {
-                    self.profiles = profiles
-                }
-            } catch {
-                NSLog("Unable to decode [Profile] from data: \(error)")
-            }
-        }
-
-        dataTask.resume()
-    }
     
     func getAuthenticatedUserProfile(completion: @escaping () -> Void = { }) {
         var oktaCredentials: OktaCredentials
@@ -183,76 +122,6 @@ class ProfileController {
                 fetchedProfile = profile
             } catch {
                 NSLog("Unable to decode Profile from data: \(error)")
-            }
-        }
-        
-        dataTask.resume()
-    }
-    
-    func updateAuthenticatedUserProfile(_ profile: Profile,
-                                        with name: String,
-                                        email: String,
-                                        avatarURL: URL,
-                                        completion: @escaping (Profile) -> Void) {
-        
-        var oktaCredentials: OktaCredentials
-        
-        do {
-            oktaCredentials = try oktaAuth.credentialsIfAvailable()
-        } catch {
-            postAuthenticationExpiredNotification()
-            NSLog("Credentials do not exist. Unable to get authenticated user profile from API")
-            DispatchQueue.main.async {
-                completion(profile)
-            }
-            return
-        }
-        
-        let requestURL = baseURL.appendingPathComponent("profiles")
-        
-        var request = URLRequest(url: requestURL)
-        request.httpMethod = "PUT"
-        request.addValue("Bearer \(oktaCredentials.idToken)", forHTTPHeaderField: "Authorization")
-        
-        do {
-            request.httpBody = try JSONEncoder().encode(profile)
-        } catch {
-            NSLog("Error encoding profile JSON: \(error)")
-            DispatchQueue.main.async {
-                completion(profile)
-            }
-            return
-        }
-        
-        let dataTask = URLSession.shared.dataTask(with: request) { data, response, error in
-            
-            var profile = profile
-            
-            defer {
-                DispatchQueue.main.async { completion(profile) }
-            }
-            
-            if let error = error {
-                NSLog("Error adding profile: \(error)")
-                return
-            }
-            
-            if let response = response as? HTTPURLResponse,
-                response.statusCode != 200 {
-                NSLog("Returned status code is not the expected 200. Instead it is \(response.statusCode)")
-                return
-            }
-            
-            guard let data = data else {
-                NSLog("No data returned from updating profile")
-                return
-            }
-            
-            do {
-                profile = try JSONDecoder().decode(ProfileWithMessage.self, from: data).profile
-                self.authenticatedUserProfile = profile
-            } catch {
-                NSLog("Error decoding `ProfileWithMessage`: \(error)")
             }
         }
         
