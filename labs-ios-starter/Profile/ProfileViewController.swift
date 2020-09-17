@@ -9,7 +9,10 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-    
+
+    // FIXME: This needs to be dynamic.
+    let userId = "00uziwedw89XCcpws4x6"
+
     var user: User? {
         didSet {
             setupViews()
@@ -30,7 +33,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
 
         // Load the user once when the view is loaded
-        userController.fetchUserData(id: "00uz44bqf7JXE6Naf4x6", completion: { result in
+        userController.fetchUserData(id: userId, completion: { result in
             do {
                 let user = try result.get()
 
@@ -71,7 +74,7 @@ class ProfileViewController: UIViewController {
             let phoneChange = phone.text,
             !phoneChange.isEmpty else { return }
 
-        userController.updateUserInfo(id: "00uz44bqf7JXE6Naf4x6",
+        userController.updateUserInfo(id: userId,
                                       firstName: firstChanged,
                                       lastName: lastChanged,
                                       middleName: middleChanged,
