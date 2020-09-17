@@ -29,6 +29,7 @@ class PickupsViewController: UIViewController, ReloadProtocal {
     func reload() {
         if let propertyId = defaults.string(forKey: "PropertyId") {
             self.button.setTitle(propertyId, for: .normal)
+            
             userController.fetchPropertyByID(id: propertyId, completion: { result in
                 guard let propertyFetched = try? result.get() else { return }
                 DispatchQueue.main.async {
@@ -64,6 +65,7 @@ class PickupsViewController: UIViewController, ReloadProtocal {
         button.widthAnchor.constraint(equalToConstant: 500).isActive = true
         button.heightAnchor.constraint(equalToConstant: 60).isActive = true
         button.dropdownView.reloadDelegate = self
+        
         userController.fetchPropertiesByUser(userId: "UserId1", completion: { result in
             guard let propertiesFetched = try? result.get() else { return }
             DispatchQueue.main.async {
@@ -91,11 +93,14 @@ class PickupsViewController: UIViewController, ReloadProtocal {
                 }
             })
         }
+        
         NotificationCenter.default.addObserver(self, selector: #selector(alert), name: NSNotification.Name("MissingProperty"), object: nil)
     }
     
     @objc func alert() {
-        let alert = UIAlertController(title: "Property Missing", message: "Please select a propety", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Property Missing",
+                                      message: "Please select a propety",
+                                      preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(alertAction)
         self.present(alert, animated: true)
@@ -148,7 +153,12 @@ class DropdownButton: UIButton, DropDownProtocol {
         NSLayoutConstraint.deactivate([self.height])
         self.height.constant = 0
         NSLayoutConstraint.activate([self.height])
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 0.5,
+                       delay: 0,
+                       usingSpringWithDamping: 0.5,
+                       initialSpringVelocity: 0.5,
+                       options: .curveEaseInOut,
+                       animations: {
             self.dropdownView.center.y -= self.dropdownView.frame.height / 2
             self.dropdownView.layoutIfNeeded()
         }, completion: nil)
@@ -183,7 +193,12 @@ class DropdownButton: UIButton, DropDownProtocol {
             self.height.constant = 150
             NSLayoutConstraint.activate([self.height])
             
-            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+            UIView.animate(withDuration: 0.5,
+                           delay: 0,
+                           usingSpringWithDamping: 0.5,
+                           initialSpringVelocity: 0.5,
+                           options: .curveEaseInOut,
+                           animations: {
                 self.dropdownView.layoutIfNeeded()
             }, completion: nil)
         } else {
@@ -192,7 +207,12 @@ class DropdownButton: UIButton, DropDownProtocol {
             self.height.constant = 0
             NSLayoutConstraint.activate([self.height])
             
-            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
+            UIView.animate(withDuration: 0.5,
+                           delay: 0,
+                           usingSpringWithDamping: 0.5,
+                           initialSpringVelocity: 0.5,
+                           options: .curveEaseInOut,
+                           animations: {
                 self.dropdownView.layoutIfNeeded()
             }, completion: nil)
         }
