@@ -130,7 +130,8 @@ class ProfileController {
         }
     }
     
-    func getSingleProfile(_ userID: String, completion: @escaping (Profile?) -> Void) {
+    func getSingleProfile(_ userID: String,
+                          completion: @escaping (Profile?) -> Void) {
         
         var oktaCredentials: OktaCredentials
         
@@ -261,7 +262,9 @@ class ProfileController {
     
     // NOTE: This method is unused, but left as an example for creating a profile.
     
-    func createProfile(with email: String, name: String, avatarURL: URL) -> Profile? {
+    func createProfile(with email: String,
+                       name: String,
+                       avatarURL: URL) -> Profile? {
         var oktaCredentials: OktaCredentials
         
         do {
@@ -281,7 +284,8 @@ class ProfileController {
     
     // NOTE: This method is unused, but left as an example for creating a profile on the scaffolding backend.
     
-    func addProfile(_ profile: Profile, completion: @escaping () -> Void) {
+    func addProfile(_ profile: Profile,
+                    completion: @escaping () -> Void) {
         
         var oktaCredentials: OktaCredentials
         
@@ -338,7 +342,8 @@ class ProfileController {
         dataTask.resume()
     }
     
-    func image(for url: URL, completion: @escaping (UIImage?) -> Void) {
+    func image(for url: URL,
+               completion: @escaping (UIImage?) -> Void) {
         let dataTask = URLSession.shared.dataTask(with: url) { data, _, error in
             
             var fetchedImage: UIImage?

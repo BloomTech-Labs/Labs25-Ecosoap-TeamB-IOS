@@ -99,13 +99,15 @@ class PaymentController {
         }.resume()
     }
     
-    func fetchPaymentsByPropertyID(id: String, completion: @escaping (Result<[Payment], Error>) -> Void) {
+    func fetchPaymentsByPropertyID(id: String,
+                                   completion: @escaping (Result<[Payment], Error>) -> Void) {
         
         var request = URLRequest(url: url)
         request.httpMethod = HTTPMethod.post.rawValue
         
         let query = Payments.payments
-        let body: [String: Any] = ["query": query, "variables": ["input": ["propertyId": id]]]
+        let body: [String: Any] = ["query": query,
+                                   "variables": ["input": ["propertyId": id]]]
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         do {

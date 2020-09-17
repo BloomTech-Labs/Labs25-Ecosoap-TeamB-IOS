@@ -113,7 +113,8 @@ class UserController {
                                        "email": email,
                                        "skype": skype,
                                        "phone": phone]
-        let body: [String: Any] = ["query": query, "variables": ["input": variable]]
+        let body: [String: Any] = ["query": query,
+                                   "variables": ["input": variable]]
         
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         do {
@@ -154,12 +155,14 @@ class UserController {
     }
     
     
-    func fetchUserData(id: String, completion: @escaping (Result<User, Error>) -> Void) {
+    func fetchUserData(id: String,
+                       completion: @escaping (Result<User, Error>) -> Void) {
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         let query = UserByID.user
-        let body: [String: Any] = ["query": query, "variables": ["input": ["userId": id]]]
+        let body: [String: Any] = ["query": query,
+                                   "variables": ["input": ["userId": id]]]
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
@@ -199,11 +202,14 @@ class UserController {
         }.resume()
     }
     
-    func fetchPropertiesByUser(userId: String, completion: @escaping (Result<[Property], Error>) -> Void) {
+    func fetchPropertiesByUser(userId: String,
+                               completion: @escaping (Result<[Property], Error>) -> Void) {
+        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         let query = Properties.properties
-        let body: [String: Any] = ["query": query, "variables": ["input": ["userId": userId]]]
+        let body: [String: Any] = ["query": query,
+                                   "variables": ["input": ["userId": userId]]]
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
@@ -243,11 +249,14 @@ class UserController {
         }.resume()
     }
     
-    func fetchPropertyByID(id: String, completion: @escaping (Result<Property, Error>) -> Void) {
+    func fetchPropertyByID(id: String,
+                           completion: @escaping (Result<Property, Error>) -> Void) {
+        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         let query = TheProperty.theProperty
-        let body: [String: Any] = ["query": query, "variables": ["input": ["propertyId": id]]]
+        let body: [String: Any] = ["query": query,
+                                   "variables": ["input": ["propertyId": id]]]
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])

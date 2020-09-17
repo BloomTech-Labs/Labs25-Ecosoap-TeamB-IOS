@@ -71,7 +71,8 @@ class AddProfileViewController: UIViewController {
     // MARK: - Private Methods
     
     private func setUpKeyboardDismissalRecognizer() {
-        let recognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        let recognizer = UITapGestureRecognizer(target: self,
+                                                action: #selector(dismissKeyboard))
         view.addGestureRecognizer(recognizer)
         keyboardDismissalTapRecognizer = recognizer
     }

@@ -9,6 +9,7 @@
 import UIKit
 
 class PickupDetailViewController: UIViewController {
+    
     @IBOutlet private var readyDate: UILabel!
     @IBOutlet private var pickupDate: UILabel!
     @IBOutlet private var products: UILabel!
@@ -28,10 +29,12 @@ class PickupDetailViewController: UIViewController {
         }
         navigationController?.popViewController(animated: true)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
     }
+    
     func updateViews() {
         guard let pickup = pickup, isViewLoaded else { return }
         readyDate.text = pickup.readyDate
@@ -52,6 +55,4 @@ class PickupDetailViewController: UIViewController {
         confrimNum.text = pickup.confirmNum
         status.text = pickup.status
     }
-
-
 }

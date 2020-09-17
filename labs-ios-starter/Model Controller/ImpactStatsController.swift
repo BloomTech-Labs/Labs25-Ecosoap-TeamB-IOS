@@ -30,12 +30,15 @@ class ImpactStatsController {
     
     let url = URL(string: "http://35.208.9.187:9095/ios-api-2")!
     
-    func fetchImpact(id: String, completion: @escaping (Result<ImpactStats, Error>) -> Void) {
+    func fetchImpact(id: String,
+                     completion: @escaping (Result<ImpactStats, Error>) -> Void) {
+        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         
         let query = ImpactStatsQueries.impactQuery
-        let body: [String: Any] = ["query": query, "variables": ["input": ["propertyId": id]]]
+        let body: [String: Any] = ["query": query,
+                                   "variables": ["input": ["propertyId": id]]]
 
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: body, options: [])
