@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		463AD24524CF2CDB00447BB8 /* AddProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 463AD24424CF2CDB00447BB8 /* AddProfileViewController.swift */; };
 		466C4274249A8748007D033E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466C4273249A8748007D033E /* AppDelegate.swift */; };
 		466C4276249A8748007D033E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466C4275249A8748007D033E /* SceneDelegate.swift */; };
 		466C427B249A8748007D033E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 466C4279249A8748007D033E /* Main.storyboard */; };
@@ -29,7 +28,6 @@
 		AE15364124E31FFB009598A9 /* Pickup.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE15364024E31FFB009598A9 /* Pickup.swift */; };
 		AE15364324E32742009598A9 /* ImpactStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE15364224E32742009598A9 /* ImpactStats.swift */; };
 		AE15364524E371A8009598A9 /* ImpactStatsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE15364424E371A8009598A9 /* ImpactStatsController.swift */; };
-		AE21B30924E43292003095F0 /* OktaAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AE21B30824E43292003095F0 /* OktaAuth */; };
 		AE21B30D24E43AF2003095F0 /* ImpactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B30C24E43AF2003095F0 /* ImpactViewController.swift */; };
 		AE21B31024E5DC04003095F0 /* PickupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B30F24E5DC04003095F0 /* PickupController.swift */; };
 		AE21B31424EC8B18003095F0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B31324EC8B18003095F0 /* User.swift */; };
@@ -40,12 +38,12 @@
 		AE21B31E24F7F657003095F0 /* PaymentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B31D24F7F657003095F0 /* PaymentController.swift */; };
 		AE21B32024F7F66B003095F0 /* CreatePaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B31F24F7F66B003095F0 /* CreatePaymentViewController.swift */; };
 		AE21B32324F7F6D0003095F0 /* PaymentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE21B32224F7F6D0003095F0 /* PaymentsTableViewController.swift */; };
+		AE2D3D912513A57500DAF921 /* OktaAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AE2D3D902513A57500DAF921 /* OktaAuth */; };
 		AE4DE2F324FE513200839480 /* PaymentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4DE2F224FE513200839480 /* PaymentDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		25BC7139A76B1C8C094C7271 /* Pods-labs-ios-starter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-labs-ios-starter.debug.xcconfig"; path = "Target Support Files/Pods-labs-ios-starter/Pods-labs-ios-starter.debug.xcconfig"; sourceTree = "<group>"; };
-		463AD24424CF2CDB00447BB8 /* AddProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProfileViewController.swift; sourceTree = "<group>"; };
 		466C4270249A8748007D033E /* Eco-Soap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Eco-Soap.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		466C4273249A8748007D033E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		466C4275249A8748007D033E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,8 +87,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE21B30924E43292003095F0 /* OktaAuth in Frameworks */,
 				92D968ED2501FADE00477B97 /* Stripe.xcframework in Frameworks */,
+				AE2D3D912513A57500DAF921 /* OktaAuth in Frameworks */,
 				4E21FFBDD1D3A9EEE39B56CC /* Pods_labs_ios_starter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -190,7 +188,6 @@
 		46BEB4EF24C98ED900FE0CD1 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				463AD24424CF2CDB00447BB8 /* AddProfileViewController.swift */,
 				46BEB4E424C98CDC00FE0CD1 /* LoginViewController.swift */,
 				466C4279249A8748007D033E /* Main.storyboard */,
 				46C2BC9124D432F90077E49D /* ProfileTabBarViewController.swift */,
@@ -265,7 +262,7 @@
 			);
 			name = "labs-ios-starter";
 			packageProductDependencies = (
-				AE21B30824E43292003095F0 /* OktaAuth */,
+				AE2D3D902513A57500DAF921 /* OktaAuth */,
 			);
 			productName = LabsScaffolding;
 			productReference = 466C4270249A8748007D033E /* Eco-Soap.app */;
@@ -296,7 +293,7 @@
 			);
 			mainGroup = 466C4267249A8748007D033E;
 			packageReferences = (
-				AE21B30724E43292003095F0 /* XCRemoteSwiftPackageReference "OktaAuth" */,
+				AE2D3D8F2513A57500DAF921 /* XCRemoteSwiftPackageReference "OktaAuth" */,
 			);
 			productRefGroup = 466C4271249A8748007D033E /* Products */;
 			projectDirPath = "";
@@ -385,7 +382,6 @@
 				AE4DE2F324FE513200839480 /* PaymentDetailViewController.swift in Sources */,
 				AE21B30D24E43AF2003095F0 /* ImpactViewController.swift in Sources */,
 				AE15364524E371A8009598A9 /* ImpactStatsController.swift in Sources */,
-				463AD24524CF2CDB00447BB8 /* AddProfileViewController.swift in Sources */,
 				466C4274249A8748007D033E /* AppDelegate.swift in Sources */,
 				46C2BC9224D432F90077E49D /* ProfileTabBarViewController.swift in Sources */,
 				AE21B31C24F7F553003095F0 /* Payment.swift in Sources */,
@@ -602,7 +598,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		AE21B30724E43292003095F0 /* XCRemoteSwiftPackageReference "OktaAuth" */ = {
+		AE2D3D8F2513A57500DAF921 /* XCRemoteSwiftPackageReference "OktaAuth" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "git@github.com:SpencerCurtis/OktaAuth.git";
 			requirement = {
@@ -613,9 +609,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		AE21B30824E43292003095F0 /* OktaAuth */ = {
+		AE2D3D902513A57500DAF921 /* OktaAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = AE21B30724E43292003095F0 /* XCRemoteSwiftPackageReference "OktaAuth" */;
+			package = AE2D3D8F2513A57500DAF921 /* XCRemoteSwiftPackageReference "OktaAuth" */;
 			productName = OktaAuth;
 		};
 /* End XCSwiftPackageProductDependency section */

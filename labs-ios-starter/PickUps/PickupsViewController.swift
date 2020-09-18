@@ -66,7 +66,8 @@ class PickupsViewController: UIViewController, ReloadProtocal {
         button.heightAnchor.constraint(equalToConstant: 60).isActive = true
         button.dropdownView.reloadDelegate = self
         
-        userController.fetchPropertiesByUser(userId: "UserId1", completion: { result in
+        guard let userID = defaults.string(forKey: "UserID") else { return }
+        userController.fetchPropertiesByUser(userId: userID, completion: { result in
             guard let propertiesFetched = try? result.get() else { return }
             DispatchQueue.main.async {
                 self.button.dropdownView.dropdownOptions = propertiesFetched

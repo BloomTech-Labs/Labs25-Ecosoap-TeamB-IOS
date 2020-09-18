@@ -58,33 +58,15 @@ class LoginViewController: UIViewController {
     }
     
     private func checkForExistingProfile() {
-        profileController.checkForExistingAuthenticatedUserProfile { [weak self] exists in
+        
+        profileController.checkForExistingAuthenticatedUserProfile { [weak self] _ in
             
             guard let self = self,
                 self.presentedViewController == nil else { return }
-            
-            if exists {
+            DispatchQueue.main.async {
                 self.performSegue(withIdentifier: "ShowDetailProfileList", sender: nil)
-            } else {
-                self.performSegue(withIdentifier: "ModalAddProfile", sender: nil)
             }
         }
     }
     
-    // MARK: - Navigation
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ModalAddProfile" {
-            guard let addProfileVC = segue.destination as? AddProfileViewController else { return }
-            addProfileVC.delegate = self
-        }
-    }
-}
-
-// MARK: - Add Profile Delegate
-
-extension LoginViewController: AddProfileDelegate {
-    func profileWasAdded() {
-        checkForExistingProfile()
-    }
 }
