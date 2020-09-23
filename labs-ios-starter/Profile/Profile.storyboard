@@ -100,7 +100,6 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="3H5-1c-1G2" firstAttribute="top" secondItem="ak9-dO-jb4" secondAttribute="bottom" constant="20" id="0Fe-qc-xSF"/>
                                             <constraint firstItem="ak9-dO-jb4" firstAttribute="leading" secondItem="M6q-k2-ZG4" secondAttribute="leading" constant="20" id="0Nw-8f-ZCe"/>
@@ -143,7 +142,6 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.23137254900000001" green="0.70980392160000005" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="M6q-k2-ZG4" firstAttribute="top" secondItem="X9A-dW-B1Y" secondAttribute="top" id="Exd-Id-MjE"/>
                                     <constraint firstAttribute="trailing" secondItem="M6q-k2-ZG4" secondAttribute="trailing" id="WQC-MH-Bqe"/>
