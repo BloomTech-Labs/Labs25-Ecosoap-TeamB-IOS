@@ -13,7 +13,7 @@ August 2020
 
 #### For Future Contributors
 
-9/24/20 - A walkthrough of the work done the Labs25 iOS team:
+9/24/20 - A walkthrough of the work done by the Labs25 iOS team:
 
 [![Watch the video walkthrough](https://img.youtube.com/vi/N9OvjDPAZpo/hqdefault.jpg)](https://youtu.be/N9OvjDPAZpo)
 
